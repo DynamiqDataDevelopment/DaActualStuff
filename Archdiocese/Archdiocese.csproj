@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{796FC1B2-AC56-4FA8-B0F5-D2132B365735}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Archdiocese</RootNamespace>
+    <AssemblyName>Archdiocese</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>DioLync.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutBox1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutBox1.Designer.cs">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OutlookBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\OutlookBar.designer.cs">
+      <DependentUpon>OutlookBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\clsAddresses.cs" />
+    <Compile Include="Data\clsAddressTypes.cs" />
+    <Compile Include="Data\clsChurchGroups.cs" />
+    <Compile Include="Data\clsCollections.cs" />
+    <Compile Include="Data\clsCollectionTypes.cs" />
+    <Compile Include="Data\clsEmailAddresses.cs" />
+    <Compile Include="Data\clsEmailAddressTypes.cs" />
+    <Compile Include="Data\clsExpenses.cs" />
+    <Compile Include="Data\clsExpenseTypesLevel1.cs" />
+    <Compile Include="Data\clsExpenseTypesLevel2.cs" />
+    <Compile Include="Data\clsExpenseTypesLevel3.cs" />
+    <Compile Include="Data\clsGenders.cs" />
+    <Compile Include="Data\clsIncomes.cs" />
+    <Compile Include="Data\clsIncomeTypesLevel1.cs" />
+    <Compile Include="Data\clsIncomeTypesLevel2.cs" />
+    <Compile Include="Data\clsIncomeTypesLevel3.cs" />
+    <Compile Include="Data\clsMaritalStatuses.cs" />
+    <Compile Include="Data\clsParishes.cs" />
+    <Compile Include="Data\clsParishPersonPledges.cs" />
+    <Compile Include="Data\clsParishPersons.cs" />
+    <Compile Include="Data\clsParishTypes.cs" />
+    <Compile Include="Data\clsParishUsers.cs" />
+    <Compile Include="Data\clsPersons.cs" />
+    <Compile Include="Data\clsPersonTypes.cs" />
+    <Compile Include="Data\clsPledgeTypes.cs" />
+    <Compile Include="Data\clsTelephoneNumbers.cs" />
+    <Compile Include="Data\clsTelephoneNumberTypes.cs" />
+    <Compile Include="Data\clsTitles.cs" />
+    <Compile Include="Data\clsUserGroups.cs" />
+    <Compile Include="Data\clsUsers.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAddressTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAddressTypes.designer.cs">
+      <DependentUpon>frmAddressTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAddressTypesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAddressTypesView.designer.cs">
+      <DependentUpon>frmAddressTypesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmCollectionTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCollectionTypes.designer.cs">
+      <DependentUpon>frmCollectionTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmCollectionTypesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCollectionTypesView.designer.cs">
+      <DependentUpon>frmCollectionTypesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEmailAddressTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEmailAddressTypes.designer.cs">
+      <DependentUpon>frmEmailAddressTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEmailAddressTypesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEmailAddressTypesView.designer.cs">
+      <DependentUpon>frmEmailAddressTypesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmExpenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmExpenses.Designer.cs">
+      <DependentUpon>frmExpenses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmExpenseTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmExpenseTypes.designer.cs">
+      <DependentUpon>frmExpenseTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmExpenseTypesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmExpenseTypesView.designer.cs">
+      <DependentUpon>frmExpenseTypesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmGenders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmGenders.designer.cs">
+      <DependentUpon>frmGenders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmGendersView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmGendersView.designer.cs">
+      <DependentUpon>frmGendersView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmIncomes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmIncomes.Designer.cs">
+      <DependentUpon>frmIncomes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmIncomeTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmIncomeTypes.designer.cs">
+      <DependentUpon>frmIncomeTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmIncomeTypesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmIncomeTypesView.designer.cs">
+      <DependentUpon>frmIncomeTypesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmLeaveTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmLeaveTypes.designer.cs">
+      <DependentUpon>frmLeaveTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmLeaveTypesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmLeaveTypesView.designer.cs">
+      <DependentUpon>frmLeaveTypesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMaritalStatuses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMaritalStatuses.designer.cs">
+      <DependentUpon>frmMaritalStatuses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMaritalStatusesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMaritalStatusesView.designer.cs">
+      <DependentUpon>frmMaritalStatusesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmParishTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmParishTypes.designer.cs">
+      <DependentUpon>frmParishTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmParishTypesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmParishTypesView.designer.cs">
+      <DependentUpon>frmParishTypesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPersons.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPersons.Designer.cs">
+      <DependentUpon>frmPersons.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPersonTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPersonTypes.designer.cs">
+      <DependentUpon>frmPersonTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPersonTypesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPersonTypesView.designer.cs">
+      <DependentUpon>frmPersonTypesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSubmitCollection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSubmitCollection.Designer.cs">
+      <DependentUpon>frmSubmitCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmTelephoneNumberTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmTelephoneNumberTypes.designer.cs">
+      <DependentUpon>frmTelephoneNumberTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmTelephoneNumberTypesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmTelephoneNumberTypesView.designer.cs">
+      <DependentUpon>frmTelephoneNumberTypesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmTitles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmTitles.designer.cs">
+      <DependentUpon>frmTitles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmTitlesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmTitlesView.designer.cs">
+      <DependentUpon>frmTitlesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmUserGroups.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmUserGroups.designer.cs">
+      <DependentUpon>frmUserGroups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmUserGroupsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmUserGroupsView.designer.cs">
+      <DependentUpon>frmUserGroupsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmUsersMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmUsersMenu.Designer.cs">
+      <DependentUpon>frmUsersMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ComboBoxes.cs" />
+    <Compile Include="Helpers\Globals.cs" />
+    <Compile Include="Menus\frmMenu_Accounting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menus\frmMenu_Accounting.Designer.cs">
+      <DependentUpon>frmMenu_Accounting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menus\frmMenu_Persons.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menus\frmMenu_Persons.Designer.cs">
+      <DependentUpon>frmMenu_Persons.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AboutBox1.resx">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\OutlookBar.resx">
+      <DependentUpon>OutlookBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAddressTypes.resx">
+      <DependentUpon>frmAddressTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAddressTypesView.resx">
+      <DependentUpon>frmAddressTypesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCollectionTypes.resx">
+      <DependentUpon>frmCollectionTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCollectionTypesView.resx">
+      <DependentUpon>frmCollectionTypesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEmailAddressTypes.resx">
+      <DependentUpon>frmEmailAddressTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEmailAddressTypesView.resx">
+      <DependentUpon>frmEmailAddressTypesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmExpenses.resx">
+      <DependentUpon>frmExpenses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmExpenseTypes.resx">
+      <DependentUpon>frmExpenseTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmExpenseTypesView.resx">
+      <DependentUpon>frmExpenseTypesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGenders.resx">
+      <DependentUpon>frmGenders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGendersView.resx">
+      <DependentUpon>frmGendersView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmIncomes.resx">
+      <DependentUpon>frmIncomes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmIncomeTypes.resx">
+      <DependentUpon>frmIncomeTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmIncomeTypesView.resx">
+      <DependentUpon>frmIncomeTypesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMaritalStatuses.resx">
+      <DependentUpon>frmMaritalStatuses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMaritalStatusesView.resx">
+      <DependentUpon>frmMaritalStatusesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmParishTypes.resx">
+      <DependentUpon>frmParishTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmParishTypesView.resx">
+      <DependentUpon>frmParishTypesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPersons.resx">
+      <DependentUpon>frmPersons.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPersonTypesView.resx">
+      <DependentUpon>frmPersonTypesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSubmitCollection.resx">
+      <DependentUpon>frmSubmitCollection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTelephoneNumberTypes.resx">
+      <DependentUpon>frmTelephoneNumberTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTelephoneNumberTypesView.resx">
+      <DependentUpon>frmTelephoneNumberTypesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTitles.resx">
+      <DependentUpon>frmTitles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTitlesView.resx">
+      <DependentUpon>frmTitlesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmUserGroups.resx">
+      <DependentUpon>frmUserGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmUserGroupsView.resx">
+      <DependentUpon>frmUserGroupsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmUsersMenu.resx">
+      <DependentUpon>frmUsersMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menus\frmMenu_Accounting.resx">
+      <DependentUpon>frmMenu_Accounting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menus\frmMenu_Persons.resx">
+      <DependentUpon>frmMenu_Persons.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DioLync.ico" />
+    <Content Include="Icons\AOD32x32.png" />
+    <Content Include="Images\logo-arch-header.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
