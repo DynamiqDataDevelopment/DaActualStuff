@@ -384,5 +384,35 @@ namespace Archdiocese.Helpers
                 }
             }
         }
+
+        public static void ToBankBranchCodesComboBox(this ComboBox cb)
+        {
+            Exception exResult = new Exception(Globals.gsExceptionString);
+            clsBankBranchCodes_List Data = new clsBankBranchCodes_List(Properties.Settings.Default.SqlConnectionString, ref exResult, 0, string.Empty, string.Empty);
+            Dictionary<int, string> _Dictionary = new Dictionary<int, string>();
+            if (!(exResult.Message == Globals.gsExceptionString))
+            {
+                MessageBox.Show(Globals.gsErrorMessage + exResult.Message, "Error retrieving Data");
+            }
+            else
+            {
+                if (Data.Count > 0)
+                {
+                    cb.DataSource = null;
+                    cb.DataBindings.Clear();
+                    _Dictionary.Clear();
+                    foreach (clsBankBranchCodes_Item item in Data)
+                    {
+                        _Dictionary.Add(item.ID, item.code + " (" + item.description + ")");
+                    }
+                    Bind_ComboBox(ref cb, _Dictionary);
+                    cb.SelectedIndex = -1;
+                }
+                else
+                {
+                    MessageBox.Show("There is no data loaded. Please contact your System Administrator.", "Error");
+                }
+            }
+        }
     }
 }

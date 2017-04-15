@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="SqlConnectionString" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Data Source=AGPL4CLKO3503;Initial Catalog=Archdiocese;User id=Archdiocese;Password=archdiocese;Pooling=False</Value>
+      <Value Profile="(Default)">Data Source=AGPL4CLKO3503;Initial Catalog=AT;User id=Archdiocese;Password=archdiocese;Pooling=False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

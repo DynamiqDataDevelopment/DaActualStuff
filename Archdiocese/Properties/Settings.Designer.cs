@@ -25,8 +25,8 @@ namespace Archdiocese.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=AGPL4CLKO3503;Initial Catalog=Archdiocese;User id=Archdiocese;Passwor" +
-            "d=archdiocese;Pooling=False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=AGPL4CLKO3503;Initial Catalog=AT;User id=Archdiocese;Password=archdio" +
+            "cese;Pooling=False")]
         public string SqlConnectionString {
             get {
                 return ((string)(this["SqlConnectionString"]));
