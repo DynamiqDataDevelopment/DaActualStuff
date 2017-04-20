@@ -1,3 +1,4 @@
+
 using System.Data.SqlClient;
 using System.Collections.Generic;
 using System;
@@ -5,16 +6,16 @@ using System.Data;
 using System.Text;
 using System.Xml.Serialization;
 
-public class clsPaymentRequests_List : List<clsPaymentRequests_Item>
+public class clsPaymentRequestsNew_List : List<clsPaymentRequestsNew_Item>
 {
     private string _connectionString = string.Empty;
 
-    public clsPaymentRequests_List(string connectionString)
+    public clsPaymentRequestsNew_List(string connectionString)
     {
         _connectionString = connectionString;
     }
 
-    public clsPaymentRequests_List(string connectionString, ref Exception pEx, int ID, string fromAccountNumber, string recipientName, string toAccountNumber, int branchCodeID, int parishUserID, int requesterPersonID, DateTime requestDateTime, DateTime actionDate)
+    public clsPaymentRequestsNew_List(string connectionString, ref Exception pEx, int ID, string fromAccountNumber, string recipientName, string toAccountNumber, int branchCodeID, int parishUserID, int requesterPersonID, DateTime requestDateTime, DateTime actionDate)
     {
         _connectionString = connectionString;
         SqlConnection conn = new SqlConnection((_connectionString));
@@ -23,16 +24,16 @@ public class clsPaymentRequests_List : List<clsPaymentRequests_Item>
             conn.Open();
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "usp_GetPaymentRequests";
-            cmd.Parameters.AddWithValue("@ID", ID);
+            cmd.CommandText = "usp_GetPaymentRequests_WithoutApprovals";
+            if (!(ID == 0)) cmd.Parameters.AddWithValue("@ID", ID);
             if (!(fromAccountNumber == string.Empty)) cmd.Parameters.AddWithValue("@fromAccountNumber", fromAccountNumber);
             if (!(recipientName == string.Empty)) cmd.Parameters.AddWithValue("@recipientName", recipientName);
             if (!(toAccountNumber == string.Empty)) cmd.Parameters.AddWithValue("@toAccountNumber", toAccountNumber);
-            cmd.Parameters.AddWithValue("@branchCodeID", branchCodeID);
-            cmd.Parameters.AddWithValue("@parishUserID", parishUserID);
-            cmd.Parameters.AddWithValue("@requesterPersonID", requesterPersonID);
-            cmd.Parameters.AddWithValue("@requestDateTime", requestDateTime);
-            cmd.Parameters.AddWithValue("@actionDate", actionDate);
+            if (!(branchCodeID == 0)) cmd.Parameters.AddWithValue("@branchCodeID", branchCodeID);
+            if (!(parishUserID == 0)) cmd.Parameters.AddWithValue("@parishUserID", parishUserID);
+            if (!(requesterPersonID == 0)) cmd.Parameters.AddWithValue("@requesterPersonID", requesterPersonID);
+            if (!(requestDateTime == DateTime.MinValue)) cmd.Parameters.AddWithValue("@requestDateTime", requestDateTime);
+            if (!(actionDate == DateTime.MinValue)) cmd.Parameters.AddWithValue("@actionDate", actionDate);
             SqlDataReader data_reader = cmd.ExecuteReader();
             Populate_Members(data_reader);
         }
@@ -50,14 +51,19 @@ public class clsPaymentRequests_List : List<clsPaymentRequests_Item>
         {
             while (data_reader.Read())
             {
-                clsPaymentRequests_Item tmp = new clsPaymentRequests_Item();
+                clsPaymentRequestsNew_Item tmp = new clsPaymentRequestsNew_Item();
                 if (!(data_reader["ID"] == DBNull.Value)) tmp.ID = (int)data_reader["ID"];
                 if (!(data_reader["fromAccountNumber"] == DBNull.Value)) tmp.fromAccountNumber = (string)data_reader["fromAccountNumber"];
                 if (!(data_reader["recipientName"] == DBNull.Value)) tmp.recipientName = (string)data_reader["recipientName"];
                 if (!(data_reader["toAccountNumber"] == DBNull.Value)) tmp.toAccountNumber = (string)data_reader["toAccountNumber"];
                 if (!(data_reader["branchCodeID"] == DBNull.Value)) tmp.branchCodeID = (int)data_reader["branchCodeID"];
+                if (!(data_reader["bankBranchCode"] == DBNull.Value)) tmp.bankBranchCode = (string)data_reader["bankBranchCode"];
                 if (!(data_reader["parishUserID"] == DBNull.Value)) tmp.parishUserID = (int)data_reader["parishUserID"];
+                if (!(data_reader["captureUsername"] == DBNull.Value)) tmp.captureUsername = (string)data_reader["captureUsername"];
+                if (!(data_reader["parishName"] == DBNull.Value)) tmp.parishName = (string)data_reader["parishName"];
                 if (!(data_reader["requesterPersonID"] == DBNull.Value)) tmp.requesterPersonID = (int)data_reader["requesterPersonID"];
+                if (!(data_reader["requester"] == DBNull.Value)) tmp.requester = (string)data_reader["requester"];
+
                 if (!(data_reader["requestDateTime"] == DBNull.Value)) tmp.requestDateTime = (DateTime)data_reader["requestDateTime"];
                 if (!(data_reader["actionDate"] == DBNull.Value)) tmp.actionDate = (DateTime)data_reader["actionDate"];
                 if (!(data_reader["isDeleted"] == DBNull.Value)) tmp.isDeleted = (bool)data_reader["isDeleted"];
@@ -66,7 +72,7 @@ public class clsPaymentRequests_List : List<clsPaymentRequests_Item>
         }
     }
 
-    public bool Add_Item(ref Exception pEx, clsPaymentRequests_Item obj)
+    public bool Add_Item(ref Exception pEx, clsPaymentRequestsNew_Item obj)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         try
@@ -75,18 +81,18 @@ public class clsPaymentRequests_List : List<clsPaymentRequests_Item>
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "usp_InsertPaymentRequests";
-            //cmd.Parameters.AddWithValue("@ID", obj.ID);
+            cmd.Parameters.AddWithValue("@ID", obj.ID);
             cmd.Parameters.AddWithValue("@fromAccountNumber", obj.fromAccountNumber);
             cmd.Parameters.AddWithValue("@recipientName", obj.recipientName);
             cmd.Parameters.AddWithValue("@toAccountNumber", obj.toAccountNumber);
             cmd.Parameters.AddWithValue("@branchCodeID", obj.branchCodeID);
             cmd.Parameters.AddWithValue("@parishUserID", obj.parishUserID);
             cmd.Parameters.AddWithValue("@requesterPersonID", obj.requesterPersonID);
-            //cmd.Parameters.AddWithValue("@requestDateTime", obj.requestDateTime);
+            cmd.Parameters.AddWithValue("@requestDateTime", obj.requestDateTime);
             cmd.Parameters.AddWithValue("@actionDate", obj.actionDate);
             if (Save(ref pEx, cmd))
             {
-                //this.Add(new clsPaymentRequests_Item(ID, fromAccountNumber, recipientName, toAccountNumber, branchCodeID, parishUserID, requesterPersonID, requestDateTime, actionDate));
+                //this.Add(new clsPaymentRequestsNew_Item(ID, fromAccountNumber, recipientName, toAccountNumber, branchCodeID, parishUserID, requesterPersonID, requestDateTime, actionDate));
                 conn.Close();
                 return true;
             }
@@ -104,7 +110,7 @@ public class clsPaymentRequests_List : List<clsPaymentRequests_Item>
         return false;
     }
 
-    public bool Update_Item(ref Exception pEx, clsPaymentRequests_Item obj)
+    public bool Update_Item(ref Exception pEx, clsPaymentRequestsNew_Item obj)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         try
@@ -124,7 +130,7 @@ public class clsPaymentRequests_List : List<clsPaymentRequests_Item>
             cmd.Parameters.AddWithValue("@actionDate", obj.actionDate);
             if (Save(ref pEx, cmd))
             {
-                //foreach (clsPaymentRequests_Item Item in this)
+                //foreach (clsPaymentRequestsNew_Item Item in this)
                 //{
                 //    if (Item.ID == ID)
                 //    {
@@ -260,26 +266,30 @@ public class clsPaymentRequests_List : List<clsPaymentRequests_Item>
     }
 }
 
-public class clsPaymentRequests_Item
+public class clsPaymentRequestsNew_Item
 {
     private int _ID;
     private string _fromAccountNumber;
     private string _recipientName;
     private string _toAccountNumber;
     private int _branchCodeID;
+    private string _bankBranchCode;
     private int _parishUserID;
+    private string _captureUsername;
+    private string _parishName;
     private int _requesterPersonID;
+    private string _requester;
     private DateTime _requestDateTime;
     private DateTime _actionDate;
     private bool _isDeleted;
 
 
-    public clsPaymentRequests_Item()
+    public clsPaymentRequestsNew_Item()
     {
         //Default constructor
     }
 
-    public clsPaymentRequests_Item(int ID, string fromAccountNumber, string recipientName, string toAccountNumber, int branchCodeID, int parishUserID, int requesterPersonID, DateTime requestDateTime, DateTime actionDate)
+    public clsPaymentRequestsNew_Item(int ID, string fromAccountNumber, string recipientName, string toAccountNumber, int branchCodeID, int parishUserID, int requesterPersonID, DateTime requestDateTime, DateTime actionDate)
     {
         _ID = ID;
         _fromAccountNumber = fromAccountNumber;
@@ -382,7 +392,23 @@ public class clsPaymentRequests_Item
             }
         }
     }
+    [XmlElement(typeof(string))]
+    public string bankBranchCode
+    {
+        get
+        {
+            return _bankBranchCode;
+        }
 
+        set
+        {
+            if (!(_bankBranchCode == value))
+            {
+                _bankBranchCode = value;
+
+            }
+        }
+    }
     [XmlElement(typeof(int))]
     public int parishUserID
     {
@@ -401,6 +427,41 @@ public class clsPaymentRequests_Item
         }
     }
 
+    [XmlElement(typeof(string))]
+    public string captureUsername
+    {
+        get
+        {
+            return _captureUsername;
+        }
+
+        set
+        {
+            if (!(_captureUsername == value))
+            {
+                _captureUsername = value;
+
+            }
+        }
+    }
+
+    [XmlElement(typeof(string))]
+    public string parishName
+    {
+        get
+        {
+            return _parishName;
+        }
+
+        set
+        {
+            if (!(_parishName == value))
+            {
+                _parishName = value;
+
+            }
+        }
+    }
     [XmlElement(typeof(int))]
     public int requesterPersonID
     {
@@ -418,7 +479,23 @@ public class clsPaymentRequests_Item
             }
         }
     }
+    [XmlElement(typeof(string))]
+    public string requester
+    {
+        get
+        {
+            return _requester;
+        }
 
+        set
+        {
+            if (!(_requester == value))
+            {
+                _requester = value;
+
+            }
+        }
+    }
     [XmlElement(typeof(DateTime))]
     public DateTime requestDateTime
     {

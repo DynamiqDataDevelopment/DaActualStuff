@@ -88,5 +88,25 @@ namespace Archdiocese.Menus
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form MainForm = GetMainForm();
+            frmPaymentRequests frm = new frmPaymentRequests();
+            frm.MdiParent = MainForm;
+            frm.Size = MainForm.Size;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+        private void btnPaymentApprovals_Click(object sender, EventArgs e)
+        {
+            Form MainForm = GetMainForm();
+            frmPaymentRequestApprovals frm = new frmPaymentRequestApprovals();
+            frm.MdiParent = MainForm;
+            frm.Size = MainForm.Size;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
     }
 }

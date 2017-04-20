@@ -36,6 +36,7 @@
     <ApplicationIcon>DioLync.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -86,6 +87,7 @@
     <Compile Include="Data\clsParishUsers.cs" />
     <Compile Include="Data\clsPaymentApprovals.cs" />
     <Compile Include="Data\clsPaymentRequests.cs" />
+    <Compile Include="Data\clsPaymentRequestsNew.cs" />
     <Compile Include="Data\clsPersons.cs" />
     <Compile Include="Data\clsPersonTypes.cs" />
     <Compile Include="Data\clsPledgeTypes.cs" />
@@ -231,6 +233,12 @@
     </Compile>
     <Compile Include="Forms\frmParishTypesView.designer.cs">
       <DependentUpon>frmParishTypesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPaymentRequestApprovals.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPaymentRequestApprovals.Designer.cs">
+      <DependentUpon>frmPaymentRequestApprovals.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmPaymentRequests.cs">
       <SubType>Form</SubType>
@@ -388,6 +396,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmParishTypesView.resx">
       <DependentUpon>frmParishTypesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPaymentRequestApprovals.resx">
+      <DependentUpon>frmPaymentRequestApprovals.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPaymentRequests.resx">
       <DependentUpon>frmPaymentRequests.cs</DependentUpon>

@@ -32,6 +32,8 @@
             this.btnIncome = new System.Windows.Forms.Button();
             this.btnExpense = new System.Windows.Forms.Button();
             this.btnAccountsSetup = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnPaymentApprovals = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnIncome
@@ -81,11 +83,41 @@
             this.btnAccountsSetup.MouseLeave += new System.EventHandler(this.btnAccountsSetup_MouseLeave);
             this.btnAccountsSetup.MouseHover += new System.EventHandler(this.btnAccountsSetup_MouseHover);
             // 
+            // button1
+            // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(825, 50);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(125, 100);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Payment Requests";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnPaymentApprovals
+            // 
+            this.btnPaymentApprovals.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPaymentApprovals.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPaymentApprovals.Image = ((System.Drawing.Image)(resources.GetObject("btnPaymentApprovals.Image")));
+            this.btnPaymentApprovals.Location = new System.Drawing.Point(1060, 50);
+            this.btnPaymentApprovals.Name = "btnPaymentApprovals";
+            this.btnPaymentApprovals.Size = new System.Drawing.Size(125, 100);
+            this.btnPaymentApprovals.TabIndex = 7;
+            this.btnPaymentApprovals.Text = "Payment Approvals";
+            this.btnPaymentApprovals.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnPaymentApprovals.UseVisualStyleBackColor = true;
+            this.btnPaymentApprovals.Click += new System.EventHandler(this.btnPaymentApprovals_Click);
+            // 
             // frmMenu_Accounting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1312, 735);
+            this.Controls.Add(this.btnPaymentApprovals);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnAccountsSetup);
             this.Controls.Add(this.btnIncome);
             this.Controls.Add(this.btnExpense);
@@ -102,5 +134,7 @@
         private System.Windows.Forms.Button btnIncome;
         private System.Windows.Forms.Button btnExpense;
         private System.Windows.Forms.Button btnAccountsSetup;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnPaymentApprovals;
     }
 }

@@ -73,7 +73,7 @@ public class clsPaymentApprovals_List : List<clsPaymentApprovals_Item>
             cmd.Parameters.AddWithValue("@approverParishUserID", obj.approverParishUserID);
             cmd.Parameters.AddWithValue("@approvalStatus", obj.approvalStatus);
             cmd.Parameters.AddWithValue("@reason", obj.reason);
-            cmd.Parameters.AddWithValue("@approvalDateTime", obj.approvalDateTime);
+            //cmd.Parameters.AddWithValue("@approvalDateTime", obj.approvalDateTime);
             if (Save(ref pEx, cmd))
             {
                 //this.Add(new clsPaymentApprovals_Item(ID, paymentRequestID, approverParishUserID, approvalStatus, reason, approvalDateTime));
