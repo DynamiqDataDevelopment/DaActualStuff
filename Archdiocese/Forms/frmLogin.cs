@@ -60,7 +60,7 @@ namespace Archdiocese.Forms
             if (Globals.giParishID != 0 & Globals.giUserID != 0)
             {
                 Exception exResult = new Exception(Globals.gsExceptionString);
-                clsParishUsers_List _Data = new clsParishUsers_List(Archdiocese.Properties.Settings.Default.SqlConnectionString, ref exResult, 0, Globals.giParishID, Globals.giUserID);
+                clsParishUsers_List _Data = new clsParishUsers_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult, 0, Globals.giParishID, Globals.giUserID);
                 if (!(exResult.Message == Globals.gsExceptionString))
                 {
                     MessageBox.Show(Globals.gsErrorMessage + exResult.Message, "Error");
@@ -82,7 +82,7 @@ namespace Archdiocese.Forms
         private void CheckUsernameAndPassword()
         {
             Exception exResult = new Exception(Globals.gsExceptionString);
-            clsUsersVerify_List _Data = new clsUsersVerify_List(Archdiocese.Properties.Settings.Default.SqlConnectionString, ref exResult, txtUsername.Text, txtPassword.Text);
+            clsUsersVerify_List _Data = new clsUsersVerify_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult, txtUsername.Text, Globals.EncryptString(txtPassword.Text));
             if (!(exResult.Message == Globals.gsExceptionString))
             {
                 MessageBox.Show(Globals.gsErrorMessage + exResult.Message, "Error");
@@ -102,6 +102,7 @@ namespace Archdiocese.Forms
                     Globals.giUserID = _Data[0].ID;
                     Globals.gsUserName = _Data[0].username;
                     Globals.gsPermissionString = _Data[0].userGroupPermissionString;
+                    Globals.gsEncryptedPassword = Globals.EncryptString(txtPassword.Text);
                     PopulateParishes();
                     cmbParish.Visible = true;
                     lblParish.Visible = true;

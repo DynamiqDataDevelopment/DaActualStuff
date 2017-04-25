@@ -64,6 +64,7 @@
             this.incomeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.incomeTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.submitCollectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,6 +94,7 @@
             this.tsslParish = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.outlookBar1 = new OutlookStyleControls.OutlookBar();
+            this.personsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.stsMain.SuspendLayout();
             //this.SuspendLayout();
@@ -115,6 +117,7 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripMenuItem,
             this.submitCollectionToolStripMenuItem,
+            this.changePasswordToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
@@ -153,6 +156,7 @@
             this.userToolStripMenuItem1.Name = "userToolStripMenuItem1";
             this.userToolStripMenuItem1.Size = new System.Drawing.Size(158, 26);
             this.userToolStripMenuItem1.Text = "User";
+            this.userToolStripMenuItem1.Click += new System.EventHandler(this.userToolStripMenuItem1_Click);
             // 
             // userGroupToolStripMenuItem1
             // 
@@ -319,6 +323,13 @@
             this.submitCollectionToolStripMenuItem.Text = "Submit Collection";
             this.submitCollectionToolStripMenuItem.Click += new System.EventHandler(this.submitCollectionToolStripMenuItem_Click);
             // 
+            // changePasswordToolStripMenuItem
+            // 
+            this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(202, 26);
+            this.changePasswordToolStripMenuItem.Text = "Change Password";
+            this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
@@ -341,6 +352,7 @@
             this.maritalStatusesToolStripMenuItem,
             this.collectionTypesToolStripMenuItem,
             this.telephoneNumberTypesToolStripMenuItem,
+            this.personsToolStripMenuItem,
             this.personTypesToolStripMenuItem,
             this.leaveTypesToolStripMenuItem,
             this.titlesToolStripMenuItem,
@@ -511,20 +523,20 @@
             this.stsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsslParish,
             this.tsslUser});
-            this.stsMain.Location = new System.Drawing.Point(0, 711);
+            this.stsMain.Location = new System.Drawing.Point(0, 713);
             this.stsMain.Name = "stsMain";
-            this.stsMain.Size = new System.Drawing.Size(1312, 24);
+            this.stsMain.Size = new System.Drawing.Size(1312, 22);
             this.stsMain.TabIndex = 2;
             // 
             // tsslParish
             // 
             this.tsslParish.Name = "tsslParish";
-            this.tsslParish.Size = new System.Drawing.Size(0, 19);
+            this.tsslParish.Size = new System.Drawing.Size(0, 17);
             // 
             // tsslUser
             // 
             this.tsslUser.Name = "tsslUser";
-            this.tsslUser.Size = new System.Drawing.Size(0, 19);
+            this.tsslUser.Size = new System.Drawing.Size(0, 17);
             // 
             // outlookBar1
             // 
@@ -572,9 +584,16 @@
             this.outlookBar1.Location = new System.Drawing.Point(0, 28);
             this.outlookBar1.Name = "outlookBar1";
             this.outlookBar1.SelectedButton = outlookBarButton2;
-            this.outlookBar1.Size = new System.Drawing.Size(166, 683);
+            this.outlookBar1.Size = new System.Drawing.Size(166, 685);
             this.outlookBar1.TabIndex = 4;
             this.outlookBar1.Click += new OutlookStyleControls.OutlookBar.ButtonClickEventHandler(this.outlookBar1_Click);
+            // 
+            // personsToolStripMenuItem
+            // 
+            this.personsToolStripMenuItem.Name = "personsToolStripMenuItem";
+            this.personsToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
+            this.personsToolStripMenuItem.Text = "Persons";
+            this.personsToolStripMenuItem.Click += new System.EventHandler(this.personsToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -662,5 +681,7 @@
         private System.Windows.Forms.ToolStripMenuItem incomeToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem incomeTypeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem personsToolStripMenuItem;
     }
 }

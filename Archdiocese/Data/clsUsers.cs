@@ -89,6 +89,42 @@ public class clsUsers_List : List<clsUsers_Item>
         return false;
     }
 
+    public int Add_Item_ReturnID(ref Exception pEx, clsUsers_Item obj)
+    {
+        SqlConnection conn = new SqlConnection((_connectionString));
+        int ID = 0;
+        try
+        {
+            conn.Open();
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "usp_InsertUsers";
+            cmd.Parameters.AddWithValue("@ID", obj.ID);
+            cmd.Parameters.AddWithValue("@username", obj.username);
+            cmd.Parameters.AddWithValue("@password", obj.password);
+            cmd.Parameters.AddWithValue("@userGroupID", obj.userGroupID);
+            ID = Save_Read(ref pEx, cmd);
+
+            if (ID != 0)
+            {
+                //this.Add(new clsUsers_Item(ID, username, password, userGroupID));
+                conn.Close();
+                return ID;
+            }
+            else
+            {
+                conn.Close();
+                return ID;
+            }
+        }
+        catch (Exception ex)
+        {
+            pEx = ex;
+        }
+        conn.Close();
+        return ID;
+    }
+
     public bool Update_Item(ref Exception pEx, int ID, string username, string password, int userGroupID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
@@ -161,6 +197,38 @@ public class clsUsers_List : List<clsUsers_Item>
         return false;
     }
 
+    public bool ChangePassword(ref Exception pEx, int ID, string currentPassword, string newPassword)
+    {
+        SqlConnection conn = new SqlConnection((_connectionString));
+        int index = 0;
+        try
+        {
+            conn.Open();
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "usp_ChangePassword";
+            cmd.Parameters.AddWithValue("@ID", ID);
+            cmd.Parameters.AddWithValue("@currentPassword", currentPassword);
+            cmd.Parameters.AddWithValue("@newPassword", newPassword);
+            if (Save(ref pEx, cmd))
+            {
+                conn.Close();
+                return true;
+            }
+            else
+            {
+                conn.Close();
+                return false;
+            }
+        }
+        catch (Exception ex)
+        {
+            pEx = ex;
+        }
+        conn.Close();
+        return false;
+    }
+
     private bool Save(ref Exception pEx, SqlCommand cmd)
     {
         try
@@ -172,6 +240,27 @@ public class clsUsers_List : List<clsUsers_Item>
         {
             pEx = ex;
             return false;
+        }
+    }
+    /// <summary>
+    /// Returns the System Generated ID if successful
+    /// </summary>
+    /// <param name="pEx">By ref Exception</param>
+    /// <param name="cmd">Sql Command to execute</param>
+    /// <returns></returns>
+    private int Save_Read(ref Exception pEx, SqlCommand cmd)
+    {
+        int ID = 0;
+        try
+        {
+            var retVal = cmd.ExecuteScalar().ToString();
+            ID = Convert.ToInt32(retVal);
+            return ID;
+        }
+        catch (Exception ex)
+        {
+            pEx = ex;
+            return ID;
         }
     }
 }

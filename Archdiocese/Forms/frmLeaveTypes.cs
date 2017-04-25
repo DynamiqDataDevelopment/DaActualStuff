@@ -10,7 +10,7 @@ namespace Archdiocese.Forms
         public int _ID;
         public string _Description;
         public bool _isDeleted;
-        public clsCollectionTypes_List _List = new clsCollectionTypes_List(Archdiocese.Properties.Settings.Default.SqlConnectionString);
+        public clsCollectionTypes_List _List = new clsCollectionTypes_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
         public frmLeaveTypes()
         {
             InitializeComponent();

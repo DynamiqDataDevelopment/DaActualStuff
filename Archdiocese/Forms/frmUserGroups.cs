@@ -15,7 +15,7 @@ namespace Archdiocese.Forms
     {
         public int _ID;
         public string _userGroupDescription;
-        public static clsUserGroups_List gcUserGroup_List = new clsUserGroups_List(Archdiocese.Properties.Settings.Default.SqlConnectionString);
+        public static clsUserGroups_List gcUserGroup_List = new clsUserGroups_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
 
         public frmUserGroups()
         {

@@ -24,7 +24,7 @@ public class clsUserGroups_List : List<clsUserGroups_Item>
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "usp_GetUserGroups";
-            cmd.Parameters.AddWithValue("@ID", ID);
+            if (!(ID == 0)) cmd.Parameters.AddWithValue("@ID", ID);
             if (!(userGroupName == string.Empty)) cmd.Parameters.AddWithValue("@userGroupName", userGroupName);
             if (!(permissionString == string.Empty)) cmd.Parameters.AddWithValue("@permissionString", permissionString);
             SqlDataReader data_reader = cmd.ExecuteReader();

@@ -30,7 +30,7 @@ namespace Archdiocese.Forms
 
         private void Add_Person(clsPersons_Item obj)
         {
-            clsPersons_List _Data = new clsPersons_List(Properties.Settings.Default.SqlConnectionString);
+            clsPersons_List _Data = new clsPersons_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
             Exception exResult = new Exception(Globals.gsExceptionString);
             int ID = _Data.Add_Item_ReturnID(ref exResult, obj);
 
@@ -55,7 +55,7 @@ namespace Archdiocese.Forms
 
         private void Add_EmailAddress(clsEmailAddresses_Item obj)
         {
-            clsEmailAddresses_List _Data = new clsEmailAddresses_List(Properties.Settings.Default.SqlConnectionString);
+            clsEmailAddresses_List _Data = new clsEmailAddresses_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
             Exception exResult = new Exception(Globals.gsExceptionString);
             _Data.Add_Item(ref exResult, obj);
             if (exResult.Message != Globals.gsExceptionString)
@@ -66,7 +66,7 @@ namespace Archdiocese.Forms
 
         private void Add_Address(clsAddresses_Item obj)
         {
-            clsAddresses_List _Data = new clsAddresses_List(Properties.Settings.Default.SqlConnectionString);
+            clsAddresses_List _Data = new clsAddresses_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
             Exception exResult = new Exception(Globals.gsExceptionString);
             _Data.Add_Item(ref exResult, obj);
             if (exResult.Message != Globals.gsExceptionString)
@@ -77,7 +77,7 @@ namespace Archdiocese.Forms
 
         private void Add_TelephoneNumber(clsTelephoneNumbers_Item obj)
         {
-            clsTelephoneNumbers_List _Data = new clsTelephoneNumbers_List(Properties.Settings.Default.SqlConnectionString);
+            clsTelephoneNumbers_List _Data = new clsTelephoneNumbers_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
             Exception exResult = new Exception(Globals.gsExceptionString);
             _Data.Add_Item(ref exResult, obj);
             if (exResult.Message != Globals.gsExceptionString)
@@ -88,7 +88,7 @@ namespace Archdiocese.Forms
 
         private void Add_ParishPerson(clsParishPersons_Item obj)
         {
-            clsParishPersons_List _Data = new clsParishPersons_List(Properties.Settings.Default.SqlConnectionString);
+            clsParishPersons_List _Data = new clsParishPersons_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
             Exception exResult = new Exception(Globals.gsExceptionString);
             _Data.Add_Item(ref exResult, obj);
             if (exResult.Message != Globals.gsExceptionString)
@@ -99,7 +99,7 @@ namespace Archdiocese.Forms
 
         private void Add_ParishPersonPledge(clsParishPersonPledges_Item obj)
         {
-            clsParishPersonPledges_List _Data = new clsParishPersonPledges_List(Properties.Settings.Default.SqlConnectionString);
+            clsParishPersonPledges_List _Data = new clsParishPersonPledges_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
             Exception exResult = new Exception(Globals.gsExceptionString);
             _Data.Add_Item(ref exResult, obj);
             if (exResult.Message != Globals.gsExceptionString)
@@ -186,7 +186,6 @@ namespace Archdiocese.Forms
             {
                 MessageBox.Show("Please fill out all the fields", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
 
         private bool ValidateScreen()

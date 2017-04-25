@@ -294,5 +294,28 @@ namespace Archdiocese.Forms
                 Application.Exit();
             }
         }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //CloseOpenForms();
+            frmChangePassword frm = new frmChangePassword();
+            frm.ShowDialog();
+        }
+
+        private void userToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmUsers frm = new frmUsers();
+            frm.Show();
+        }
+
+        private void personsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CloseOpenForms();
+            frmParishPersonsView frm = new frmParishPersonsView();
+            frm.MdiParent = this;
+            frm.Size = this.Size;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
     }
 }

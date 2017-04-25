@@ -30,7 +30,7 @@ namespace Archdiocese.Helpers
         public static void ToCollectionsTypeComboBox(this ComboBox cb)
         {
             Exception exResult = new Exception(Globals.gsExceptionString);
-            CollectionTypes_Data = new clsCollectionTypes_List(Properties.Settings.Default.SqlConnectionString, ref exResult, 0, string.Empty);
+            CollectionTypes_Data = new clsCollectionTypes_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult, 0, string.Empty);
             //User_Data_Filtered = User_Data;
             if (!(exResult.Message == Globals.gsExceptionString))
             {
@@ -59,7 +59,7 @@ namespace Archdiocese.Helpers
         public static void ToParishTypesComboBox(this ComboBox cb)
         {
             Exception exResult = new Exception(Globals.gsExceptionString);
-            ParishTypes_Data = new clsParishTypes_List(Properties.Settings.Default.SqlConnectionString, ref exResult, 0, string.Empty);
+            ParishTypes_Data = new clsParishTypes_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult, 0, string.Empty);
             //User_Data_Filtered = User_Data;
             if (!(exResult.Message == Globals.gsExceptionString))
             {
@@ -89,7 +89,7 @@ namespace Archdiocese.Helpers
         public static void ToUserGroupsComboBox(this ComboBox cb)
         {
             Exception exResult = new Exception(Globals.gsExceptionString);
-            UserGroups_Data = new clsUserGroups_List(Properties.Settings.Default.SqlConnectionString, ref exResult, 0, string.Empty, string.Empty);
+            UserGroups_Data = new clsUserGroups_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult, 0, string.Empty, string.Empty);
             //User_Data_Filtered = User_Data;
             if (!(exResult.Message == Globals.gsExceptionString))
             {
@@ -118,7 +118,7 @@ namespace Archdiocese.Helpers
         public static void ToUserLoginParishComboBox(this ComboBox cb)
         {
             Exception exResult = new Exception(Globals.gsExceptionString);
-            clsParishes_List Data = new clsParishes_List(Properties.Settings.Default.SqlConnectionString, ref exResult, Globals.giUserID);
+            clsParishes_List Data = new clsParishes_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult, Globals.giUserID);
             //User_Data_Filtered = User_Data;
             if (!(exResult.Message == Globals.gsExceptionString))
             {
@@ -149,7 +149,7 @@ namespace Archdiocese.Helpers
         public static void ToTitlesComboBox(this ComboBox cb)
         {
             Exception exResult = new Exception(Globals.gsExceptionString);
-            clsTitles_List Data = new clsTitles_List(Properties.Settings.Default.SqlConnectionString, ref exResult, 0, string.Empty, string.Empty);
+            clsTitles_List Data = new clsTitles_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult, 0, string.Empty, string.Empty);
             Dictionary<int, string> _Dictionary = new Dictionary<int, string>();
             if (!(exResult.Message == Globals.gsExceptionString))
             {
@@ -179,7 +179,7 @@ namespace Archdiocese.Helpers
         public static void ToGendersComboBox(this ComboBox cb)
         {
             Exception exResult = new Exception(Globals.gsExceptionString);
-            clsGenders_List Data = new clsGenders_List(Properties.Settings.Default.SqlConnectionString, ref exResult);
+            clsGenders_List Data = new clsGenders_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult);
             Dictionary<int, string> _Dictionary = new Dictionary<int, string>();
             if (!(exResult.Message == Globals.gsExceptionString))
             {
@@ -209,7 +209,7 @@ namespace Archdiocese.Helpers
         public static void ToMaritalStatuesComboBox(this ComboBox cb)
         {
             Exception exResult = new Exception(Globals.gsExceptionString);
-            clsMaritalStatuses_List Data = new clsMaritalStatuses_List(Properties.Settings.Default.SqlConnectionString, ref exResult);
+            clsMaritalStatuses_List Data = new clsMaritalStatuses_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult);
             Dictionary<int, string> _Dictionary = new Dictionary<int, string>();
             if (!(exResult.Message == Globals.gsExceptionString))
             {
@@ -239,7 +239,7 @@ namespace Archdiocese.Helpers
         public static void ToPersonTypesComboBox(this ComboBox cb)
         {
             Exception exResult = new Exception(Globals.gsExceptionString);
-            clsPersonTypes_List Data = new clsPersonTypes_List(Properties.Settings.Default.SqlConnectionString, ref exResult);
+            clsPersonTypes_List Data = new clsPersonTypes_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult);
             Dictionary<int, string> _Dictionary = new Dictionary<int, string>();
             if (!(exResult.Message == Globals.gsExceptionString))
             {
@@ -268,7 +268,7 @@ namespace Archdiocese.Helpers
         public static void ToExpenseTypesLevel3ComboBox(this ComboBox cb)
         {
             Exception exResult = new Exception(Globals.gsExceptionString);
-            clsExpenseTypesLevel3_List Data = new clsExpenseTypesLevel3_List(Properties.Settings.Default.SqlConnectionString, ref exResult);
+            clsExpenseTypesLevel3_List Data = new clsExpenseTypesLevel3_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult);
             Dictionary<int, string> _Dictionary = new Dictionary<int, string>();
             if (!(exResult.Message == Globals.gsExceptionString))
             {
@@ -298,7 +298,7 @@ namespace Archdiocese.Helpers
         public static void ToIncomeTypesLevel3ComboBox(this ComboBox cb)
         {
             Exception exResult = new Exception(Globals.gsExceptionString);
-            clsIncomeTypesLevel3_List Data = new clsIncomeTypesLevel3_List(Properties.Settings.Default.SqlConnectionString, ref exResult);
+            clsIncomeTypesLevel3_List Data = new clsIncomeTypesLevel3_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult);
             Dictionary<int, string> _Dictionary = new Dictionary<int, string>();
             if (!(exResult.Message == Globals.gsExceptionString))
             {
@@ -328,7 +328,7 @@ namespace Archdiocese.Helpers
         public static void ToPledgeTypesComboBox(this ComboBox cb)
         {
             Exception exResult = new Exception(Globals.gsExceptionString);
-            clsPledgeTypes_List Data = new clsPledgeTypes_List(Properties.Settings.Default.SqlConnectionString, ref exResult, 0, string.Empty);
+            clsPledgeTypes_List Data = new clsPledgeTypes_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult, 0, string.Empty);
             Dictionary<int, string> _Dictionary = new Dictionary<int, string>();
             if (!(exResult.Message == Globals.gsExceptionString))
             {
@@ -358,7 +358,7 @@ namespace Archdiocese.Helpers
         public static void ToParishPersonsComboBox(this ComboBox cb)
         {
             Exception exResult = new Exception(Globals.gsExceptionString);
-            clsPersons_List Data = new clsPersons_List(Properties.Settings.Default.SqlConnectionString, ref exResult, 0, 0, 0, string.Empty, string.Empty, string.Empty, DateTime.MinValue, 0, DateTime.MinValue, DateTime.MinValue, 0, Globals.giParishID);
+            clsPersons_List Data = new clsPersons_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult, 0, 0, 0, string.Empty, string.Empty, string.Empty, DateTime.MinValue, 0, DateTime.MinValue, DateTime.MinValue, 0, Globals.giParishID);
             Dictionary<int, string> _Dictionary = new Dictionary<int, string>();
             if (!(exResult.Message == Globals.gsExceptionString))
             {
@@ -388,7 +388,7 @@ namespace Archdiocese.Helpers
         public static void ToBankBranchCodesComboBox(this ComboBox cb)
         {
             Exception exResult = new Exception(Globals.gsExceptionString);
-            clsBankBranchCodes_List Data = new clsBankBranchCodes_List(Properties.Settings.Default.SqlConnectionString, ref exResult, 0, string.Empty, string.Empty);
+            clsBankBranchCodes_List Data = new clsBankBranchCodes_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult, 0, string.Empty, string.Empty);
             Dictionary<int, string> _Dictionary = new Dictionary<int, string>();
             if (!(exResult.Message == Globals.gsExceptionString))
             {

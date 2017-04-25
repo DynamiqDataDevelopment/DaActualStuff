@@ -96,7 +96,7 @@ namespace Archdiocese.Forms
 
         private void Insert(clsCollections_Item obj)
         {
-            clsCollections_List _Data = new clsCollections_List(Properties.Settings.Default.SqlConnectionString);
+            clsCollections_List _Data = new clsCollections_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
             Exception exResult = new Exception(Globals.gsExceptionString);
             _Data.Add_Item(ref exResult, obj);
             if (exResult.Message != Globals.gsExceptionString)

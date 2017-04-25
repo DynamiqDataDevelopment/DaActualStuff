@@ -10,9 +10,10 @@ using Archdiocese.Helpers;
 
 namespace Archdiocese.Forms
 {
-    public partial class frmPaymentRequests : Form
+    public partial class frmUsers : Form
     {
-        public frmPaymentRequests()
+        public int miUserID = 0;
+        public frmUsers()
         {
             InitializeComponent();
             MyInitializeComponent();
@@ -20,27 +21,9 @@ namespace Archdiocese.Forms
 
         private void MyInitializeComponent()
         {
-            cmbBankBranchCode.ToBankBranchCodesComboBox();
-            cmbRequester.ToParishPersonsComboBox();
+            cmbUserGroup.ToUserGroupsComboBox();
         }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            DialogResult dlgResult = MessageBox.Show("Are you sure that" + Environment.NewLine + "you want to leave?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (dlgResult == DialogResult.Yes)
-            {
-                Close();
-                Dispose();
-            }
-        }
-
-
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            ResetControls();
-        }
-
+        #region Standard Procedures
         private bool ValidateScreen()
         {
             bool retVal = true;
@@ -71,6 +54,7 @@ namespace Archdiocese.Forms
 
             return retVal;
         }
+
         private void ResetControls()
         {
             foreach (Control C in this.Controls)
@@ -89,28 +73,37 @@ namespace Archdiocese.Forms
                     var Ctrl = (DateTimePicker)C;
                     Ctrl.Value = DateTime.Today;
                 }
-
             }
         }
 
-        private clsPaymentRequests_Item PrepareObject()
+        private void Call_Cancel()
         {
-            clsPaymentRequests_Item obj = new clsPaymentRequests_Item();
-            obj.actionDate = dtpActionDate.Value;
-            obj.branchCodeID = (int)cmbBankBranchCode.SelectedValue;
-            obj.fromAccountNumber = txtFromAccountNumber.Text;
-            obj.toAccountNumber = txtToAccountNumber.Text;
-            obj.recipientName = txtRecipientReference.Text;
-            obj.requesterPersonID = (int)cmbRequester.SelectedValue;
-            obj.parishUserID = Globals.giParishUserID;
-            obj.ID = 0;//remove
-            return obj;
+            DialogResult dlgResult = MessageBox.Show("Are you sure that" + Environment.NewLine + "you want to leave?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dlgResult == DialogResult.Yes)
+            {
+                Close();
+                Dispose();
+            }
         }
+
+        #endregion Standard Procedures
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Call_Cancel();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ResetControls();
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (ValidateScreen())
             {
-                Add_PaymentRequest(PrepareObject());
+                Add_User(PrepareObject());
             }
             else
             {
@@ -118,9 +111,48 @@ namespace Archdiocese.Forms
             }
         }
 
-        private void Add_PaymentRequest(clsPaymentRequests_Item obj)
+        private clsUsers_Item PrepareObject()
         {
-            clsPaymentRequests_List _Data = new clsPaymentRequests_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
+            clsUsers_Item obj = new clsUsers_Item();
+            obj.username = txtUsername.Text;
+            obj.password = Globals.EncryptString(txtPassword.Text);
+            obj.userGroupID = (int)cmbUserGroup.SelectedValue;
+            return obj;
+        }
+        private bool Add_User(clsUsers_Item obj)
+        {
+            bool retVal = true;
+            clsUsers_List _Data = new clsUsers_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
+            Exception exResult = new Exception(Globals.gsExceptionString);
+            int ID = _Data.Add_Item_ReturnID(ref exResult, obj);
+
+            if (exResult.Message != Globals.gsExceptionString)
+            {
+                MessageBox.Show(Globals.gsErrorMessage + " " + exResult.Message);
+            }
+            else
+            {
+                miUserID = ID;
+                //add email address and ParishPerson record
+                Add_ParishUser(PrepareObject_ParishUser());
+                //change above to bool returning functions and then show success message
+                MessageBox.Show("Successfully added to the Database", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ResetControls();
+            }
+
+            return retVal;
+        }
+        private clsParishUsers_Item PrepareObject_ParishUser()
+        {
+            clsParishUsers_Item obj = new clsParishUsers_Item();
+            obj.userID = miUserID;
+            obj.parishID = Globals.giParishID;
+            return obj;
+        }
+
+        private void Add_ParishUser(clsParishUsers_Item obj)
+        {
+            clsParishUsers_List _Data = new clsParishUsers_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
             Exception exResult = new Exception(Globals.gsExceptionString);
             _Data.Add_Item(ref exResult, obj);
 
@@ -130,7 +162,7 @@ namespace Archdiocese.Forms
             }
             else
             {
-                MessageBox.Show("Successfully added to the Database", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Successfully added to the Database", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ResetControls();
             }
         }

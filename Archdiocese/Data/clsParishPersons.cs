@@ -14,7 +14,7 @@ public class clsParishPersons_List : List<clsParishPersons_Item>
     {
         _connectionString = connectionString;
     }
-    public clsParishPersons_List(string connectionString, ref Exception pEx)
+    public clsParishPersons_List(string connectionString, ref Exception pEx, int parishID)
     {
         _connectionString = connectionString;
         SqlConnection conn = new SqlConnection((_connectionString));
@@ -26,7 +26,7 @@ public class clsParishPersons_List : List<clsParishPersons_Item>
             cmd.CommandText = "usp_GetParishPersons";
             //if (!(addressLine1 == string.Empty)) cmd.Parameters.AddWithValue("@addressLine1", addressLine1);
             //cmd.Parameters.AddWithValue("@personID", personID);
-            //cmd.Parameters.AddWithValue("@parishID", parishID);
+            cmd.Parameters.AddWithValue("@parishID", parishID);
             //cmd.Parameters.AddWithValue("@joinedDate", joinedDate);
             //cmd.Parameters.AddWithValue("@leftDate", leftDate);
             SqlDataReader data_reader = cmd.ExecuteReader();

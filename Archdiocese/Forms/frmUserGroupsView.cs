@@ -21,7 +21,7 @@ namespace Archdiocese.Forms
         private void LoadUserGroups()
         {
             Exception exResult = new Exception(Globals.gsExceptionString);
-            clsUserGroups_List UserGroup_Data = new clsUserGroups_List(Archdiocese.Properties.Settings.Default.SqlConnectionString, ref exResult, 0, string.Empty, string.Empty);
+            clsUserGroups_List UserGroup_Data = new clsUserGroups_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult, 0, string.Empty, string.Empty);
             if (!(exResult.Message == Globals.gsExceptionString))
             {
                 MessageBox.Show(Globals.gsErrorMessage + exResult.Message, "Error retrieving User Groups");

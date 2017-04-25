@@ -21,7 +21,7 @@ namespace Archdiocese.Forms
         private void LoadData()
         {
             Exception exResult = new Exception(Globals.gsExceptionString);
-            clsAddressTypes_List _Data = new clsAddressTypes_List(Archdiocese.Properties.Settings.Default.SqlConnectionString, ref exResult, 0, String.Empty);
+            clsAddressTypes_List _Data = new clsAddressTypes_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult, 0, String.Empty);
             if (!(exResult.Message == Globals.gsExceptionString))
             {
                 MessageBox.Show(Globals.gsErrorMessage + exResult.Message, "Error");

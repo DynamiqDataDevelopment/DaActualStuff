@@ -25,8 +25,7 @@ namespace Archdiocese.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=AGPL4CLKO3503;Initial Catalog=AT;User id=Archdiocese;Password=archdio" +
-            "cese;Pooling=False")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"LxKuTIL6Ez/YHKfroy/2lmppoUNMc3TpPpjTBLhPWzvijXJVRPPOuCbsJDtXYTowKGuqs4osT6hxH9Gt9STx1c3jTvUOsK/k/dgQgWu0g/Sug4KVkyRhDyQK0U+FTxV0sdhlmA56cU6Cb7I5FbDrdxmb0hqpMCVgJpZMx9jdOO9KlVxG2hdbWTJW5FE/N+Prdy/ckUFZiI+pF3CdgWBvTOlG5ohCCQGeUo68eyxpziB2kLc+TYnjWqcBJZJflHpjCvO3hUHYeeg=")]
         public string SqlConnectionString {
             get {
                 return ((string)(this["SqlConnectionString"]));

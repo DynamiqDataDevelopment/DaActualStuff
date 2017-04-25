@@ -9,8 +9,11 @@ using System.Xml.Serialization;
 public class clsParishUsers_List : List<clsParishUsers_Item>
 {
     private string _connectionString = string.Empty;
-    private Guid _userCde = Guid.Empty;
 
+    public clsParishUsers_List(string connectionString)
+    {
+        _connectionString = connectionString;
+    }
     public clsParishUsers_List(string connectionString, ref Exception pEx, int ID, int parishID, int userID)
     {
         _connectionString = connectionString;
@@ -51,7 +54,7 @@ public class clsParishUsers_List : List<clsParishUsers_Item>
         }
     }
 
-    public bool Add_Item(ref Exception pEx, int ID, int parishID, int userID)
+    public bool Add_Item(ref Exception pEx, clsParishUsers_Item obj)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         try
@@ -60,12 +63,12 @@ public class clsParishUsers_List : List<clsParishUsers_Item>
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "usp_InsertParishUsers";
-            cmd.Parameters.AddWithValue("@ID", ID);
-            cmd.Parameters.AddWithValue("@parishID", parishID);
-            cmd.Parameters.AddWithValue("@userID", userID);
+            //cmd.Parameters.AddWithValue("@ID", ID);
+            cmd.Parameters.AddWithValue("@parishID", obj.parishID);
+            cmd.Parameters.AddWithValue("@userID", obj.userID);
             if (Save(ref pEx, cmd))
             {
-                this.Add(new clsParishUsers_Item(ID, parishID, userID));
+                //this.Add(new clsParishUsers_Item(ID, parishID, userID));
                 conn.Close();
                 return true;
             }

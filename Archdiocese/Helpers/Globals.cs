@@ -21,6 +21,7 @@ namespace Archdiocese.Helpers
         public static string gsParishName = string.Empty;
         public static string gsUserName = String.Empty;
         public static string gsPermissionString = String.Empty;
+        public static string gsEncryptedPassword = string.Empty;
         public static clsUsers_Item gcUser;
         //public static clsUsers_List gcUser_List;// = new clsUsers_List
 
@@ -34,7 +35,7 @@ namespace Archdiocese.Helpers
                 byte[] bytPlainText = uEncode.GetBytes(psText);
                 MemoryStream stmCipherText = new MemoryStream();
                 byte[] slt = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
-                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes("T3l35ur3", slt);
+                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes("D10Lync", slt);
                 byte[] bytDerivedKey = pdb.GetBytes(24);
                 crp.Key = bytDerivedKey;
                 crp.IV = pdb.GetBytes(8);
@@ -62,7 +63,7 @@ namespace Archdiocese.Helpers
                 MemoryStream stmPlainText = new MemoryStream();
                 MemoryStream stmCipherText = new MemoryStream(bytCipherText);
                 byte[] slt = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
-                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes("T3l35ur3", slt);
+                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes("D10Lync", slt);
                 byte[] bytDerivedKey = pdb.GetBytes(24);
                 crp.Key = bytDerivedKey;
                 crp.IV = pdb.GetBytes(8);
@@ -112,7 +113,7 @@ namespace Archdiocese.Helpers
         public static void GetUserDetails(string psUsername, string psPassword)
         {
             Exception exResult = new Exception(Globals.gsExceptionString);
-            clsUsers_List User_Data = new clsUsers_List(Properties.Settings.Default.SqlConnectionString, ref exResult, 0, psUsername, psPassword, 0);
+            clsUsers_List User_Data = new clsUsers_List(Globals.DecryptString(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString)), ref exResult, 0, psUsername, psPassword, 0);
             //User_Data_Filtered = User_Data;
             if (!(exResult.Message == Globals.gsExceptionString))
             {
@@ -140,7 +141,7 @@ namespace Archdiocese.Helpers
             }
         }
 
-        public static void ResetControls(ref Control.ControlCollection Controls)    
+        public static void ResetControls(ref Control.ControlCollection Controls)
         {
             foreach (Control C in Controls)
             {

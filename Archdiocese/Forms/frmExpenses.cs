@@ -25,7 +25,7 @@ namespace Archdiocese.Forms
 
         private void Add_Expense(clsExpenses_Item obj)
         {
-            clsExpenses_List _Data = new clsExpenses_List(Properties.Settings.Default.SqlConnectionString);
+            clsExpenses_List _Data = new clsExpenses_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
             Exception exResult = new Exception(Globals.gsExceptionString);
             _Data.Add_Item(ref exResult, PrepareObject());
 

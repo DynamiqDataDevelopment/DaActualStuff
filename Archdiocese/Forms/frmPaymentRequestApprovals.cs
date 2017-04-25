@@ -25,7 +25,7 @@ namespace Archdiocese.Forms
         private void LoadData()
         {
             Exception exResult = new Exception(Globals.gsExceptionString);
-            clsPaymentRequestsNew_List _Data = new clsPaymentRequestsNew_List(Archdiocese.Properties.Settings.Default.SqlConnectionString, ref exResult, 0, String.Empty, String.Empty, String.Empty, 0, 0, 0, DateTime.MinValue, DateTime.MinValue);
+            clsPaymentRequestsNew_List _Data = new clsPaymentRequestsNew_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult, 0, String.Empty, String.Empty, String.Empty, 0, 0, 0, DateTime.MinValue, DateTime.MinValue);
             if (!(exResult.Message == Globals.gsExceptionString))
             {
                 MessageBox.Show(Globals.gsErrorMessage + exResult.Message, "Error");
@@ -71,7 +71,7 @@ namespace Archdiocese.Forms
 
         private void Add_PaymentApproval(clsPaymentApprovals_Item obj)
         {
-            clsPaymentApprovals_List _Data = new clsPaymentApprovals_List(Properties.Settings.Default.SqlConnectionString);
+            clsPaymentApprovals_List _Data = new clsPaymentApprovals_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
             Exception exResult = new Exception(Globals.gsExceptionString);
             _Data.Add_Item(ref exResult, obj);
 

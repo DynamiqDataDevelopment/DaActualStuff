@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using Archdiocese.Helpers;
 
 namespace Archdiocese.Forms
 {
@@ -10,7 +11,7 @@ namespace Archdiocese.Forms
         public int _ID;
         public string _Description;
         public bool _isDeleted;
-        public clsAddressTypes_List _List = new clsAddressTypes_List(Archdiocese.Properties.Settings.Default.SqlConnectionString);
+        public clsAddressTypes_List _List = new clsAddressTypes_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
         public frmAddressTypes()
         {
             InitializeComponent();

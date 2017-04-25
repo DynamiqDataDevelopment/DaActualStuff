@@ -24,7 +24,7 @@ namespace Archdiocese.Forms
 
         private void Add_Income(clsIncomes_Item obj)
         {
-            clsIncomes_List _Data = new clsIncomes_List(Properties.Settings.Default.SqlConnectionString);
+            clsIncomes_List _Data = new clsIncomes_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
             Exception exResult = new Exception(Globals.gsExceptionString);
             _Data.Add_Item(ref exResult, obj);
 

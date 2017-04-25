@@ -10,7 +10,7 @@ namespace Archdiocese.Forms
         public int _ID;
         public string _Description;
         public bool _isDeleted;
-        public clsEmailAddressTypes_List _List = new clsEmailAddressTypes_List(Archdiocese.Properties.Settings.Default.SqlConnectionString);
+        public clsEmailAddressTypes_List _List = new clsEmailAddressTypes_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
         public frmEmailAddressTypes()
         {
             InitializeComponent();
