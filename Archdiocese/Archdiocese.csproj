@@ -88,6 +88,7 @@
     <Compile Include="Data\clsPaymentApprovals.cs" />
     <Compile Include="Data\clsPaymentRequests.cs" />
     <Compile Include="Data\clsPaymentRequestsNew.cs" />
+    <Compile Include="Data\clsPersonParish.cs" />
     <Compile Include="Data\clsPersons.cs" />
     <Compile Include="Data\clsPersonTypes.cs" />
     <Compile Include="Data\clsPledgeTypes.cs" />
