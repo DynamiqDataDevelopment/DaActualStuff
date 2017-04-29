@@ -12,7 +12,24 @@ namespace Archdiocese.Forms
 {
     public partial class frmPersons : Form
     {
-        int miPersonID = 0;
+        public int miPersonID = 0;
+        public string _title = string.Empty;
+        public string _firstName = string.Empty;
+        public string _middleName = string.Empty;
+        public string _surname = string.Empty;
+        public string _emailAddress = string.Empty;
+        public string _telephoneNumber = string.Empty;
+        public int _pledgeTypeID = 0;
+        public decimal _pledgeamount = 0;
+        public int _maritalStatusID = 0;
+        public int genderID = 0;
+        public int personTypeID = 0;
+        public DateTime _dateOfBirth = DateTime.MinValue;
+        public DateTime _dateJoined = DateTime.MinValue;
+        public DateTime _dateBaptised = DateTime.MinValue;
+        public DateTime _dateConfirmed = DateTime.MinValue;
+
+
         public frmPersons()
         {
             InitializeComponent();

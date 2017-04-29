@@ -75,6 +75,8 @@
             this.cmbPledgeType = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txtPledgeAmount = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtPostalCode = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // cmbTitle
@@ -506,6 +508,23 @@
             this.txtPledgeAmount.TabIndex = 56;
             this.txtPledgeAmount.Tag = "Mandatory";
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(672, 299);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(84, 17);
+            this.label18.TabIndex = 59;
+            this.label18.Text = "Postal Code";
+            // 
+            // txtPostalCode
+            // 
+            this.txtPostalCode.Location = new System.Drawing.Point(784, 299);
+            this.txtPostalCode.Name = "txtPostalCode";
+            this.txtPostalCode.Size = new System.Drawing.Size(150, 22);
+            this.txtPostalCode.TabIndex = 58;
+            this.txtPostalCode.Tag = "Mandatory";
+            // 
             // frmPersons
             // 
             this.AcceptButton = this.btnSave;
@@ -514,6 +533,8 @@
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(1173, 555);
             this.ControlBox = false;
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.txtPostalCode);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.txtPledgeAmount);
             this.Controls.Add(this.label16);
@@ -617,5 +638,7 @@
         private System.Windows.Forms.ComboBox cmbPledgeType;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txtPledgeAmount;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox txtPostalCode;
     }
 }
