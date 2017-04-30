@@ -76,9 +76,9 @@ namespace Archdiocese.Helpers
                 crp.Clear();
                 retVal = uEncode.GetString(stmPlainText.ToArray());
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Error decrypting password for selected user.", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Error decrypting.", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             return retVal;
         }

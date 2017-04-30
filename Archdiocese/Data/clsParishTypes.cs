@@ -171,7 +171,7 @@ public class clsParishTypes_Item
     private string _parishTypeDescription;
     private bool _isDeleted;
 
-    private bool _changed = false;
+    
 
     public clsParishTypes_Item()
     {
@@ -198,7 +198,7 @@ public class clsParishTypes_Item
             if (!(_ID == value))
             {
                 _ID = value;
-                _changed = true;
+                
             }
         }
     }
@@ -216,7 +216,7 @@ public class clsParishTypes_Item
             if (!(_parishTypeDescription == value))
             {
                 _parishTypeDescription = value;
-                _changed = true;
+                
             }
         }
     }
@@ -234,7 +234,7 @@ public class clsParishTypes_Item
             if (!(_isDeleted == value))
             {
                 _isDeleted = value;
-                _changed = true;
+                
             }
         }
     }

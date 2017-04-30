@@ -178,8 +178,7 @@ public class clsParishUsers_Item
     private int _userID;
     private bool _isDeleted;
 
-    private bool _changed = false;
-
+    
     public clsParishUsers_Item()
     {
         //Default constructor
@@ -206,7 +205,7 @@ public class clsParishUsers_Item
             if (!(_ID == value))
             {
                 _ID = value;
-                _changed = true;
+                
             }
         }
     }
@@ -224,7 +223,7 @@ public class clsParishUsers_Item
             if (!(_parishID == value))
             {
                 _parishID = value;
-                _changed = true;
+                
             }
         }
     }
@@ -242,7 +241,7 @@ public class clsParishUsers_Item
             if (!(_userID == value))
             {
                 _userID = value;
-                _changed = true;
+                
             }
         }
     }
@@ -260,7 +259,7 @@ public class clsParishUsers_Item
             if (!(_isDeleted == value))
             {
                 _isDeleted = value;
-                _changed = true;
+                
             }
         }
     }

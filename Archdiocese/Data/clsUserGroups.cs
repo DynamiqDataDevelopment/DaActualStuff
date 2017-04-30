@@ -178,7 +178,7 @@ public class clsUserGroups_Item
     private string _permissionString;
     private bool _isDeleted;
 
-    private bool _changed = false;
+    
 
     public clsUserGroups_Item()
     {
@@ -206,7 +206,7 @@ public class clsUserGroups_Item
             if (!(_ID == value))
             {
                 _ID = value;
-                _changed = true;
+                
             }
         }
     }
@@ -224,7 +224,7 @@ public class clsUserGroups_Item
             if (!(_userGroupName == value))
             {
                 _userGroupName = value;
-                _changed = true;
+                
             }
         }
     }
@@ -242,7 +242,7 @@ public class clsUserGroups_Item
             if (!(_permissionString == value))
             {
                 _permissionString = value;
-                _changed = true;
+                
             }
         }
     }
@@ -260,7 +260,7 @@ public class clsUserGroups_Item
             if (!(_isDeleted == value))
             {
                 _isDeleted = value;
-                _changed = true;
+                
             }
         }
     }

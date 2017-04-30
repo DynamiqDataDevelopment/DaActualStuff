@@ -203,7 +203,7 @@ public class clsParishes_Item
     private int _parishTypeID;
     private bool _isDeleted;
 
-    private bool _changed = false;
+    
 
     public clsParishes_Item()
     {
@@ -231,7 +231,7 @@ public class clsParishes_Item
             if (!(_ID == value))
             {
                 _ID = value;
-                _changed = true;
+                
             }
         }
     }
@@ -249,7 +249,7 @@ public class clsParishes_Item
             if (!(_parishName == value))
             {
                 _parishName = value;
-                _changed = true;
+                
             }
         }
     }
@@ -267,7 +267,7 @@ public class clsParishes_Item
             if (!(_parishTypeID == value))
             {
                 _parishTypeID = value;
-                _changed = true;
+                
             }
         }
     }
@@ -285,7 +285,7 @@ public class clsParishes_Item
             if (!(_isDeleted == value))
             {
                 _isDeleted = value;
-                _changed = true;
+                
             }
         }
     }
