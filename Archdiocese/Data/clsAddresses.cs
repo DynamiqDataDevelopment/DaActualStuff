@@ -13,7 +13,7 @@ public class clsAddresses_List : List<clsAddresses_Item>
     {
         _connectionString = connectionString;
     }
-    public clsAddresses_List(string connectionString, ref Exception pEx, int entityID, int addressTypeID, string addressLine1, string addressLine2, string addressLine3, string suburb, string city)
+    public clsAddresses_List(string connectionString, ref Exception pEx, int entityID, int addressTypeID, string addressLine1, string addressLine2, string addressLine3, string suburb, string city, string postalCode)
     {
         _connectionString = connectionString;
         SqlConnection conn = new SqlConnection((_connectionString));
@@ -30,6 +30,7 @@ public class clsAddresses_List : List<clsAddresses_Item>
             if (!(addressLine3 == string.Empty)) cmd.Parameters.AddWithValue("@addressLine3", addressLine3);
             if (!(suburb == string.Empty)) cmd.Parameters.AddWithValue("@suburb", suburb);
             if (!(city == string.Empty)) cmd.Parameters.AddWithValue("@city", city);
+            if (!(city == string.Empty)) cmd.Parameters.AddWithValue("@postalCode", postalCode);
             SqlDataReader data_reader = cmd.ExecuteReader();
             Populate_Members(data_reader);
         }
@@ -55,6 +56,7 @@ public class clsAddresses_List : List<clsAddresses_Item>
                 if (!(data_reader["addressLine3"] == DBNull.Value)) tmp.addressLine3 = (string)data_reader["addressLine3"];
                 if (!(data_reader["suburb"] == DBNull.Value)) tmp.suburb = (string)data_reader["suburb"];
                 if (!(data_reader["city"] == DBNull.Value)) tmp.city = (string)data_reader["city"];
+                if (!(data_reader["postalCode"] == DBNull.Value)) tmp.postalCode = (string)data_reader["postalCode"];
                 this.Add(tmp);
             }
         }
@@ -76,6 +78,7 @@ public class clsAddresses_List : List<clsAddresses_Item>
             if (!(obj.addressLine3 == string.Empty)) cmd.Parameters.AddWithValue("@addressLine3", obj.addressLine3);
             cmd.Parameters.AddWithValue("@suburb", obj.suburb);
             cmd.Parameters.AddWithValue("@city", obj.city);
+            cmd.Parameters.AddWithValue("@postalCode", obj.postalCode);
             if (Save(ref pEx, cmd))
             {
                 //this.Add(new clsAddresses_Item(entityID, addressTypeID, addressLine1, addressLine2, addressLine3, suburb, city));
@@ -108,10 +111,11 @@ public class clsAddresses_List : List<clsAddresses_Item>
             cmd.Parameters.AddWithValue("@entityID", obj.entityID);
             cmd.Parameters.AddWithValue("@addressTypeID", obj.addressTypeID);
             cmd.Parameters.AddWithValue("@addressLine1", obj.addressLine1);
-            cmd.Parameters.AddWithValue("@addressLine2", obj.addressLine2);
-            cmd.Parameters.AddWithValue("@addressLine3", obj.addressLine3);
+            if (!(obj.addressLine2 == string.Empty)) cmd.Parameters.AddWithValue("@addressLine2", obj.addressLine2);
+            if (!(obj.addressLine3 == string.Empty)) cmd.Parameters.AddWithValue("@addressLine3", obj.addressLine3);
             cmd.Parameters.AddWithValue("@suburb", obj.suburb);
             cmd.Parameters.AddWithValue("@city", obj.city);
+            cmd.Parameters.AddWithValue("@postalCode", obj.postalCode);
             if (Save(ref pEx, cmd))
             {
                 foreach (clsAddresses_Item Item in this)
@@ -256,6 +260,7 @@ public class clsAddresses_Item
     private string _addressLine3;
     private string _suburb;
     private string _city;
+    private string _postalCode;
 
 
     public clsAddresses_Item()
@@ -395,6 +400,23 @@ public class clsAddresses_Item
             if (!(_city == value))
             {
                 _city = value;
+
+            }
+        }
+    }
+
+    public string postalCode
+    {
+        get
+        {
+            return _postalCode;
+        }
+
+        set
+        {
+            if (!(_postalCode == value))
+            {
+                _postalCode = value;
 
             }
         }

@@ -68,6 +68,8 @@ public class clsPersonParish_List : List<clsPersonParish_Item>
                 if (!(data_reader["parishName"] == DBNull.Value)) tmp.parishName = (string)data_reader["parishName"];
                 if (!(data_reader["joinedDate"] == DBNull.Value)) tmp.joinedDate = (DateTime)data_reader["joinedDate"];
                 if (!(data_reader["leftDate"] == DBNull.Value)) tmp.leftDate = (DateTime)data_reader["leftDate"];
+                if (!(data_reader["dateBaptised"] == DBNull.Value)) tmp.dateBaptised = (DateTime)data_reader["dateBaptised"];
+                if (!(data_reader["dateConfirmed"] == DBNull.Value)) tmp.dateConfirmed = (DateTime)data_reader["dateConfirmed"];
                 if (!(data_reader["addressLine1"] == DBNull.Value)) tmp.addressLine1 = (string)data_reader["addressLine1"];
                 if (!(data_reader["addressLine2"] == DBNull.Value)) tmp.addressLine2 = (string)data_reader["addressLine2"];
                 if (!(data_reader["addressLine3"] == DBNull.Value)) tmp.addressLine3 = (string)data_reader["addressLine3"];
@@ -109,6 +111,8 @@ public class clsPersonParish_Item
     string _parishName;
     DateTime _joinedDate;
     DateTime _leftDate;
+    DateTime _dateBaptised;
+    DateTime _dateConfirmed;
     string _addressLine1;
     string _addressLine2;
     string _addressLine3;
@@ -307,6 +311,19 @@ public class clsPersonParish_Item
         set { _leftDate = value; }
     }
 
+    [XmlElement(typeof(DateTime))]
+    public DateTime dateBaptised
+    {
+        get { return _dateBaptised; }
+        set { _dateBaptised = value; }
+    }
+
+    [XmlElement(typeof(DateTime))]
+    public DateTime dateConfirmed
+    {
+        get { return _dateConfirmed; }
+        set { _dateConfirmed = value; }
+    }
 
     [XmlElement(typeof(string))]
     public string addressLine1

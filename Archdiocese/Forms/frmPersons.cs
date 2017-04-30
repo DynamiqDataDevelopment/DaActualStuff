@@ -14,26 +14,34 @@ namespace Archdiocese.Forms
     {
         public int miPersonID = 0;
         public string _title = string.Empty;
+        public int _titleID = 0;
         public string _firstName = string.Empty;
         public string _middleName = string.Empty;
         public string _surname = string.Empty;
         public string _emailAddress = string.Empty;
         public string _telephoneNumber = string.Empty;
         public int _pledgeTypeID = 0;
-        public decimal _pledgeamount = 0;
+        public decimal _pledgeAmount = 0;
         public int _maritalStatusID = 0;
-        public int genderID = 0;
-        public int personTypeID = 0;
+        public int _genderID = 0;
+        public int _personTypeID = 0;
         public DateTime _dateOfBirth = DateTime.MinValue;
         public DateTime _dateJoined = DateTime.MinValue;
         public DateTime _dateBaptised = DateTime.MinValue;
         public DateTime _dateConfirmed = DateTime.MinValue;
+        public string _addressLine1 = string.Empty;
+        public string _addressLine2 = string.Empty;
+        public string _addressLine3 = string.Empty;
+        public string _suburb = string.Empty;
+        public string _city = string.Empty;
+        public string _postalCode = string.Empty;
 
+        public bool _update = false;
 
         public frmPersons()
         {
             InitializeComponent();
-            MyInitializeComponent();
+
         }
 
         private void MyInitializeComponent()
@@ -43,13 +51,68 @@ namespace Archdiocese.Forms
             cmbPersonType.ToPersonTypesComboBox();
             cmbTitle.ToTitlesComboBox();
             cmbPledgeType.ToPledgeTypesComboBox();
+
+            if (miPersonID != 0)
+            {
+                PopulateFields();
+            }
+        }
+
+        private void PopulateFields()
+        {
+            cmbTitle.SelectedValue = _titleID;
+            txtFirstName.Text = _firstName;
+            txtMiddleName.Text = _middleName;
+            txtSurname.Text = _surname;
+            txtEmailAddress.Text = _emailAddress;
+            txtTelephoneNumber.Text = _telephoneNumber;
+            txtAddressLine1.Text = _addressLine1;
+            txtAddressLine2.Text = _addressLine2;
+            txtAddressLine3.Text = _addressLine3;
+            txtSuburb.Text = _suburb;
+            txtCity.Text = _city;
+            txtPostalCode.Text = _postalCode;
+
+            txtPledgeAmount.Text = _pledgeAmount.ToString();
+
+            cmbTitle.SelectedValue = _titleID;
+            cmbPledgeType.SelectedValue = _pledgeTypeID;
+            cmbMaritalStatus.SelectedValue = _maritalStatusID;
+            cmbGender.SelectedValue = _genderID;
+            cmbPersonType.SelectedValue = _personTypeID;
+
+            dtpBaptised.Value = _dateBaptised;
+            if (_dateBaptised != DateTime.MinValue)
+            {
+                dtpBaptised.Visible = true;
+                chkBaptised.Checked = true;
+            }
+            dtpConfirmed.Value = _dateConfirmed;
+            if (_dateConfirmed != DateTime.MinValue)
+            {
+                dtpConfirmed.Visible = true;
+                chkConfirmed.Checked = true;
+            }
+            dtpDateOfBirth.Value = _dateOfBirth;
+            dtpJoinedDate.Value = _dateJoined;
+
+
         }
 
         private void Add_Person(clsPersons_Item obj)
         {
             clsPersons_List _Data = new clsPersons_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
             Exception exResult = new Exception(Globals.gsExceptionString);
-            int ID = _Data.Add_Item_ReturnID(ref exResult, obj);
+            int ID = 0;
+            if (!_update)
+            {
+                ID = _Data.Add_Item_ReturnID(ref exResult, obj);
+            }
+            else
+            {
+                _Data.Update_Item(ref exResult, obj);
+            }
+
 
             if (exResult.Message != Globals.gsExceptionString)
             {
@@ -57,7 +120,8 @@ namespace Archdiocese.Forms
             }
             else
             {
-                miPersonID = ID;
+                if (!_update)
+                    miPersonID = ID;
                 //add email address and ParishPerson record
                 Add_EmailAddress(PrepareObject_EmailAddress());
                 Add_Address(PrepareObject_Address());
@@ -74,7 +138,15 @@ namespace Archdiocese.Forms
         {
             clsEmailAddresses_List _Data = new clsEmailAddresses_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
             Exception exResult = new Exception(Globals.gsExceptionString);
-            _Data.Add_Item(ref exResult, obj);
+            if (!_update)
+            {
+                _Data.Add_Item(ref exResult, obj);
+            }
+            else
+            {
+                _Data.Update_Item(ref exResult, obj);
+            }
+
             if (exResult.Message != Globals.gsExceptionString)
             {
                 MessageBox.Show(Globals.gsErrorMessage + exResult.Message);
@@ -85,7 +157,14 @@ namespace Archdiocese.Forms
         {
             clsAddresses_List _Data = new clsAddresses_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
             Exception exResult = new Exception(Globals.gsExceptionString);
-            _Data.Add_Item(ref exResult, obj);
+            if (!_update)
+            {
+                _Data.Add_Item(ref exResult, obj);
+            }
+            else
+            {
+                _Data.Update_Item(ref exResult, obj);
+            }
             if (exResult.Message != Globals.gsExceptionString)
             {
                 MessageBox.Show(Globals.gsErrorMessage + exResult.Message);
@@ -96,7 +175,14 @@ namespace Archdiocese.Forms
         {
             clsTelephoneNumbers_List _Data = new clsTelephoneNumbers_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
             Exception exResult = new Exception(Globals.gsExceptionString);
-            _Data.Add_Item(ref exResult, obj);
+            if (!_update)
+            {
+                _Data.Add_Item(ref exResult, obj);
+            }
+            else
+            {
+                _Data.Update_Item(ref exResult, obj);
+            }
             if (exResult.Message != Globals.gsExceptionString)
             {
                 MessageBox.Show(Globals.gsErrorMessage + exResult.Message);
@@ -107,7 +193,14 @@ namespace Archdiocese.Forms
         {
             clsParishPersons_List _Data = new clsParishPersons_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
             Exception exResult = new Exception(Globals.gsExceptionString);
-            _Data.Add_Item(ref exResult, obj);
+            if (!_update)
+            {
+                _Data.Add_Item(ref exResult, obj);
+            }
+            else
+            {
+                _Data.Update_Item(ref exResult, obj);
+            }
             if (exResult.Message != Globals.gsExceptionString)
             {
                 MessageBox.Show(Globals.gsErrorMessage + exResult.Message);
@@ -118,7 +211,14 @@ namespace Archdiocese.Forms
         {
             clsParishPersonPledges_List _Data = new clsParishPersonPledges_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
             Exception exResult = new Exception(Globals.gsExceptionString);
-            _Data.Add_Item(ref exResult, obj);
+            if (!_update)
+            {
+                _Data.Add_Item(ref exResult, obj);
+            }
+            else
+            {
+                _Data.Update_Item(ref exResult, obj);
+            }
             if (exResult.Message != Globals.gsExceptionString)
             {
                 MessageBox.Show(Globals.gsErrorMessage + exResult.Message);
@@ -137,7 +237,7 @@ namespace Archdiocese.Forms
             obj.dateOfBirth = dtpDateOfBirth.Value;
             if (chkBaptised.Checked) obj.dateBaptised = dtpBaptised.Value; else obj.dateBaptised = DateTime.MinValue;
             if (chkConfirmed.Checked) obj.dateConfirmed = dtpConfirmed.Value; else obj.dateConfirmed = DateTime.MinValue;
-            obj.ID = 0;//remove
+            obj.ID = miPersonID;//remove
             return obj;
         }
 
@@ -159,6 +259,7 @@ namespace Archdiocese.Forms
             obj.addressLine3 = txtAddressLine3.Text;
             obj.suburb = txtSuburb.Text;
             obj.city = txtCity.Text;
+            obj.postalCode = txtPostalCode.Text;
             obj.addressTypeID = 1;//default
             obj.entityID = miPersonID;
             return obj;
@@ -188,7 +289,7 @@ namespace Archdiocese.Forms
             obj.personID = miPersonID;
             obj.parishID = Globals.giParishID;
             obj.pledgeYear = 2017;//must change
-            obj.amount = decimal.Parse(txtPledgeAmount.Text);///CHANGE TO txtPledgeAmount
+            obj.amount = decimal.Parse(txtPledgeAmount.Text);
             obj.pledgeTypeID = (int)cmbPledgeType.SelectedValue;
             return obj;
         }
@@ -326,6 +427,11 @@ namespace Archdiocese.Forms
             {
                 dtpConfirmed.Visible = false;
             }
+        }
+
+        private void frmPersons_Load(object sender, EventArgs e)
+        {
+            MyInitializeComponent();
         }
     }
 }

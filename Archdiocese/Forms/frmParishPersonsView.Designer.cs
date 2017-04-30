@@ -54,6 +54,8 @@
             this.parishName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.joinedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.leftDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateBaptised = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateConfirmed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addressLine1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addressLine2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addressLine3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -101,6 +103,8 @@
             this.parishName,
             this.joinedDate,
             this.leftDate,
+            this.dateBaptised,
+            this.dateConfirmed,
             this.addressLine1,
             this.addressLine2,
             this.addressLine3,
@@ -125,6 +129,7 @@
             this.grd.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grd.Size = new System.Drawing.Size(824, 150);
             this.grd.TabIndex = 0;
+            this.grd.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_CellDoubleClick);
             // 
             // cmbSearchBy
             // 
@@ -219,6 +224,7 @@
             this.personID.Name = "personID";
             this.personID.ReadOnly = true;
             this.personID.Visible = false;
+            this.personID.Width = 94;
             // 
             // titleID
             // 
@@ -227,6 +233,7 @@
             this.titleID.Name = "titleID";
             this.titleID.ReadOnly = true;
             this.titleID.Visible = false;
+            this.titleID.Width = 72;
             // 
             // title
             // 
@@ -242,7 +249,7 @@
             this.firstName.HeaderText = "First Name";
             this.firstName.Name = "firstName";
             this.firstName.ReadOnly = true;
-            this.firstName.Width = 97;
+            this.firstName.Width = 105;
             // 
             // middleName
             // 
@@ -250,7 +257,7 @@
             this.middleName.HeaderText = "Middle Name";
             this.middleName.Name = "middleName";
             this.middleName.ReadOnly = true;
-            this.middleName.Width = 109;
+            this.middleName.Width = 119;
             // 
             // surname
             // 
@@ -275,6 +282,7 @@
             this.personTypeID.Name = "personTypeID";
             this.personTypeID.ReadOnly = true;
             this.personTypeID.Visible = false;
+            this.personTypeID.Width = 126;
             // 
             // personType
             // 
@@ -282,7 +290,7 @@
             this.personType.HeaderText = "Person Type";
             this.personType.Name = "personType";
             this.personType.ReadOnly = true;
-            this.personType.Width = 109;
+            this.personType.Width = 118;
             // 
             // genderID
             // 
@@ -291,6 +299,7 @@
             this.genderID.Name = "genderID";
             this.genderID.ReadOnly = true;
             this.genderID.Visible = false;
+            this.genderID.Width = 95;
             // 
             // gender
             // 
@@ -307,6 +316,7 @@
             this.maritalStatusID.Name = "maritalStatusID";
             this.maritalStatusID.ReadOnly = true;
             this.maritalStatusID.Visible = false;
+            this.maritalStatusID.Width = 132;
             // 
             // maritalStatus
             // 
@@ -314,7 +324,7 @@
             this.maritalStatus.HeaderText = "Marital Status";
             this.maritalStatus.Name = "maritalStatus";
             this.maritalStatus.ReadOnly = true;
-            this.maritalStatus.Width = 113;
+            this.maritalStatus.Width = 123;
             // 
             // parishID
             // 
@@ -323,6 +333,7 @@
             this.parishID.Name = "parishID";
             this.parishID.ReadOnly = true;
             this.parishID.Visible = false;
+            this.parishID.Width = 89;
             // 
             // parishName
             // 
@@ -338,7 +349,7 @@
             this.joinedDate.HeaderText = "Date Joined";
             this.joinedDate.Name = "joinedDate";
             this.joinedDate.ReadOnly = true;
-            this.joinedDate.Width = 104;
+            this.joinedDate.Width = 113;
             // 
             // leftDate
             // 
@@ -347,6 +358,23 @@
             this.leftDate.Name = "leftDate";
             this.leftDate.ReadOnly = true;
             this.leftDate.Visible = false;
+            this.leftDate.Width = 95;
+            // 
+            // dateBaptised
+            // 
+            this.dateBaptised.DataPropertyName = "dateBaptised";
+            this.dateBaptised.HeaderText = "Date Baptised";
+            this.dateBaptised.Name = "dateBaptised";
+            this.dateBaptised.ReadOnly = true;
+            this.dateBaptised.Width = 126;
+            // 
+            // dateConfirmed
+            // 
+            this.dateConfirmed.DataPropertyName = "dateConfirmed";
+            this.dateConfirmed.HeaderText = "Date Confirmed";
+            this.dateConfirmed.Name = "dateConfirmed";
+            this.dateConfirmed.ReadOnly = true;
+            this.dateConfirmed.Width = 124;
             // 
             // addressLine1
             // 
@@ -379,6 +407,7 @@
             this.addressTypeID.Name = "addressTypeID";
             this.addressTypeID.ReadOnly = true;
             this.addressTypeID.Visible = false;
+            this.addressTypeID.Width = 133;
             // 
             // addressTypeDescription
             // 
@@ -427,6 +456,7 @@
             this.emailTypeID.Name = "emailTypeID";
             this.emailTypeID.ReadOnly = true;
             this.emailTypeID.Visible = false;
+            this.emailTypeID.Width = 115;
             // 
             // emailTypeDescription
             // 
@@ -451,6 +481,7 @@
             this.telephoneNumberTypeID.Name = "telephoneNumberTypeID";
             this.telephoneNumberTypeID.ReadOnly = true;
             this.telephoneNumberTypeID.Visible = false;
+            this.telephoneNumberTypeID.Width = 195;
             // 
             // telephoneNumberTypeDescription
             // 
@@ -458,7 +489,7 @@
             this.telephoneNumberTypeDescription.HeaderText = "Tel. No. Type";
             this.telephoneNumberTypeDescription.Name = "telephoneNumberTypeDescription";
             this.telephoneNumberTypeDescription.ReadOnly = true;
-            this.telephoneNumberTypeDescription.Width = 84;
+            this.telephoneNumberTypeDescription.Width = 113;
             // 
             // pledgeAmount
             // 
@@ -475,6 +506,7 @@
             this.pledgeTypeID.Name = "pledgeTypeID";
             this.pledgeTypeID.ReadOnly = true;
             this.pledgeTypeID.Visible = false;
+            this.pledgeTypeID.Width = 125;
             // 
             // frmParishPersonsView
             // 
@@ -524,6 +556,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn parishName;
         private System.Windows.Forms.DataGridViewTextBoxColumn joinedDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn leftDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateBaptised;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateConfirmed;
         private System.Windows.Forms.DataGridViewTextBoxColumn addressLine1;
         private System.Windows.Forms.DataGridViewTextBoxColumn addressLine2;
         private System.Windows.Forms.DataGridViewTextBoxColumn addressLine3;

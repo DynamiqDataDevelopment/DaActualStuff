@@ -101,7 +101,7 @@ public class clsParishPersons_List : List<clsParishPersons_Item>
             cmd.Parameters.AddWithValue("@personID", obj.personID);
             cmd.Parameters.AddWithValue("@parishID", obj.parishID);
             cmd.Parameters.AddWithValue("@joinedDate", obj.joinedDate);
-            cmd.Parameters.AddWithValue("@leftDate", obj.leftDate);
+            //cmd.Parameters.AddWithValue("@leftDate", obj.leftDate);
             if (Save(ref pEx, cmd))
             {
                 foreach (clsParishPersons_Item Item in this)

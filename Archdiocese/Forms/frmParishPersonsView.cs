@@ -127,5 +127,73 @@ namespace Archdiocese.Forms
                 Dispose();
             }
         }
+
+        private void grd_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Call_PersonsForm();
+        }
+
+        private void Call_PersonsForm()
+        {
+            frmPersons frm = new frmPersons();
+            frm.miPersonID = (int)grd.CurrentRow.Cells["personID"].Value;
+            frm._title = (string)grd.CurrentRow.Cells["title"].Value;
+            frm._titleID = (int)grd.CurrentRow.Cells["titleID"].Value;
+            frm._firstName = (string)grd.CurrentRow.Cells["firstName"].Value;
+            frm._middleName = (string)grd.CurrentRow.Cells["middleName"].Value;
+            frm._surname = (string)grd.CurrentRow.Cells["surname"].Value;
+            frm._emailAddress = (string)grd.CurrentRow.Cells["emailAddress"].Value;
+            frm._telephoneNumber = (string)grd.CurrentRow.Cells["telephoneNumber"].Value;
+            frm._pledgeTypeID = (int)grd.CurrentRow.Cells["pledgeTypeID"].Value;
+            frm._pledgeAmount = (decimal)grd.CurrentRow.Cells["pledgeAmount"].Value;
+            frm._maritalStatusID = (int)grd.CurrentRow.Cells["maritalStatusID"].Value;
+            frm._genderID = (int)grd.CurrentRow.Cells["genderID"].Value;
+            frm._personTypeID = (int)grd.CurrentRow.Cells["personTypeID"].Value;
+            frm._dateOfBirth = (DateTime)grd.CurrentRow.Cells["dateOfBirth"].Value;
+            frm._dateJoined = (DateTime)grd.CurrentRow.Cells["joinedDate"].Value;
+            frm._dateBaptised = (DateTime)grd.CurrentRow.Cells["dateBaptised"].Value;
+            frm._dateConfirmed = (DateTime)grd.CurrentRow.Cells["dateConfirmed"].Value;
+            frm._addressLine1 = (string)grd.CurrentRow.Cells["addressLine1"].Value;
+            frm._addressLine2 = (string)grd.CurrentRow.Cells["addressLine2"].Value;
+            frm._addressLine3 = (string)grd.CurrentRow.Cells["addressLine3"].Value;
+            frm._suburb = (string)grd.CurrentRow.Cells["suburb"].Value;
+            frm._city = (string)grd.CurrentRow.Cells["city"].Value;
+            frm._postalCode = (string)grd.CurrentRow.Cells["postalCode"].Value;
+
+            frm._update = true;
+
+            Form MainForm = GetMainForm();
+
+            frm.MdiParent = MainForm;
+            frm.Size = MainForm.Size;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+            this.Close();
+            this.Dispose();
+        }
+
+        private Form GetMainForm()
+        {
+            Form frm = new Form();
+            var moOpenForms = Application.OpenForms;
+            try
+            {
+                foreach (Form form in moOpenForms)
+                {
+                    if (form.Name == "frmMain")
+                    {
+                        frm = form;
+                        break;
+                    }
+                }
+                return frm;
+            }
+            catch (Exception)
+            {
+                //ignore, OpenForms will change and throw an exception but i don't care
+                //throw;
+                return frm;
+            }
+        }
     }
 }

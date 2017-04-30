@@ -585,6 +585,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Persons";
+            this.Load += new System.EventHandler(this.frmPersons_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
