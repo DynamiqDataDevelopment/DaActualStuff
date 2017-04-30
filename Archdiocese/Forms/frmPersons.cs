@@ -129,7 +129,10 @@ namespace Archdiocese.Forms
                 Add_ParishPerson(PrepareObject_ParishPerson());
                 Add_ParishPersonPledge(PrepareObject_ParishPersonPledge());
                 //change above to bool returning functions and then show success message
-                MessageBox.Show("Successfully added to the Database", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (!_update)
+                    MessageBox.Show("Successfully added to the Database", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    MessageBox.Show("Successfully updated the Database", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ResetControls();
             }
         }
