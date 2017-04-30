@@ -134,7 +134,7 @@ public class clsParishPersons_List : List<clsParishPersons_Item>
     public bool Delete_Item(ref Exception pEx, int parishID, int personID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
-        int index = 0;
+        
         try
         {
             conn.Open();

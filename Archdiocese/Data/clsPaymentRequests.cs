@@ -159,7 +159,7 @@ public class clsPaymentRequests_List : List<clsPaymentRequests_Item>
     public bool Delete_Item(ref Exception pEx, int ID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
-        int index = 0;
+        
         try
         {
             conn.Open();
@@ -189,7 +189,7 @@ public class clsPaymentRequests_List : List<clsPaymentRequests_Item>
     public bool Enable_Item(ref Exception pEx, int ID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
-        int index = 0;
+        
         try
         {
             conn.Open();
@@ -219,7 +219,7 @@ public class clsPaymentRequests_List : List<clsPaymentRequests_Item>
     public bool Disable_Item(ref Exception pEx, int ID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
-        int index = 0;
+        
         try
         {
             conn.Open();

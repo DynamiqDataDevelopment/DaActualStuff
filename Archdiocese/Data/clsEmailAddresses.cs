@@ -133,7 +133,7 @@ public class clsEmailAddresses_List : List<clsEmailAddresses_Item>
     public bool Delete_Item(ref Exception pEx, int emailAddressTypeID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
-        int index = 0;
+        
         try
         {
             conn.Open();
@@ -163,7 +163,7 @@ public class clsEmailAddresses_List : List<clsEmailAddresses_Item>
     public bool Enable_Item(ref Exception pEx, int emailAddressTypeID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
-        int index = 0;
+        
         try
         {
             conn.Open();
@@ -193,7 +193,7 @@ public class clsEmailAddresses_List : List<clsEmailAddresses_Item>
     public bool Disable_Item(ref Exception pEx, int emailAddressTypeID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
-        int index = 0;
+        
         try
         {
             conn.Open();

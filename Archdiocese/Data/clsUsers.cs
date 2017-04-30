@@ -170,7 +170,7 @@ public class clsUsers_List : List<clsUsers_Item>
     public bool Delete_Item(ref Exception pEx, int ID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
-        int index = 0;
+        
         try
         {
             conn.Open();
@@ -200,7 +200,7 @@ public class clsUsers_List : List<clsUsers_Item>
     public bool ChangePassword(ref Exception pEx, int ID, string currentPassword, string newPassword)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
-        int index = 0;
+        
         try
         {
             conn.Open();

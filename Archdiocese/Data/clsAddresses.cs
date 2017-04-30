@@ -180,7 +180,7 @@ public class clsAddresses_List : List<clsAddresses_Item>
     public bool Enable_Item(ref Exception pEx, int addressTypeID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
-        int index = 0;
+        
         try
         {
             conn.Open();
@@ -210,7 +210,7 @@ public class clsAddresses_List : List<clsAddresses_Item>
     public bool Disable_Item(ref Exception pEx, int addressTypeID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
-        int index = 0;
+        
         try
         {
             conn.Open();

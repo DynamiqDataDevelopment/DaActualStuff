@@ -3,7 +3,6 @@ using System.Data.SqlClient;
 using System.Collections.Generic;
 using System;
 using System.Data;
-using System.Text;
 using System.Xml.Serialization;
 
 public class clsCollectionTypes_List : List<clsCollectionTypes_Item>

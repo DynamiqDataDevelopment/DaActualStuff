@@ -150,7 +150,7 @@ public class clsCollections_List : List<clsCollections_Item>
     public bool Delete_Item(ref Exception pEx, int ID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
-        int index = 0;
+        
         try
         {
             conn.Open();
@@ -180,7 +180,7 @@ public class clsCollections_List : List<clsCollections_Item>
     public bool Enable_Item(ref Exception pEx, int ID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
-        int index = 0;
+        
         try
         {
             conn.Open();
@@ -210,7 +210,7 @@ public class clsCollections_List : List<clsCollections_Item>
     public bool Disable_Item(ref Exception pEx, int ID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
-        int index = 0;
+        
         try
         {
             conn.Open();

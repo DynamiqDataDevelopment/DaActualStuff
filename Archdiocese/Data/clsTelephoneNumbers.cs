@@ -133,7 +133,7 @@ public class clsTelephoneNumbers_List : List<clsTelephoneNumbers_Item>
     public bool Delete_Item(ref Exception pEx, int telephoneNumberTypeID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
-        int index = 0;
+        
         try
         {
             conn.Open();
@@ -163,7 +163,7 @@ public class clsTelephoneNumbers_List : List<clsTelephoneNumbers_Item>
     public bool Enable_Item(ref Exception pEx, int telephoneNumberTypeID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
-        int index = 0;
+        
         try
         {
             conn.Open();
@@ -193,7 +193,7 @@ public class clsTelephoneNumbers_List : List<clsTelephoneNumbers_Item>
     public bool Disable_Item(ref Exception pEx, int telephoneNumberTypeID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
-        int index = 0;
+        
         try
         {
             conn.Open();
