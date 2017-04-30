@@ -80,7 +80,7 @@ namespace Archdiocese.Forms
             grd.DataSource = _bindingSource;
             grd.Refresh();
 
-            //addressinfo.Where(i => i.Value<string>("RiskType") == Constants.AttributeRiskTypes.ADR.ToString()).Select(i => i.Value<string>("CARDINALGUID")).FirstOrDefault();
+            //addressinfo.Where(i => i.Value<string>("RiskType") == Constants.AttributeRiskTypes.ADR.ToString()).Select(i => i.Value<string>("CARDINALint")).FirstOrDefault();
         }
 
         private void btnReset_Click(object sender, EventArgs e)

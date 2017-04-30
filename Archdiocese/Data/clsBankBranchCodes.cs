@@ -127,7 +127,7 @@ public class clsBankBranchCodes_List : List<clsBankBranchCodes_Item>
         return false;
     }
 
-    public bool Delete_Item(ref Exception pEx, Guid ID)
+    public bool Delete_Item(ref Exception pEx, int ID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         int index = 0;
@@ -157,7 +157,7 @@ public class clsBankBranchCodes_List : List<clsBankBranchCodes_Item>
         return false;
     }
 
-    public bool Enable_Item(ref Exception pEx, Guid ID)
+    public bool Enable_Item(ref Exception pEx, int ID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         int index = 0;
@@ -187,7 +187,7 @@ public class clsBankBranchCodes_List : List<clsBankBranchCodes_Item>
         return false;
     }
 
-    public bool Disable_Item(ref Exception pEx, Guid ID)
+    public bool Disable_Item(ref Exception pEx, int ID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         int index = 0;

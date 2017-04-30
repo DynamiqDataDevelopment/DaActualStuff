@@ -148,7 +148,7 @@ public class clsAddresses_List : List<clsAddresses_Item>
         return false;
     }
 
-    public bool Delete_Item(ref Exception pEx, Guid addressTypeID)
+    public bool Delete_Item(ref Exception pEx, int addressTypeID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         try
@@ -177,7 +177,7 @@ public class clsAddresses_List : List<clsAddresses_Item>
         return false;
     }
 
-    public bool Enable_Item(ref Exception pEx, Guid addressTypeID)
+    public bool Enable_Item(ref Exception pEx, int addressTypeID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         int index = 0;
@@ -207,7 +207,7 @@ public class clsAddresses_List : List<clsAddresses_Item>
         return false;
     }
 
-    public bool Disable_Item(ref Exception pEx, Guid addressTypeID)
+    public bool Disable_Item(ref Exception pEx, int addressTypeID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         int index = 0;

@@ -130,7 +130,7 @@ public class clsEmailAddresses_List : List<clsEmailAddresses_Item>
         return false;
     }
 
-    public bool Delete_Item(ref Exception pEx, Guid emailAddressTypeID)
+    public bool Delete_Item(ref Exception pEx, int emailAddressTypeID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         int index = 0;
@@ -160,7 +160,7 @@ public class clsEmailAddresses_List : List<clsEmailAddresses_Item>
         return false;
     }
 
-    public bool Enable_Item(ref Exception pEx, Guid emailAddressTypeID)
+    public bool Enable_Item(ref Exception pEx, int emailAddressTypeID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         int index = 0;
@@ -190,7 +190,7 @@ public class clsEmailAddresses_List : List<clsEmailAddresses_Item>
         return false;
     }
 
-    public bool Disable_Item(ref Exception pEx, Guid emailAddressTypeID)
+    public bool Disable_Item(ref Exception pEx, int emailAddressTypeID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         int index = 0;

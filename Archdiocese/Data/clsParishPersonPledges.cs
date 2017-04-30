@@ -140,7 +140,7 @@ public class clsParishPersonPledges_List : List<clsParishPersonPledges_Item>
         return false;
     }
 
-    public bool Delete_Item(ref Exception pEx, Guid pledgeYear)
+    public bool Delete_Item(ref Exception pEx, int pledgeYear)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         try
@@ -169,7 +169,7 @@ public class clsParishPersonPledges_List : List<clsParishPersonPledges_Item>
         return false;
     }
 
-    public bool Enable_Item(ref Exception pEx, Guid pledgeYear)
+    public bool Enable_Item(ref Exception pEx, int pledgeYear)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         try
@@ -198,7 +198,7 @@ public class clsParishPersonPledges_List : List<clsParishPersonPledges_Item>
         return false;
     }
 
-    public bool Disable_Item(ref Exception pEx, Guid pledgeYear)
+    public bool Disable_Item(ref Exception pEx, int pledgeYear)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         try

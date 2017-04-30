@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 public class clsMaritalStatuses_List : List<clsMaritalStatuses_Item>
 {
     private string _connectionString = string.Empty;
-    private Guid _userCde = Guid.Empty;
+    
 
     public clsMaritalStatuses_List(string connectionString, ref Exception pEx)
     {
@@ -118,7 +118,7 @@ public class clsMaritalStatuses_List : List<clsMaritalStatuses_Item>
         return false;
     }
 
-    public bool Delete_Item(ref Exception pEx, Guid ID)
+    public bool Delete_Item(ref Exception pEx, int ID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         int index = 0;

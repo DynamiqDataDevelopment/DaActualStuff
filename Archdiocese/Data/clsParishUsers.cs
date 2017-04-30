@@ -126,7 +126,7 @@ public class clsParishUsers_List : List<clsParishUsers_Item>
         return false;
     }
 
-    public bool Delete_Item(ref Exception pEx, Guid ID)
+    public bool Delete_Item(ref Exception pEx, int ID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         int index = 0;

@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 public class clsExpenseTypesLevel1_List : List<clsExpenseTypesLevel1_Item>
 {
     private string _connectionString = string.Empty;
-    private Guid _userCde = Guid.Empty;
+    
 
     public clsExpenseTypesLevel1_List(string connectionString, ref Exception pEx, int ID, string description, string accountNumber)
     {
@@ -123,7 +123,7 @@ public class clsExpenseTypesLevel1_List : List<clsExpenseTypesLevel1_Item>
         return false;
     }
 
-    public bool Delete_Item(ref Exception pEx, Guid ID)
+    public bool Delete_Item(ref Exception pEx, int ID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         int index = 0;
@@ -153,7 +153,7 @@ public class clsExpenseTypesLevel1_List : List<clsExpenseTypesLevel1_Item>
         return false;
     }
 
-    public bool Enable_Item(ref Exception pEx, Guid ID)
+    public bool Enable_Item(ref Exception pEx, int ID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         int index = 0;
@@ -183,7 +183,7 @@ public class clsExpenseTypesLevel1_List : List<clsExpenseTypesLevel1_Item>
         return false;
     }
 
-    public bool Disable_Item(ref Exception pEx, Guid ID)
+    public bool Disable_Item(ref Exception pEx, int ID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         int index = 0;

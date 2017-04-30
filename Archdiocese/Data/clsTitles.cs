@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 public class clsTitles_List : List<clsTitles_Item>
 {
     private string _connectionString = string.Empty;
-    private Guid _userCde = Guid.Empty;
+    
 
     public clsTitles_List(string connectionString, ref Exception pEx, int ID, string description, string abbreviation)
     {
@@ -123,7 +123,7 @@ public class clsTitles_List : List<clsTitles_Item>
         return false;
     }
 
-    public bool Delete_Item(ref Exception pEx, Guid ID)
+    public bool Delete_Item(ref Exception pEx, int ID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         int index = 0;

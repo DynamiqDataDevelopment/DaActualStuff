@@ -8,8 +8,7 @@ using System.Xml.Serialization;
 
 public class clsCollectionTypes_List : List<clsCollectionTypes_Item>
 {
-    private string _connectionString = string.Empty;
-    private Guid _userCde = Guid.Empty;
+    private string _connectionString = string.Empty;    
 
     public clsCollectionTypes_List(string connectionString)
     {

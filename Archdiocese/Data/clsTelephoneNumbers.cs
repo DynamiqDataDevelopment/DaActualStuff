@@ -130,7 +130,7 @@ public class clsTelephoneNumbers_List : List<clsTelephoneNumbers_Item>
         return false;
     }
 
-    public bool Delete_Item(ref Exception pEx, Guid telephoneNumberTypeID)
+    public bool Delete_Item(ref Exception pEx, int telephoneNumberTypeID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         int index = 0;
@@ -160,7 +160,7 @@ public class clsTelephoneNumbers_List : List<clsTelephoneNumbers_Item>
         return false;
     }
 
-    public bool Enable_Item(ref Exception pEx, Guid telephoneNumberTypeID)
+    public bool Enable_Item(ref Exception pEx, int telephoneNumberTypeID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         int index = 0;
@@ -190,7 +190,7 @@ public class clsTelephoneNumbers_List : List<clsTelephoneNumbers_Item>
         return false;
     }
 
-    public bool Disable_Item(ref Exception pEx, Guid telephoneNumberTypeID)
+    public bool Disable_Item(ref Exception pEx, int telephoneNumberTypeID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         int index = 0;

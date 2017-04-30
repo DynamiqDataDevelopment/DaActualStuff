@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 public class clsTelephoneNumberTypes_List : List<clsTelephoneNumberTypes_Item>
 {
     private string _connectionString = string.Empty;
-	private Guid _userCde = Guid.Empty;
+	
 	
     public clsTelephoneNumberTypes_List(string connectionString, ref Exception pEx, int ID, string description)
 	{
@@ -118,7 +118,7 @@ public class clsTelephoneNumberTypes_List : List<clsTelephoneNumberTypes_Item>
 		return false;
     }
 
-    public bool Delete_Item(ref Exception pEx, Guid ID)
+    public bool Delete_Item(ref Exception pEx, int ID)
 	{
         SqlConnection conn = new SqlConnection((_connectionString));
 		int index = 0;
@@ -189,9 +189,12 @@ public int ID
 		{
 			return _ID;
 		}
-		set
+
+		set
 		{
-			if(! (_ID == value ))			{				_ID = value;
+			if(! (_ID == value ))
+			{
+				_ID = value;
 				
 			}
 		}
@@ -204,9 +207,12 @@ public string description
 		{
 			return _description;
 		}
-		set
+
+		set
 		{
-			if(! (_description == value ))			{				_description = value;
+			if(! (_description == value ))
+			{
+				_description = value;
 				
 			}
 		}
@@ -219,9 +225,12 @@ public bool isDeleted
 		{
 			return _isDeleted;
 		}
-		set
+
+		set
 		{
-			if(! (_isDeleted == value ))			{				_isDeleted = value;
+			if(! (_isDeleted == value ))
+			{
+				_isDeleted = value;
 				
 			}
 		}

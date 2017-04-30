@@ -151,7 +151,7 @@ public class clsClergyTypes_List : List<clsClergyTypes_Item>
         return false;
     }
 
-    public bool Enable_Item(ref Exception pEx, Guid ID)
+    public bool Enable_Item(ref Exception pEx, int ID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         try
@@ -180,7 +180,7 @@ public class clsClergyTypes_List : List<clsClergyTypes_Item>
         return false;
     }
 
-    public bool Disable_Item(ref Exception pEx, Guid ID)
+    public bool Disable_Item(ref Exception pEx, int ID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         try
