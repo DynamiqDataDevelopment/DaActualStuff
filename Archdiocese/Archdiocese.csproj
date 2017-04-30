@@ -66,6 +66,9 @@
     <Compile Include="Data\clsAddressTypes.cs" />
     <Compile Include="Data\clsBankBranchCodes.cs" />
     <Compile Include="Data\clsChurchGroups.cs" />
+    <Compile Include="Data\clsClergy.cs" />
+    <Compile Include="Data\clsClergyTitles.cs" />
+    <Compile Include="Data\clsClergyTypes.cs" />
     <Compile Include="Data\clsCollections.cs" />
     <Compile Include="Data\clsCollectionTypes.cs" />
     <Compile Include="Data\clsEmailAddresses.cs" />
@@ -80,6 +83,7 @@
     <Compile Include="Data\clsIncomeTypesLevel2.cs" />
     <Compile Include="Data\clsIncomeTypesLevel3.cs" />
     <Compile Include="Data\clsMaritalStatuses.cs" />
+    <Compile Include="Data\clsParishClergy.cs" />
     <Compile Include="Data\clsParishes.cs" />
     <Compile Include="Data\clsParishPersonPledges.cs" />
     <Compile Include="Data\clsParishPersons.cs" />
