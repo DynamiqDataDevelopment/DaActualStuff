@@ -1,6 +1,6 @@
 ﻿namespace Archdiocese.Forms
 {
-    partial class frmPriests
+    partial class frmClergy
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPriests));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClergy));
             this.dtpConfirmed = new System.Windows.Forms.DateTimePicker();
             this.dtpBaptised = new System.Windows.Forms.DateTimePicker();
             this.chkConfirmed = new System.Windows.Forms.CheckBox();
@@ -61,21 +61,23 @@
             this.txtMiddleName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbGender = new System.Windows.Forms.ComboBox();
-            this.lblMaritalStatus = new System.Windows.Forms.Label();
-            this.cmbMaritalStatus = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtSurname = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.cmbPersonType = new System.Windows.Forms.ComboBox();
+            this.cmbType = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbTitle = new System.Windows.Forms.ComboBox();
+            this.dtpOrdained = new System.Windows.Forms.DateTimePicker();
+            this.chkOrdained = new System.Windows.Forms.CheckBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtPostalCode = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // dtpConfirmed
             // 
-            this.dtpConfirmed.Location = new System.Drawing.Point(450, 343);
+            this.dtpConfirmed.Location = new System.Drawing.Point(450, 293);
             this.dtpConfirmed.Name = "dtpConfirmed";
             this.dtpConfirmed.Size = new System.Drawing.Size(150, 22);
             this.dtpConfirmed.TabIndex = 99;
@@ -83,7 +85,7 @@
             // 
             // dtpBaptised
             // 
-            this.dtpBaptised.Location = new System.Drawing.Point(450, 297);
+            this.dtpBaptised.Location = new System.Drawing.Point(450, 247);
             this.dtpBaptised.Name = "dtpBaptised";
             this.dtpBaptised.Size = new System.Drawing.Size(150, 22);
             this.dtpBaptised.TabIndex = 98;
@@ -92,22 +94,24 @@
             // chkConfirmed
             // 
             this.chkConfirmed.AutoSize = true;
-            this.chkConfirmed.Location = new System.Drawing.Point(353, 343);
+            this.chkConfirmed.Location = new System.Drawing.Point(353, 293);
             this.chkConfirmed.Name = "chkConfirmed";
             this.chkConfirmed.Size = new System.Drawing.Size(94, 21);
             this.chkConfirmed.TabIndex = 97;
             this.chkConfirmed.Text = "Confirmed";
             this.chkConfirmed.UseVisualStyleBackColor = true;
+            this.chkConfirmed.CheckedChanged += new System.EventHandler(this.chkConfirmed_CheckedChanged);
             // 
             // chkBaptised
             // 
             this.chkBaptised.AutoSize = true;
-            this.chkBaptised.Location = new System.Drawing.Point(353, 297);
+            this.chkBaptised.Location = new System.Drawing.Point(353, 247);
             this.chkBaptised.Name = "chkBaptised";
             this.chkBaptised.Size = new System.Drawing.Size(85, 21);
             this.chkBaptised.TabIndex = 96;
             this.chkBaptised.Text = "Baptised";
             this.chkBaptised.UseVisualStyleBackColor = true;
+            this.chkBaptised.CheckedChanged += new System.EventHandler(this.chkBaptised_CheckedChanged);
             // 
             // label11
             // 
@@ -231,7 +235,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(350, 247);
+            this.label8.Location = new System.Drawing.Point(350, 197);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(84, 17);
             this.label8.TabIndex = 88;
@@ -239,7 +243,7 @@
             // 
             // dtpJoinedDate
             // 
-            this.dtpJoinedDate.Location = new System.Drawing.Point(450, 247);
+            this.dtpJoinedDate.Location = new System.Drawing.Point(450, 197);
             this.dtpJoinedDate.Name = "dtpJoinedDate";
             this.dtpJoinedDate.Size = new System.Drawing.Size(150, 22);
             this.dtpJoinedDate.TabIndex = 73;
@@ -257,6 +261,7 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnClear
             // 
@@ -270,6 +275,7 @@
             this.btnClear.Text = "Clear";
             this.btnClear.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnSave
             // 
@@ -283,6 +289,7 @@
             this.btnSave.Text = "Save";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // button3
             // 
@@ -320,7 +327,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(350, 200);
+            this.label7.Location = new System.Drawing.Point(350, 150);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(50, 17);
             this.label7.TabIndex = 80;
@@ -328,7 +335,7 @@
             // 
             // dtpDateOfBirth
             // 
-            this.dtpDateOfBirth.Location = new System.Drawing.Point(450, 200);
+            this.dtpDateOfBirth.Location = new System.Drawing.Point(450, 150);
             this.dtpDateOfBirth.Name = "dtpDateOfBirth";
             this.dtpDateOfBirth.Size = new System.Drawing.Size(150, 22);
             this.dtpDateOfBirth.TabIndex = 72;
@@ -353,7 +360,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(350, 100);
+            this.label5.Location = new System.Drawing.Point(350, 50);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 17);
             this.label5.TabIndex = 74;
@@ -363,28 +370,10 @@
             // 
             this.cmbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGender.FormattingEnabled = true;
-            this.cmbGender.Location = new System.Drawing.Point(450, 100);
+            this.cmbGender.Location = new System.Drawing.Point(450, 50);
             this.cmbGender.Name = "cmbGender";
             this.cmbGender.Size = new System.Drawing.Size(150, 24);
             this.cmbGender.TabIndex = 69;
-            // 
-            // lblMaritalStatus
-            // 
-            this.lblMaritalStatus.AutoSize = true;
-            this.lblMaritalStatus.Location = new System.Drawing.Point(350, 50);
-            this.lblMaritalStatus.Name = "lblMaritalStatus";
-            this.lblMaritalStatus.Size = new System.Drawing.Size(94, 17);
-            this.lblMaritalStatus.TabIndex = 71;
-            this.lblMaritalStatus.Text = "Marital Status";
-            // 
-            // cmbMaritalStatus
-            // 
-            this.cmbMaritalStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMaritalStatus.FormattingEnabled = true;
-            this.cmbMaritalStatus.Location = new System.Drawing.Point(450, 50);
-            this.cmbMaritalStatus.Name = "cmbMaritalStatus";
-            this.cmbMaritalStatus.Size = new System.Drawing.Size(150, 24);
-            this.cmbMaritalStatus.TabIndex = 67;
             // 
             // label4
             // 
@@ -423,20 +412,20 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(350, 150);
+            this.label2.Location = new System.Drawing.Point(350, 100);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 17);
             this.label2.TabIndex = 63;
             this.label2.Text = "Type";
             // 
-            // cmbPersonType
+            // cmbType
             // 
-            this.cmbPersonType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPersonType.FormattingEnabled = true;
-            this.cmbPersonType.Location = new System.Drawing.Point(450, 150);
-            this.cmbPersonType.Name = "cmbPersonType";
-            this.cmbPersonType.Size = new System.Drawing.Size(150, 24);
-            this.cmbPersonType.TabIndex = 70;
+            this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbType.FormattingEnabled = true;
+            this.cmbType.Location = new System.Drawing.Point(450, 100);
+            this.cmbType.Name = "cmbType";
+            this.cmbType.Size = new System.Drawing.Size(150, 24);
+            this.cmbType.TabIndex = 70;
             // 
             // label1
             // 
@@ -456,11 +445,51 @@
             this.cmbTitle.Size = new System.Drawing.Size(150, 24);
             this.cmbTitle.TabIndex = 58;
             // 
-            // frmPriests
+            // dtpOrdained
+            // 
+            this.dtpOrdained.Location = new System.Drawing.Point(450, 344);
+            this.dtpOrdained.Name = "dtpOrdained";
+            this.dtpOrdained.Size = new System.Drawing.Size(150, 22);
+            this.dtpOrdained.TabIndex = 101;
+            this.dtpOrdained.Visible = false;
+            // 
+            // chkOrdained
+            // 
+            this.chkOrdained.AutoSize = true;
+            this.chkOrdained.Location = new System.Drawing.Point(353, 344);
+            this.chkOrdained.Name = "chkOrdained";
+            this.chkOrdained.Size = new System.Drawing.Size(89, 21);
+            this.chkOrdained.TabIndex = 100;
+            this.chkOrdained.Text = "Ordained";
+            this.chkOrdained.UseVisualStyleBackColor = true;
+            this.chkOrdained.CheckedChanged += new System.EventHandler(this.chkOrdained_CheckedChanged);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(673, 295);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(84, 17);
+            this.label18.TabIndex = 103;
+            this.label18.Text = "Postal Code";
+            // 
+            // txtPostalCode
+            // 
+            this.txtPostalCode.Location = new System.Drawing.Point(785, 295);
+            this.txtPostalCode.Name = "txtPostalCode";
+            this.txtPostalCode.Size = new System.Drawing.Size(150, 22);
+            this.txtPostalCode.TabIndex = 102;
+            this.txtPostalCode.Tag = "Mandatory";
+            // 
+            // frmClergy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1173, 504);
+            this.ClientSize = new System.Drawing.Size(1173, 644);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.txtPostalCode);
+            this.Controls.Add(this.dtpOrdained);
+            this.Controls.Add(this.chkOrdained);
             this.Controls.Add(this.dtpConfirmed);
             this.Controls.Add(this.dtpBaptised);
             this.Controls.Add(this.chkConfirmed);
@@ -493,20 +522,19 @@
             this.Controls.Add(this.txtMiddleName);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cmbGender);
-            this.Controls.Add(this.lblMaritalStatus);
-            this.Controls.Add(this.cmbMaritalStatus);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtSurname);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtFirstName);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.cmbPersonType);
+            this.Controls.Add(this.cmbType);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbTitle);
-            this.Name = "frmPriests";
+            this.Name = "frmClergy";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Priests";
+            this.Load += new System.EventHandler(this.frmClergy_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -545,15 +573,17 @@
         private System.Windows.Forms.TextBox txtMiddleName;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cmbGender;
-        private System.Windows.Forms.Label lblMaritalStatus;
-        private System.Windows.Forms.ComboBox cmbMaritalStatus;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtSurname;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cmbPersonType;
+        private System.Windows.Forms.ComboBox cmbType;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbTitle;
+        private System.Windows.Forms.DateTimePicker dtpOrdained;
+        private System.Windows.Forms.CheckBox chkOrdained;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox txtPostalCode;
     }
 }

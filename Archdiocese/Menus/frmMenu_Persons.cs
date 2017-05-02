@@ -80,5 +80,15 @@ namespace Archdiocese.Menus
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
+
+        private void btnClergy_Click(object sender, EventArgs e)
+        {
+            Form MainForm = GetMainForm();
+            frmClergy frm = new frmClergy();
+            frm.MdiParent = MainForm;
+            frm.Size = MainForm.Size;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
     }
 }

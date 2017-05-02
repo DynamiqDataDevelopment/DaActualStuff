@@ -144,8 +144,7 @@ namespace Archdiocese.Helpers
                 }
             }
         }
-
-
+        
         public static void ToTitlesComboBox(this ComboBox cb)
         {
             Exception exResult = new Exception(Globals.gsExceptionString);
@@ -163,6 +162,36 @@ namespace Archdiocese.Helpers
                     cb.DataBindings.Clear();
                     _Dictionary.Clear();
                     foreach (clsTitles_Item item in Data)
+                    {
+                        _Dictionary.Add(item.ID, item.description + " (" + item.abbreviation + ")");
+                    }
+                    Bind_ComboBox(ref cb, _Dictionary);
+                    cb.SelectedIndex = -1;
+                }
+                else
+                {
+                    MessageBox.Show("There is no data loaded. Please contact your System Administrator.", "Error");
+                }
+            }
+        }
+
+        public static void ToClergyTitlesComboBox(this ComboBox cb)
+        {
+            Exception exResult = new Exception(Globals.gsExceptionString);
+            clsClergyTitles_List Data = new clsClergyTitles_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult, 0, string.Empty, string.Empty);
+            Dictionary<int, string> _Dictionary = new Dictionary<int, string>();
+            if (!(exResult.Message == Globals.gsExceptionString))
+            {
+                MessageBox.Show(Globals.gsErrorMessage + exResult.Message, "Error retrieving Data");
+            }
+            else
+            {
+                if (Data.Count > 0)
+                {
+                    cb.DataSource = null;
+                    cb.DataBindings.Clear();
+                    _Dictionary.Clear();
+                    foreach (clsClergyTitles_Item item in Data)
                     {
                         _Dictionary.Add(item.ID, item.description + " (" + item.abbreviation + ")");
                     }
@@ -265,6 +294,37 @@ namespace Archdiocese.Helpers
                 }
             }
         }
+
+        public static void ToClergyTypesComboBox(this ComboBox cb)
+        {
+            Exception exResult = new Exception(Globals.gsExceptionString);
+            clsClergyTypes_List Data = new clsClergyTypes_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult, 0, string.Empty);
+            Dictionary<int, string> _Dictionary = new Dictionary<int, string>();
+            if (!(exResult.Message == Globals.gsExceptionString))
+            {
+                MessageBox.Show(Globals.gsErrorMessage + exResult.Message, "Error retrieving Data");
+            }
+            else
+            {
+                if (Data.Count > 0)
+                {
+                    cb.DataSource = null;
+                    cb.DataBindings.Clear();
+                    _Dictionary.Clear();
+                    foreach (clsClergyTypes_Item item in Data)
+                    {
+                        _Dictionary.Add(item.ID, item.description);
+                    }
+                    Bind_ComboBox(ref cb, _Dictionary);
+                    cb.SelectedIndex = -1;
+                }
+                else
+                {
+                    MessageBox.Show("There is no data loaded. Please contact your System Administrator.", "Error");
+                }
+            }
+        }
+
         public static void ToExpenseTypesLevel3ComboBox(this ComboBox cb)
         {
             Exception exResult = new Exception(Globals.gsExceptionString);

@@ -111,6 +111,47 @@ public class clsClergy_List : List<clsClergy_Item>
         return false;
     }
 
+    public int Add_Item_ReturnID(ref Exception pEx, clsClergy_Item obj)
+    {
+        SqlConnection conn = new SqlConnection((_connectionString));
+        int ID = 0;
+        try
+        {
+            conn.Open();
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "usp_InsertClergy";
+            cmd.Parameters.AddWithValue("@ID", obj.ID);
+            cmd.Parameters.AddWithValue("@clergyTitleID", obj.clergyTitleID);
+            cmd.Parameters.AddWithValue("@clergyTypeID", obj.clergyTypeID);
+            cmd.Parameters.AddWithValue("@firstName", obj.firstName);
+            if (!(obj.middleName == string.Empty)) cmd.Parameters.AddWithValue("@middleName", obj.middleName);
+            cmd.Parameters.AddWithValue("@surname", obj.surname);
+            cmd.Parameters.AddWithValue("@dateOfBirth", obj.dateOfBirth);
+            cmd.Parameters.AddWithValue("@genderID", obj.genderID);
+            if (!(obj.dateBaptised == DateTime.MinValue)) cmd.Parameters.AddWithValue("@dateBaptised", obj.dateBaptised);
+            if (!(obj.dateConfirmed == DateTime.MinValue)) cmd.Parameters.AddWithValue("@dateConfirmed", obj.dateConfirmed);
+            if (!(obj.dateOrdained == DateTime.MinValue)) cmd.Parameters.AddWithValue("@dateOrdained", obj.dateOrdained);
+            ID = Save_Read(ref pEx, cmd);
+            if (ID != 0)
+            {
+                conn.Close();
+                return ID;
+            }
+            else
+            {
+                conn.Close();
+                return ID;
+            }
+        }
+        catch (Exception ex)
+        {
+            pEx = ex;
+            conn.Close();
+            return ID;
+        }
+    }
+
     public bool Update_Item(ref Exception pEx, clsClergy_Item obj)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
@@ -267,6 +308,22 @@ public class clsClergy_List : List<clsClergy_Item>
         {
             pEx = ex;
             return false;
+        }
+    }
+
+    private int Save_Read(ref Exception pEx, SqlCommand cmd)
+    {
+        int ID = 0;
+        try
+        {
+            var retVal = cmd.ExecuteScalar().ToString();
+            ID = Convert.ToInt32(retVal);
+            return ID;
+        }
+        catch (Exception ex)
+        {
+            pEx = ex;
+            return ID;
         }
     }
 }

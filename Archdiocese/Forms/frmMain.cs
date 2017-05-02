@@ -22,7 +22,7 @@ namespace Archdiocese.Forms
 
         private void MyInitializeComponent()
         {
-            bool flagTest = true;
+            bool flagTest = false;
             if (flagTest)
             {
                 Globals.giUserID = 1;

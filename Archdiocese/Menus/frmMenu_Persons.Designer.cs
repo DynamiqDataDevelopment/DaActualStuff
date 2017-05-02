@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenu_Persons));
             this.btnPersonType = new System.Windows.Forms.Button();
             this.btnPerson = new System.Windows.Forms.Button();
+            this.btnClergy = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnPersonType
@@ -64,12 +65,27 @@
             this.btnPerson.MouseLeave += new System.EventHandler(this.btnPerson_MouseLeave);
             this.btnPerson.MouseHover += new System.EventHandler(this.btnPerson_MouseHover);
             // 
+            // btnClergy
+            // 
+            this.btnClergy.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClergy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClergy.Image = ((System.Drawing.Image)(resources.GetObject("btnClergy.Image")));
+            this.btnClergy.Location = new System.Drawing.Point(70, 237);
+            this.btnClergy.Name = "btnClergy";
+            this.btnClergy.Size = new System.Drawing.Size(125, 100);
+            this.btnClergy.TabIndex = 3;
+            this.btnClergy.Text = "Clergy";
+            this.btnClergy.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnClergy.UseVisualStyleBackColor = true;
+            this.btnClergy.Click += new System.EventHandler(this.btnClergy_Click);
+            // 
             // frmMenu_Persons
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1312, 735);
             this.ControlBox = false;
+            this.Controls.Add(this.btnClergy);
             this.Controls.Add(this.btnPerson);
             this.Controls.Add(this.btnPersonType);
             this.Name = "frmMenu_Persons";
@@ -83,5 +99,6 @@
         #endregion
         private System.Windows.Forms.Button btnPersonType;
         private System.Windows.Forms.Button btnPerson;
+        private System.Windows.Forms.Button btnClergy;
     }
 }

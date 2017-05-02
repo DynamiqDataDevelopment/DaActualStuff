@@ -148,6 +148,21 @@
         AABJRU5ErkJggg==
 </value>
   </data>
+  <data name="btnClergy.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAA3NCSVQICAjb4U/gAAAAAXNSR0IArs4c
+        6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAARUAAAEVASl+AhsAAAAZdEVYdFNvZnR3YXJlAHd3dy5p
+        bmtzY2FwZS5vcmeb7jwaAAABw0lEQVRYR8XWvU4CURQE4EsJHaHjAZCaklDR8ASWtLyChe9AQTQhNjZ0
+        UhJ7TWwNViYkWtLZ2hjFGbyYs4dh2U3c9SRfArOXOfi3GDabTS6YBpzBNTxEfMysoV6TRoYKpgIjeAMG
+        Cq/xTEV1KDJUYrFdlmakOhQZehh+29O+co9nM/04ZOhhxrE4j7Hq8mToYe5NcVb3qsuToYdZm+Ks1qrL
+        k6GFqZnSvGqq05KhhWmZwrxaqtOSoYWpwmcszIOvqapOS4YeZhVL81ipLk+GHmZuirOaqy5Phh6ma4qz
+        6qouT4YKZmbKj5mpDkWGCqYJr3FBGp5pqg5Fhodg6nALdqHFa3X12kNkmAbDj+VTuISniI+ZZf4Y3pGh
+        hxnABZyo6xbPxLMDdd2T4Q6mB/aD6AOuoAO/Nxk+jhmv8czuPF/bs52eDn/K0n7WxDvdS3TsTsmujty1
+        F4QwgS+wBX+BnZO9fYknIQzj4SINEzsTT0JYmoNFWSZ2muV9c6hoffUGFuZA0RaJN4Dh324Rv3iHcNf2
+        nrJ7A9N4oUzTuHv7P/87+ANF407uDucx+A/cHR5NUDbuDncmKBt3hzbcwHPJsDO0vwHG9ez1F0X2nAAA
+        AABJRU5ErkJggg==
+</value>
+  </data>
   <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

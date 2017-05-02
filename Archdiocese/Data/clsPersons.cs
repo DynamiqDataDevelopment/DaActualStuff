@@ -129,14 +129,11 @@ public class clsPersons_List : List<clsPersons_Item>
             cmd.Parameters.AddWithValue("@titleID", obj.titleID);
             cmd.Parameters.AddWithValue("@personTypeID", obj.personTypeID);
             cmd.Parameters.AddWithValue("@firstName", obj.firstName);
-            //cmd.Parameters.AddWithValue("@middleName", obj.middleName);
             if (!(obj.middleName == string.Empty)) cmd.Parameters.AddWithValue("@middleName", obj.middleName);
             cmd.Parameters.AddWithValue("@surname", obj.surname);
             cmd.Parameters.AddWithValue("@dateOfBirth", obj.dateOfBirth);
             cmd.Parameters.AddWithValue("@genderID", obj.genderID);
-            //cmd.Parameters.AddWithValue("@dateBaptised", obj.dateBaptised);
             if (!(obj.dateBaptised == DateTime.MinValue)) cmd.Parameters.AddWithValue("@dateBaptised", obj.dateBaptised);
-            //cmd.Parameters.AddWithValue("@dateConfirmed", obj.dateConfirmed);
             if (!(obj.dateConfirmed == DateTime.MinValue)) cmd.Parameters.AddWithValue("@dateConfirmed", obj.dateConfirmed);
             cmd.Parameters.AddWithValue("@maritalStatusID", obj.maritalStatusID);
             ID = Save_Read(ref pEx, cmd);
@@ -157,7 +154,6 @@ public class clsPersons_List : List<clsPersons_Item>
             conn.Close();
             return ID;
         }
-
     }
     public bool Update_Item(ref Exception pEx, clsPersons_Item obj)
     {
