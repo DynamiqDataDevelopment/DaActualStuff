@@ -305,7 +305,7 @@ namespace Archdiocese.Forms
             }
             else
             {
-                MessageBox.Show("Please fill out all the fields", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(Globals.gsFieldsValidationMessage, Globals.gsWarningCaption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

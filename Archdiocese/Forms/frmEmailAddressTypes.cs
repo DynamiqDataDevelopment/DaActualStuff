@@ -1,5 +1,6 @@
 ﻿using Archdiocese.Helpers;
 using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -16,7 +17,46 @@ namespace Archdiocese.Forms
             InitializeComponent();
         }
 
-        private void populateWithValues()
+        #region Specific Data Methods
+
+        private void Save()
+        {
+            clsEmailAddressTypes_Item mcObject = new clsEmailAddressTypes_Item();
+            mcObject = PrepareObject();
+            Exception exResult = new Exception(Globals.gsExceptionString);
+            bool mbSuccess = false;
+            if (_ID != 0)
+            {
+                mbSuccess = _List.Update_Item(ref exResult, mcObject);
+            }
+            else
+            {
+                mbSuccess = _List.Add_Item(ref exResult, mcObject);
+            }
+
+            if (mbSuccess)
+            {
+                MessageBox.Show(Globals.gsSuccessMessage, Globals.gsSuccessCaption, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                Cancel();
+            }
+            else
+            {
+                MessageBox.Show(Globals.gsErrorMessage + System.Environment.NewLine + exResult.Message, Globals.gsErrorCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private clsEmailAddressTypes_Item PrepareObject()
+        {
+            clsEmailAddressTypes_Item obj = new clsEmailAddressTypes_Item();
+            obj.ID = _ID;
+            obj.description = txtDescription.Text;
+            return obj;
+        }
+
+        #endregion Specific Data Methods
+
+        #region Generic Methods
+        private void PopulateWithValues()
         {
             if (_ID != 0)
             {
@@ -36,54 +76,6 @@ namespace Archdiocese.Forms
                 btnClear.Text = "Clear";
             }
         }
-        private void Save()
-        {
-            clsEmailAddressTypes_Item mcObject = new clsEmailAddressTypes_Item();
-            mcObject = prepareObject();
-            Exception exResult = new Exception(Globals.gsExceptionString);
-            bool mbSuccess = false;
-            if (_ID != 0)
-            {
-                mbSuccess = _List.Update_Item(ref exResult, mcObject);
-            }
-            else
-            {
-                mbSuccess = _List.Add_Item(ref exResult, mcObject);
-            }
-
-            if (mbSuccess)
-            {
-                //bad bad coding
-                var fc = Application.OpenForms["frmEmailAddressTypesView"];
-                if (fc != null)
-                {
-                    fc.Close();
-                    fc.Dispose();
-                }
-                //end of bad bad coding
-                MessageBox.Show("Successfully saved to the database.", "Success");
-                frmEmailAddressTypesView frm = new frmEmailAddressTypesView();
-                frm.MdiParent = Application.OpenForms["frmMain"];
-                frm.Size = Application.OpenForms["frmMain"].Size;
-                frm.WindowState = FormWindowState.Maximized;
-
-                btnCancel_Click(null, null);
-                frm.Show();
-            }
-            else
-            {
-                MessageBox.Show(exResult.Message, "Input Error");
-            }
-        }
-
-        private clsEmailAddressTypes_Item prepareObject()
-        {
-            clsEmailAddressTypes_Item obj = new clsEmailAddressTypes_Item();
-            obj.ID = _ID;
-            obj.description = txtDescription.Text;
-
-            return obj;
-        }
 
         private void Disable()
         {
@@ -92,12 +84,12 @@ namespace Archdiocese.Forms
             mbSuccess = _List.Enable_Item(ref exResult, _ID, false);
             if (mbSuccess)
             {
-                MessageBox.Show("Successfully disabled.", "Success");
-                btnCancel_Click(null, null);
+                MessageBox.Show(Globals.gsDisabledSuccessMessage, Globals.gsSuccessCaption, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                Cancel();
             }
             else
             {
-                MessageBox.Show("Oops something went wrong. The system generated error message is:" + System.Environment.NewLine + exResult.Message, "Failure");
+                MessageBox.Show(Globals.gsErrorMessage + System.Environment.NewLine + exResult.Message, Globals.gsErrorCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -108,40 +100,72 @@ namespace Archdiocese.Forms
             mbSuccess = _List.Enable_Item(ref exResult, _ID, true);
             if (mbSuccess)
             {
-                MessageBox.Show("Successfully Enabled.", "Success");
-                btnCancel_Click(null, null);
+                MessageBox.Show(Globals.gsEnabledSuccessMessage, Globals.gsSuccessCaption, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                Cancel();
             }
             else
             {
-                MessageBox.Show("Oops something went wrong. The system generated error message is:" + System.Environment.NewLine + exResult.Message, "Failure");
+                MessageBox.Show(Globals.gsErrorMessage + System.Environment.NewLine + exResult.Message, Globals.gsErrorCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void EnableOrDisable()
         {
-            OpenView();
-            this.Close();
-            this.Dispose();
+            if (_isDeleted) { Enable(); } else { Disable(); }
         }
 
-        private void OpenView()
+
+        private bool ValidateScreen()
         {
-            var mfForm = Application.OpenForms.Cast<Form>().Where(x => x.Name == "frmMain").FirstOrDefault();
-            if (_ID != 0)
+            bool retVal = true;
+            foreach (Control C in this.Controls)
             {
-                frmEmailAddressTypesView frm = new frmEmailAddressTypesView();
-                frm.MdiParent = mfForm;
-                frm.Size = mfForm.Size;
-                frm.WindowState = FormWindowState.Maximized;
-                frm.Show();
+                if (C.GetType() == typeof(TextBox))
+                {
+                    if (C.Tag.ToString() == "Mandatory")
+                    {
+                        if (C.Text == string.Empty)
+                        {
+                            retVal = false;
+                            break;
+                        }
+                    }
+                }
+                if (C.GetType() == typeof(ComboBox))
+                {
+                    var Ctrl = (ComboBox)C;
+                    if (Ctrl.SelectedIndex == -1)
+                    {
+                        retVal = false;
+                        break;
+                    }
+                }
             }
-        }
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            Save();
+            return retVal;
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
+        private void Cancel()
+        {
+            Close();
+            Dispose();
+        }
+
+        #endregion Generic Methods
+
+        #region Event Handler Methods
+        private void Click_Save()
+        {
+            if (ValidateScreen())
+            {
+                Save();
+            }
+            else
+            {
+                MessageBox.Show(Globals.gsFieldsValidationMessage, Globals.gsWarningCaption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void Click_Clear()
         {
             if (_ID != 0)
             {
@@ -153,13 +177,71 @@ namespace Archdiocese.Forms
             }
         }
 
-        private void EnableOrDisable()
+        private void Click_Cancel()
         {
-            if (_isDeleted) { Enable(); } else { Disable(); }
+            DialogResult dlgResult = MessageBox.Show(Globals.gsCancelButtonQuestion, Globals.gsCancelButtonCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dlgResult == DialogResult.Yes)
+            {
+                Cancel();
+            }
         }
+
+        #endregion Event Handler Methods
+
+        #region Event Handlers
+
         private void frm_Load(object sender, EventArgs e)
         {
-            populateWithValues();
+            PopulateWithValues();
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            Click_Save();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            Click_Clear();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Click_Cancel();
+        }
+
+        private void btnSave_MouseHover(object sender, EventArgs e)
+        {
+            btnSave.BackColor = Color.LightBlue;
+        }
+
+        private void btnSave_MouseLeave(object sender, EventArgs e)
+        {
+            btnSave.BackColor = Control.DefaultBackColor;
+        }
+
+        private void btnClear_MouseHover(object sender, EventArgs e)
+        {
+            btnClear.BackColor = Color.LightBlue;
+        }
+
+        private void btnClear_MouseLeave(object sender, EventArgs e)
+        {
+            btnClear.BackColor = Control.DefaultBackColor;
+        }
+
+        private void btnCancel_MouseHover(object sender, EventArgs e)
+        {
+            btnCancel.BackColor = Color.LightBlue;
+        }
+
+        private void btnCancel_MouseLeave(object sender, EventArgs e)
+        {
+            btnCancel.BackColor = Control.DefaultBackColor;
+        }
+
+        #endregion Event Handlers
+
     }
 }

@@ -74,7 +74,7 @@ namespace Archdiocese.Helpers
                     ParishTypes_Dictionary.Clear();
                     foreach (clsParishTypes_Item item in ParishTypes_Data)
                     {
-                        ParishTypes_Dictionary.Add(item.ID, item.parishTypeDescription);
+                        ParishTypes_Dictionary.Add(item.ID, item.description);
                     }
                     Bind_ComboBox(ref cb, ParishTypes_Dictionary);
                     cb.SelectedIndex = -1;

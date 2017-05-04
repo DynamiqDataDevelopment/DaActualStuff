@@ -61,7 +61,7 @@ namespace Archdiocese.Forms
                     fc.Dispose();
                 }
                 //end of bad bad coding
-                MessageBox.Show("Successfully saved to the database.", "Success");
+                MessageBox.Show(Globals.gsSuccessMessage, "Success");
                 frmCollectionTypesView frm = new frmCollectionTypesView();
                 frm.MdiParent = Application.OpenForms["frmMain"];
                 frm.Size = Application.OpenForms["frmMain"].Size;
@@ -97,7 +97,7 @@ namespace Archdiocese.Forms
             }
             else
             {
-                MessageBox.Show("Oops something went wrong. The system generated error message is:" + System.Environment.NewLine + exResult.Message, "Failure");
+                MessageBox.Show(Globals.gsErrorMessage + System.Environment.NewLine + exResult.Message, "Failure");
             }
         }
 
@@ -113,7 +113,7 @@ namespace Archdiocese.Forms
             }
             else
             {
-                MessageBox.Show("Oops something went wrong. The system generated error message is:" + System.Environment.NewLine + exResult.Message, "Failure");
+                MessageBox.Show(Globals.gsErrorMessage + System.Environment.NewLine + exResult.Message, "Failure");
             }
         }
 

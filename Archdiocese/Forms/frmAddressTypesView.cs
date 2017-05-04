@@ -46,9 +46,10 @@ namespace Archdiocese.Forms
             frm._Description = (string)grd.CurrentRow.Cells["Description"].Value;
             frm._isDeleted = (bool)grd.CurrentRow.Cells["isDeleted"].Value;
 
-            frm.Show();
-            this.Dispose();
-            this.Close();
+            frm.ShowDialog();
+            //Dispose();
+            //Close();
+            LoadData();
         }
 
         private void frmJobTypesView_Load(object sender, EventArgs e)

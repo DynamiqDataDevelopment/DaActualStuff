@@ -22,7 +22,7 @@ namespace Archdiocese.Forms
 
         private void MyInitializeComponent()
         {
-            bool flagTest = false;
+            bool flagTest = true;
             if (flagTest)
             {
                 Globals.giUserID = 1;
@@ -88,12 +88,12 @@ namespace Archdiocese.Forms
 
         private void parishTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //CloseOpenForms();
-            //frmParishTypesView frm = new frmParishTypesView();
-            //frm.MdiParent = this;
-            //frm.Size = this.Size;
-            //frm.WindowState = FormWindowState.Maximized;
-            //frm.Show();
+            CloseOpenForms();
+            frmParishTypesView frm = new frmParishTypesView();
+            frm.MdiParent = this;
+            frm.Size = this.Size;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
         }
 
         private void leaveTypesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -136,16 +136,7 @@ namespace Archdiocese.Forms
             frm.Show();
         }
 
-        private void gendersToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CloseOpenForms();
-            frmGendersView frm = new frmGendersView();
-            frm.MdiParent = this;
-            frm.Size = this.Size;
-            frm.WindowState = FormWindowState.Maximized;
-            frm.Show();
-        }
-
+       
         private void incomeTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CloseOpenForms();

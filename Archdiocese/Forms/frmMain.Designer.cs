@@ -75,15 +75,12 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.addressTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.emailAddressTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gendersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maritalStatusesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.collectionTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.telephoneNumberTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.personsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.personTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.leaveTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.titlesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.expenseTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.incomeTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sendFeedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportAProblemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,7 +91,6 @@
             this.tsslParish = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.outlookBar1 = new OutlookStyleControls.OutlookBar();
-            this.personsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.stsMain.SuspendLayout();
             //this.SuspendLayout();
@@ -347,17 +343,13 @@
             this.parishTypesToolStripMenuItem,
             this.toolStripSeparator3,
             this.addressTypesToolStripMenuItem,
-            this.emailAddressTypesToolStripMenuItem,
-            this.gendersToolStripMenuItem,
-            this.maritalStatusesToolStripMenuItem,
             this.collectionTypesToolStripMenuItem,
+            this.emailAddressTypesToolStripMenuItem,
             this.telephoneNumberTypesToolStripMenuItem,
             this.personsToolStripMenuItem,
             this.personTypesToolStripMenuItem,
-            this.leaveTypesToolStripMenuItem,
-            this.titlesToolStripMenuItem,
-            this.expenseTypesToolStripMenuItem,
-            this.incomeTypesToolStripMenuItem});
+            this.maritalStatusesToolStripMenuItem,
+            this.leaveTypesToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
             this.viewToolStripMenuItem.Text = "View";
@@ -411,13 +403,6 @@
             this.emailAddressTypesToolStripMenuItem.Text = "Email Address Types";
             this.emailAddressTypesToolStripMenuItem.Click += new System.EventHandler(this.emailAddressTypesToolStripMenuItem_Click);
             // 
-            // gendersToolStripMenuItem
-            // 
-            this.gendersToolStripMenuItem.Name = "gendersToolStripMenuItem";
-            this.gendersToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
-            this.gendersToolStripMenuItem.Text = "Genders";
-            this.gendersToolStripMenuItem.Click += new System.EventHandler(this.gendersToolStripMenuItem_Click);
-            // 
             // maritalStatusesToolStripMenuItem
             // 
             this.maritalStatusesToolStripMenuItem.Name = "maritalStatusesToolStripMenuItem";
@@ -439,6 +424,13 @@
             this.telephoneNumberTypesToolStripMenuItem.Text = "Telephone Number Types";
             this.telephoneNumberTypesToolStripMenuItem.Click += new System.EventHandler(this.telephoneNumberTypesToolStripMenuItem_Click);
             // 
+            // personsToolStripMenuItem
+            // 
+            this.personsToolStripMenuItem.Name = "personsToolStripMenuItem";
+            this.personsToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
+            this.personsToolStripMenuItem.Text = "Persons";
+            this.personsToolStripMenuItem.Click += new System.EventHandler(this.personsToolStripMenuItem_Click);
+            // 
             // personTypesToolStripMenuItem
             // 
             this.personTypesToolStripMenuItem.Name = "personTypesToolStripMenuItem";
@@ -452,26 +444,6 @@
             this.leaveTypesToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
             this.leaveTypesToolStripMenuItem.Text = "Leave Types";
             this.leaveTypesToolStripMenuItem.Click += new System.EventHandler(this.leaveTypesToolStripMenuItem_Click);
-            // 
-            // titlesToolStripMenuItem
-            // 
-            this.titlesToolStripMenuItem.Name = "titlesToolStripMenuItem";
-            this.titlesToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
-            this.titlesToolStripMenuItem.Text = "Titles";
-            // 
-            // expenseTypesToolStripMenuItem
-            // 
-            this.expenseTypesToolStripMenuItem.Name = "expenseTypesToolStripMenuItem";
-            this.expenseTypesToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
-            this.expenseTypesToolStripMenuItem.Text = "Expense Types";
-            this.expenseTypesToolStripMenuItem.Click += new System.EventHandler(this.expenseTypesToolStripMenuItem_Click);
-            // 
-            // incomeTypesToolStripMenuItem
-            // 
-            this.incomeTypesToolStripMenuItem.Name = "incomeTypesToolStripMenuItem";
-            this.incomeTypesToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
-            this.incomeTypesToolStripMenuItem.Text = "Income Types";
-            this.incomeTypesToolStripMenuItem.Click += new System.EventHandler(this.incomeTypesToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -588,13 +560,6 @@
             this.outlookBar1.TabIndex = 4;
             this.outlookBar1.Click += new OutlookStyleControls.OutlookBar.ButtonClickEventHandler(this.outlookBar1_Click);
             // 
-            // personsToolStripMenuItem
-            // 
-            this.personsToolStripMenuItem.Name = "personsToolStripMenuItem";
-            this.personsToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
-            this.personsToolStripMenuItem.Text = "Persons";
-            this.personsToolStripMenuItem.Click += new System.EventHandler(this.personsToolStripMenuItem_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -653,13 +618,9 @@
         private System.Windows.Forms.ToolStripMenuItem leaveTypesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addressTypesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem emailAddressTypesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem expenseTypesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gendersToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem incomeTypesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem maritalStatusesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem personTypesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem telephoneNumberTypesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem titlesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addressTypeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem emailAddressTypeToolStripMenuItem;
         private OutlookStyleControls.OutlookBar outlookBar1;

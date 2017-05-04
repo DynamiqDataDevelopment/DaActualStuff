@@ -15,6 +15,14 @@ namespace Archdiocese.Helpers
         public const string gsExceptionString = "SUCCESS!";
         public static string gsSuccessMessage = "Successfully saved to the Database";
         public static string gsErrorMessage = "An error has occurred in the application. " + Environment.NewLine + "The actual error message is:" + Environment.NewLine;
+        public static string gsSuccessCaption = "Success";
+        public static string gsErrorCaption = "Error";
+        public static string gsWarningCaption = "Warning";
+        public static string gsDisabledSuccessMessage = "Successfully Disabled";
+        public static string gsEnabledSuccessMessage = "Successfully Enabled";
+        public static string gsCancelButtonQuestion = "Are you sure that" + Environment.NewLine + "you want to leave?";
+        public static string gsCancelButtonCaption = "";
+        public static string gsFieldsValidationMessage = "Please fill out all the fields";
         public static int giUserID = 0;
         public static int giParishUserID = 0;
         public static int giParishID = 0;
@@ -23,8 +31,6 @@ namespace Archdiocese.Helpers
         public static string gsPermissionString = String.Empty;
         public static string gsEncryptedPassword = string.Empty;
         public static clsUsers_Item gcUser;
-        //public static clsUsers_List gcUser_List;// = new clsUsers_List
-
 
         public static string EncryptString(string psText)
         {

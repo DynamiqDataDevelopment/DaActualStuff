@@ -23,7 +23,7 @@ public class clsParishTypes_List : List<clsParishTypes_Item>
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "usp_GetParishTypes";
-            cmd.Parameters.AddWithValue("@ID", ID);
+            if (!(ID == 0)) cmd.Parameters.AddWithValue("@ID", ID);
             if (!(parishTypeDescription == string.Empty)) cmd.Parameters.AddWithValue("@parishTypeDescription", parishTypeDescription);
             SqlDataReader data_reader = cmd.ExecuteReader();
             Populate_Members(data_reader);
@@ -44,14 +44,14 @@ public class clsParishTypes_List : List<clsParishTypes_Item>
             {
                 clsParishTypes_Item tmp = new clsParishTypes_Item();
                 if (!(data_reader["ID"] == DBNull.Value)) tmp.ID = (int)data_reader["ID"];
-                if (!(data_reader["parishTypeDescription"] == DBNull.Value)) tmp.parishTypeDescription = (string)data_reader["parishTypeDescription"];
+                if (!(data_reader["parishTypeDescription"] == DBNull.Value)) tmp.description = (string)data_reader["parishTypeDescription"];
                 if (!(data_reader["isDeleted"] == DBNull.Value)) tmp.isDeleted = (bool)data_reader["isDeleted"];
                 this.Add(tmp);
             }
         }
     }
 
-    public bool Add_Item(ref Exception pEx, int ID, string parishTypeDescription)
+    public bool Add_Item(ref Exception pEx, clsParishTypes_Item obj)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         try
@@ -60,11 +60,11 @@ public class clsParishTypes_List : List<clsParishTypes_Item>
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "usp_InsertParishTypes";
-            cmd.Parameters.AddWithValue("@ID", ID);
-            cmd.Parameters.AddWithValue("@parishTypeDescription", parishTypeDescription);
+            cmd.Parameters.AddWithValue("@ID", obj.ID);
+            cmd.Parameters.AddWithValue("@parishTypeDescription", obj.description);
             if (Save(ref pEx, cmd))
             {
-                this.Add(new clsParishTypes_Item(ID, parishTypeDescription));
+                //this.Add(new clsParishTypes_Item(ID, parishTypeDescription));
                 conn.Close();
                 return true;
             }
@@ -82,7 +82,7 @@ public class clsParishTypes_List : List<clsParishTypes_Item>
         return false;
     }
 
-    public bool Update_Item(ref Exception pEx, int ID, string parishTypeDescription)
+    public bool Update_Item(ref Exception pEx, clsParishTypes_Item obj)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
         try
@@ -91,18 +91,18 @@ public class clsParishTypes_List : List<clsParishTypes_Item>
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "usp_UpdateParishTypes";
-            cmd.Parameters.AddWithValue("@ID", ID);
-            cmd.Parameters.AddWithValue("@parishTypeDescription", parishTypeDescription);
+            cmd.Parameters.AddWithValue("@ID", obj.ID);
+            cmd.Parameters.AddWithValue("@parishTypeDescription", obj.description);
             if (Save(ref pEx, cmd))
             {
-                foreach (clsParishTypes_Item Item in this)
-                {
-                    if (Item.ID == ID)
-                    {
-                        Item.ID = ID;
-                        Item.parishTypeDescription = parishTypeDescription;
-                    }
-                }
+                //foreach (clsParishTypes_Item Item in this)
+                //{
+                //    if (Item.ID == ID)
+                //    {
+                //        Item.ID = ID;
+                //        Item.parishTypeDescription = parishTypeDescription;
+                //    }
+                //}
             }
             else
             {
@@ -119,7 +119,34 @@ public class clsParishTypes_List : List<clsParishTypes_Item>
         conn.Close();
         return false;
     }
-
+    public bool Enable_Item(ref Exception pEx, int ID, bool enable)
+    {
+        SqlConnection conn = new SqlConnection((_connectionString));
+        try
+        {
+            conn.Open();
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = enable ? "usp_EnableParishTypes" : "usp_DisableParishTypes";
+            cmd.Parameters.AddWithValue("@ID", ID);
+            if (Save(ref pEx, cmd))
+            {
+                conn.Close();
+                return true;
+            }
+            else
+            {
+                conn.Close();
+                return false;
+            }
+        }
+        catch (Exception ex)
+        {
+            pEx = ex;
+        }
+        conn.Close();
+        return false;
+    }
     public bool Delete_Item(ref Exception pEx, int ID)
     {
         SqlConnection conn = new SqlConnection((_connectionString));
@@ -168,7 +195,7 @@ public class clsParishTypes_List : List<clsParishTypes_Item>
 public class clsParishTypes_Item
 {
     private int _ID;
-    private string _parishTypeDescription;
+    private string _description;
     private bool _isDeleted;
 
     
@@ -178,10 +205,10 @@ public class clsParishTypes_Item
         //Default constructor
     }
 
-    public clsParishTypes_Item(int ID, string parishTypeDescription)
+    public clsParishTypes_Item(int ID, string description)
     {
         _ID = ID;
-        _parishTypeDescription = parishTypeDescription;
+        _description = description;
         _isDeleted = isDeleted;
     }
 
@@ -204,18 +231,18 @@ public class clsParishTypes_Item
     }
 
     [XmlElement(typeof(string))]
-    public string parishTypeDescription
+    public string description
     {
         get
         {
-            return _parishTypeDescription;
+            return _description;
         }
 
         set
         {
-            if (!(_parishTypeDescription == value))
+            if (!(_description == value))
             {
-                _parishTypeDescription = value;
+                _description = value;
                 
             }
         }

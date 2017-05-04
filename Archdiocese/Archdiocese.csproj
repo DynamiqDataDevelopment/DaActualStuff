@@ -167,18 +167,6 @@
     <Compile Include="Forms\frmExpenseTypesView.designer.cs">
       <DependentUpon>frmExpenseTypesView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmGenders.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmGenders.designer.cs">
-      <DependentUpon>frmGenders.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmGendersView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmGendersView.designer.cs">
-      <DependentUpon>frmGendersView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\frmIncomes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -395,12 +383,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmExpenseTypesView.resx">
       <DependentUpon>frmExpenseTypesView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmGenders.resx">
-      <DependentUpon>frmGenders.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmGendersView.resx">
-      <DependentUpon>frmGendersView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmIncomes.resx">
       <DependentUpon>frmIncomes.cs</DependentUpon>

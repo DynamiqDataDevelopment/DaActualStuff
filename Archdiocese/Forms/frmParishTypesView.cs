@@ -21,10 +21,10 @@ namespace Archdiocese.Forms
         private void LoadData()
         {
             Exception exResult = new Exception(Globals.gsExceptionString);
-            clsCollectionTypes_List _Data = new clsCollectionTypes_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult, 0, String.Empty);
+            clsParishTypes_List _Data = new clsParishTypes_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult, 0, String.Empty);
             if (!(exResult.Message == Globals.gsExceptionString))
             {
-                MessageBox.Show(Globals.gsErrorMessage + exResult.Message, "Error");
+                MessageBox.Show(Globals.gsErrorMessage + exResult.Message, Globals.gsErrorCaption);
             }
             else
             {
@@ -34,21 +34,20 @@ namespace Archdiocese.Forms
                 grd.Refresh();
                 if (_Data.Count < 1)
                 {
-                    MessageBox.Show("No Types have been captured.", "Types");
+                    MessageBox.Show("No data has been captured.", "Types");
                 }
             }
         }
 
         private void grd_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            frmCollectionTypes frm = new frmCollectionTypes();
+            frmParishTypes frm = new frmParishTypes();
             frm._ID = (int)grd.CurrentRow.Cells["ID"].Value;
             frm._Description = (string)grd.CurrentRow.Cells["Description"].Value;
             frm._isDeleted = (bool)grd.CurrentRow.Cells["isDeleted"].Value;
 
-            frm.Show();
-            this.Dispose();
-            this.Close();
+            frm.ShowDialog();
+            LoadData();
         }
 
         private void frmJobTypesView_Load(object sender, EventArgs e)
