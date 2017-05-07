@@ -14,7 +14,7 @@ public class clsExpenses_List : List<clsExpenses_Item>
     {
         _connectionString = connectionString;
     }
-    public clsExpenses_List(string connectionString, ref Exception pEx, int ID, int parishUserID, Single amount, string description, int expenseTypeID, DateTime expenseDate, DateTime dateSubmitted)
+    public clsExpenses_List(string connectionString, ref Exception pEx, int ID, int parishUserID, decimal amount, string description, int expenseTypeID, DateTime expenseDate, DateTime dateSubmitted)
     {
         _connectionString = connectionString;
         SqlConnection conn = new SqlConnection((_connectionString));
@@ -51,7 +51,7 @@ public class clsExpenses_List : List<clsExpenses_Item>
                 clsExpenses_Item tmp = new clsExpenses_Item();
                 if (!(data_reader["ID"] == DBNull.Value)) tmp.ID = (int)data_reader["ID"];
                 if (!(data_reader["parishUserID"] == DBNull.Value)) tmp.parishUserID = (int)data_reader["parishUserID"];
-                if (!(data_reader["amount"] == DBNull.Value)) tmp.amount = (Single)data_reader["amount"];
+                if (!(data_reader["amount"] == DBNull.Value)) tmp.amount = (decimal)data_reader["amount"];
                 if (!(data_reader["description"] == DBNull.Value)) tmp.description = (string)data_reader["description"];
                 if (!(data_reader["expenseTypeID"] == DBNull.Value)) tmp.expenseTypeID = (int)data_reader["expenseTypeID"];
                 if (!(data_reader["expenseDate"] == DBNull.Value)) tmp.expenseDate = (DateTime)data_reader["expenseDate"];
@@ -253,7 +253,7 @@ public class clsExpenses_Item
 {
     private int _ID;
     private int _parishUserID;
-    private Single _amount;
+    private decimal _amount;
     private string _description;
     private int _expenseTypeID;
     private DateTime _expenseDate;
@@ -265,7 +265,7 @@ public class clsExpenses_Item
         //Default constructor
     }
 
-    public clsExpenses_Item(int ID, int parishUserID, Single amount, string description, int expenseTypeID, DateTime expenseDate, DateTime dateSubmitted)
+    public clsExpenses_Item(int ID, int parishUserID, decimal amount, string description, int expenseTypeID, DateTime expenseDate, DateTime dateSubmitted)
     {
         _ID = ID;
         _parishUserID = parishUserID;
@@ -312,8 +312,8 @@ public class clsExpenses_Item
         }
     }
 
-    [XmlElement(typeof(Single))]
-    public Single amount
+    [XmlElement(typeof(decimal))]
+    public decimal amount
     {
         get
         {

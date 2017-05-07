@@ -43,7 +43,7 @@ namespace Archdiocese.Forms
         {
             clsExpenses_Item obj = new clsExpenses_Item();
             obj.expenseTypeID = (int)cmbAccountingLevel3.SelectedValue;
-            obj.amount = float.Parse(txtAmount.Text);
+            obj.amount = decimal.Parse(txtAmount.Text);
             obj.description = txtDescription.Text;
             obj.expenseDate = dtpExpenseDate.Value.Date;
             obj.parishUserID = Globals.giParishUserID;

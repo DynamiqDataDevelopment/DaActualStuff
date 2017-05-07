@@ -107,6 +107,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmAccountingInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAccountingInput.Designer.cs">
+      <DependentUpon>frmAccountingInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmAddressTypes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -311,6 +317,12 @@
     <Compile Include="Forms\frmUserGroupsView.designer.cs">
       <DependentUpon>frmUserGroupsView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmUserManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmUserManagement.Designer.cs">
+      <DependentUpon>frmUserManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmUsers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -353,6 +365,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAccountingInput.resx">
+      <DependentUpon>frmAccountingInput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAddressTypes.resx">
       <DependentUpon>frmAddressTypes.cs</DependentUpon>
@@ -446,6 +461,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmUserGroupsView.resx">
       <DependentUpon>frmUserGroupsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmUserManagement.resx">
+      <DependentUpon>frmUserManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmUsers.resx">
       <DependentUpon>frmUsers.cs</DependentUpon>

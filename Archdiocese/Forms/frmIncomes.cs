@@ -42,7 +42,7 @@ namespace Archdiocese.Forms
         {
             clsIncomes_Item obj = new clsIncomes_Item();
             obj.incomeTypeID = (int)cmbAccountingLevel3.SelectedValue;
-            obj.amount = float.Parse(txtAmount.Text);
+            obj.amount = decimal.Parse(txtAmount.Text);
             obj.description = txtDescription.Text;
             obj.incomeDate = dtpDate.Value.Date;
             obj.parishUserID = Globals.giParishUserID;

@@ -14,7 +14,7 @@ public class clsIncomes_List : List<clsIncomes_Item>
     {
         _connectionString = connectionString;
     }
-    public clsIncomes_List(string connectionString, ref Exception pEx, int ID, int parishUserID, Single amount, string description, int incomeTypeID, DateTime incomeDate, DateTime dateSubmitted)
+    public clsIncomes_List(string connectionString, ref Exception pEx, int ID, int parishUserID, decimal amount, string description, int incomeTypeID, DateTime incomeDate, DateTime dateSubmitted)
     {
         _connectionString = connectionString;
         SqlConnection conn = new SqlConnection((_connectionString));
@@ -51,7 +51,7 @@ public class clsIncomes_List : List<clsIncomes_Item>
                 clsIncomes_Item tmp = new clsIncomes_Item();
                 if (!(data_reader["ID"] == DBNull.Value)) tmp.ID = (int)data_reader["ID"];
                 if (!(data_reader["parishUserID"] == DBNull.Value)) tmp.parishUserID = (int)data_reader["parishUserID"];
-                if (!(data_reader["amount"] == DBNull.Value)) tmp.amount = (Single)data_reader["amount"];
+                if (!(data_reader["amount"] == DBNull.Value)) tmp.amount = (decimal)data_reader["amount"];
                 if (!(data_reader["description"] == DBNull.Value)) tmp.description = (string)data_reader["description"];
                 if (!(data_reader["incomeTypeID"] == DBNull.Value)) tmp.incomeTypeID = (int)data_reader["incomeTypeID"];
                 if (!(data_reader["incomeDate"] == DBNull.Value)) tmp.incomeDate = (DateTime)data_reader["incomeDate"];
@@ -253,7 +253,7 @@ public class clsIncomes_Item
 {
     private int _ID;
     private int _parishUserID;
-    private Single _amount;
+    private decimal _amount;
     private string _description;
     private int _incomeTypeID;
     private DateTime _incomeDate;
@@ -265,7 +265,7 @@ public class clsIncomes_Item
         //Default constructor
     }
 
-    public clsIncomes_Item(int ID, int parishUserID, Single amount, string description, int incomeTypeID, DateTime incomeDate, DateTime dateSubmitted)
+    public clsIncomes_Item(int ID, int parishUserID, decimal amount, string description, int incomeTypeID, DateTime incomeDate, DateTime dateSubmitted)
     {
         _ID = ID;
         _parishUserID = parishUserID;
@@ -312,8 +312,8 @@ public class clsIncomes_Item
         }
     }
 
-    [XmlElement(typeof(Single))]
-    public Single amount
+    [XmlElement(typeof(decimal))]
+    public decimal amount
     {
         get
         {
