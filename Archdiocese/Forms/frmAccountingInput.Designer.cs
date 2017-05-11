@@ -38,6 +38,9 @@
             this.accountNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSave = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             this.SuspendLayout();
             // 
@@ -111,17 +114,48 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(125, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(257, 17);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "Date must be in the format: dd/mm/yyyy";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(125, 41);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(328, 17);
+            this.label2.TabIndex = 29;
+            this.label2.Text = "Account Number must be a VALID account number";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(125, 70);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(240, 17);
+            this.label3.TabIndex = 30;
+            this.label3.Text = "Type is E for Expense or I for Income";
+            // 
             // frmAccountingInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1018, 416);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.grd);
             this.Name = "frmAccountingInput";
             this.Text = "Accounting Input";
             ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -134,5 +168,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn accountNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn amount;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

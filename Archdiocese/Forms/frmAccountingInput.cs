@@ -12,11 +12,21 @@ namespace Archdiocese.Forms
 {
     public partial class frmAccountingInput : Form
     {
+        private List<clsIncomeTypesLevel3_Item> _IncomeTypesLevel3_Data;
+        private List<clsExpenseTypesLevel3_Item> _ExpenseTypesLevel3_Data;
+        private List<clsIncomeTypesLevel3_Item> _IncomeTypesLevel3_Data_Filtered;
+        private List<clsExpenseTypesLevel3_Item> _ExpenseTypesLevel3_Data_Filtered;
         public frmAccountingInput()
         {
             InitializeComponent();
+            MyInitializeComponent();
         }
 
+        private void MyInitializeComponent()
+        {
+            PopulateExpenseAccountNumbers();
+            PopulateIncomeAccountNumbers();
+        }
         private void grd_SelectionChanged(object sender, EventArgs e)
         {
             if (grd.Rows[grd.CurrentCell.RowIndex].Cells["type"].Value != null)
@@ -34,9 +44,94 @@ namespace Archdiocese.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Save();
+            if (ValidateScreen())
+            {
+                Save();
+            }
+            else
+            {
+                MessageBox.Show("Please ensure that all fields are filled out or are valid", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
+        private bool ValidateScreen()
+        {
+            int RowCount = 0;
+            if (grd.Rows.Count == 1) RowCount = grd.Rows.Count; else RowCount = grd.Rows.Count - 1;
+            //MessageBox.Show("Please fill out all the fields", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            bool retVal = true;
+            for (int i = 0; i < RowCount; i++)
+            {
+                //Date
+                if (grd.Rows[i].Cells["date"].Value != null)
+                {
+                    try
+                    {
+                        DateTime dateValue;
+                        bool isValidDate = DateTime.TryParse(grd.Rows[i].Cells["date"].Value.ToString(), out dateValue);
+                        if (!isValidDate)
+                        {
+                            retVal = false;
+                            break;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        retVal = false;
+                        break;
+                    }
+                }
+                else
+                {
+                    retVal = false;
+                    break;
+                }
+
+                //Account Number
+                if (grd.Rows[i].Cells["accountNumber"].Value != null)
+                {
+                    if (grd.Rows[i].Cells["type"].Value.ToString() == "E")
+                    {
+                        _ExpenseTypesLevel3_Data_Filtered = _ExpenseTypesLevel3_Data.Where(x => x.accountNumber == grd.Rows[i].Cells["accountNumber"].Value.ToString()).ToList();
+                        if (_ExpenseTypesLevel3_Data_Filtered.Count == 0)
+                        {
+                            retVal = false;
+                            break;
+                        }
+                    }
+                    if (grd.Rows[i].Cells["type"].Value.ToString() == "I")
+                    {
+                        _IncomeTypesLevel3_Data_Filtered = _IncomeTypesLevel3_Data.Where(x => x.accountNumber == grd.Rows[i].Cells["accountNumber"].Value.ToString()).ToList();
+                        if (_IncomeTypesLevel3_Data_Filtered.Count == 0)
+                        {
+                            retVal = false;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    retVal = false;
+                    break;
+                }
+            }
+
+            return retVal;
+        }
+
+        private int Get_IncomeTypesLevel3ID(string accountNumber)
+        {
+            int retVal = 0;
+            retVal = _IncomeTypesLevel3_Data.Where(x => x.accountNumber == accountNumber).Select(x => x.ID).FirstOrDefault();
+            return retVal;
+        }
+
+        private int Get_ExpenseTypesLevel3ID(string accountNumber)
+        {
+            int retVal = 0;
+            retVal = _ExpenseTypesLevel3_Data.Where(x => x.accountNumber == accountNumber).Select(x => x.ID).FirstOrDefault();
+            return retVal;
+        }
         private void Save()
         {
             clsIncomes_List _data = new clsIncomes_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
@@ -45,12 +140,12 @@ namespace Archdiocese.Forms
             {
                 if (grd.Rows[i].Cells["date"].Value != null)
                 {
-                    if (grd.Rows[i].Cells["type"].Value.ToString() == "Income")
+                    if (grd.Rows[i].Cells["type"].Value.ToString() == "I")
                     {
                         clsIncomes_Item obj = new clsIncomes_Item();
                         obj.description = grd.Rows[i].Cells["description"].Value.ToString();
                         obj.incomeDate = DateTime.Parse(grd.Rows[i].Cells["date"].Value.ToString());
-                        obj.incomeTypeID = (int)grd.Rows[i].Cells["accountNumber"].Value;
+                        obj.incomeTypeID = Get_IncomeTypesLevel3ID( grd.Rows[i].Cells["accountNumber"].Value.ToString());
                         obj.amount = decimal.Parse(grd.Rows[i].Cells["amount"].Value.ToString());
                         obj.parishUserID = Globals.giParishUserID;
                         _data.Add(obj);
@@ -60,7 +155,7 @@ namespace Archdiocese.Forms
                         clsExpenses_Item obj = new clsExpenses_Item();
                         obj.description = grd.Rows[i].Cells["description"].Value.ToString();
                         obj.expenseDate = DateTime.Parse(grd.Rows[i].Cells["date"].Value.ToString());
-                        obj.expenseTypeID = (int)grd.Rows[i].Cells["accountNumber"].Value;
+                        obj.expenseTypeID = Get_ExpenseTypesLevel3ID(grd.Rows[i].Cells["accountNumber"].Value.ToString());
                         obj.amount = decimal.Parse(grd.Rows[i].Cells["amount"].Value.ToString());
                         obj.parishUserID = Globals.giParishUserID;
                         _dataExpenses.Add(obj);
@@ -68,7 +163,6 @@ namespace Archdiocese.Forms
                 }
             }
 
-            MessageBox.Show(_data.Count.ToString());
             foreach (clsIncomes_Item item in _data)
             {
                 Exception exResult = new Exception("SUCCESS");
@@ -95,6 +189,36 @@ namespace Archdiocese.Forms
                 {
                     //MessageBox.Show("yay Expense");
                 }
+            }
+        }
+
+        private void PopulateIncomeAccountNumbers()
+        {
+            Exception exResult = new Exception(Globals.gsExceptionString);
+            clsIncomeTypesLevel3_List Data = new clsIncomeTypesLevel3_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult);
+
+            if (!(exResult.Message == Globals.gsExceptionString))
+            {
+                MessageBox.Show(Globals.gsErrorMessage + exResult.Message, "Error retrieving Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                _IncomeTypesLevel3_Data = Data;
+            }
+        }
+
+        private void PopulateExpenseAccountNumbers()
+        {
+            Exception exResult = new Exception(Globals.gsExceptionString);
+            clsExpenseTypesLevel3_List Data = new clsExpenseTypesLevel3_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult);
+
+            if (!(exResult.Message == Globals.gsExceptionString))
+            {
+                MessageBox.Show(Globals.gsErrorMessage + exResult.Message, "Error retrieving Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                _ExpenseTypesLevel3_Data = Data;
             }
         }
     }

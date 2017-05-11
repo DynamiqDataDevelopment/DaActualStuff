@@ -48,6 +48,7 @@
             this.btnIncome.Text = "Income";
             this.btnIncome.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnIncome.UseVisualStyleBackColor = true;
+            this.btnIncome.Visible = false;
             this.btnIncome.Click += new System.EventHandler(this.btnIncome_Click);
             this.btnIncome.MouseLeave += new System.EventHandler(this.btnIncome_MouseLeave);
             this.btnIncome.MouseHover += new System.EventHandler(this.btnIncome_MouseHover);
@@ -64,6 +65,7 @@
             this.btnExpense.Text = "Expense";
             this.btnExpense.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExpense.UseVisualStyleBackColor = true;
+            this.btnExpense.Visible = false;
             this.btnExpense.Click += new System.EventHandler(this.btnExpense_Click);
             this.btnExpense.MouseLeave += new System.EventHandler(this.btnExpense_MouseLeave);
             this.btnExpense.MouseHover += new System.EventHandler(this.btnExpense_MouseHover);
@@ -77,9 +79,10 @@
             this.btnAccountsSetup.Name = "btnAccountsSetup";
             this.btnAccountsSetup.Size = new System.Drawing.Size(125, 100);
             this.btnAccountsSetup.TabIndex = 5;
-            this.btnAccountsSetup.Text = "Setup Accounts";
+            this.btnAccountsSetup.Text = "Accounting";
             this.btnAccountsSetup.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAccountsSetup.UseVisualStyleBackColor = true;
+            this.btnAccountsSetup.Click += new System.EventHandler(this.btnAccountsSetup_Click);
             this.btnAccountsSetup.MouseLeave += new System.EventHandler(this.btnAccountsSetup_MouseLeave);
             this.btnAccountsSetup.MouseHover += new System.EventHandler(this.btnAccountsSetup_MouseHover);
             // 

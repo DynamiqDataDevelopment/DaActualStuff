@@ -108,5 +108,15 @@ namespace Archdiocese.Menus
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
+
+        private void btnAccountsSetup_Click(object sender, EventArgs e)
+        {
+            Form MainForm = GetMainForm();
+            frmAccountingInput frm = new frmAccountingInput();
+            frm.MdiParent = MainForm;
+            frm.Size = MainForm.Size;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
     }
 }
