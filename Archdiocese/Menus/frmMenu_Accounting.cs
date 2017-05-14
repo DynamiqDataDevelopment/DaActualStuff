@@ -82,7 +82,7 @@ namespace Archdiocese.Menus
         private void btnExpense_Click(object sender, EventArgs e)
         {
             Form MainForm = GetMainForm();
-            frmExpenses frm = new frmExpenses();
+            frmAccountingView frm = new frmAccountingView();
             frm.MdiParent = MainForm;
             frm.Size = MainForm.Size;
             frm.WindowState = FormWindowState.Maximized;

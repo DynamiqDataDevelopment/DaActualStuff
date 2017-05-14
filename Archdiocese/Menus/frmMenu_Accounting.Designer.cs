@@ -62,10 +62,9 @@
             this.btnExpense.Name = "btnExpense";
             this.btnExpense.Size = new System.Drawing.Size(125, 100);
             this.btnExpense.TabIndex = 3;
-            this.btnExpense.Text = "Expense";
+            this.btnExpense.Text = "Accounting Search";
             this.btnExpense.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExpense.UseVisualStyleBackColor = true;
-            this.btnExpense.Visible = false;
             this.btnExpense.Click += new System.EventHandler(this.btnExpense_Click);
             this.btnExpense.MouseLeave += new System.EventHandler(this.btnExpense_MouseLeave);
             this.btnExpense.MouseHover += new System.EventHandler(this.btnExpense_MouseHover);

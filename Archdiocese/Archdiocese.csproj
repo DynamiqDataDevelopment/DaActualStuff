@@ -62,6 +62,7 @@
     <Compile Include="Controls\OutlookBar.designer.cs">
       <DependentUpon>OutlookBar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\clsAccounting.cs" />
     <Compile Include="Data\clsAddresses.cs" />
     <Compile Include="Data\clsAddressTypes.cs" />
     <Compile Include="Data\clsBankBranchCodes.cs" />
@@ -112,6 +113,12 @@
     </Compile>
     <Compile Include="Forms\frmAccountingInput.Designer.cs">
       <DependentUpon>frmAccountingInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAccountingView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAccountingView.Designer.cs">
+      <DependentUpon>frmAccountingView.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmAddressTypes.cs">
       <SubType>Form</SubType>
@@ -368,6 +375,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAccountingInput.resx">
       <DependentUpon>frmAccountingInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAccountingView.resx">
+      <DependentUpon>frmAccountingView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAddressTypes.resx">
       <DependentUpon>frmAddressTypes.cs</DependentUpon>

@@ -120,10 +120,16 @@
   <metadata name="type.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="accountNumber.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="accountName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="date.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="accountNumber.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="dateSubmitted.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="description.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -132,8 +138,11 @@
   <metadata name="amount.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="captureUser.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnSearch.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAFzUkdCAK7O
         HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAAkGAAAJBgHwLyxjAAAAGXRFWHRTb2Z0d2FyZQB3d3cu
@@ -145,4 +154,47 @@
         rkJggg==
 </value>
   </data>
+  <data name="btnClear.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAFzUkdCAK7O
+        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAALPAAACzwHSorQDAAAAGXRFWHRTb2Z0d2FyZQB3d3cu
+        aW5rc2NhcGUub3Jnm+48GgAAAthJREFUWEet102IjVEcx/Ez4/0lJDUzMmKQja2XNEix1jSzQViwslAk
+        UkNZaBaiQShGLMyCFUleFspGiLKkWXiLDSl5y+v1/T3Oefyf5zndO3fu869PM+f//59z7kzn3vNcV6lU
+        6kZcwlUsiNXrEU1WQzThNTT4jkOYGOsdjmgyhmjHAbzAHygZvER3bF4t0aRFrMVN/EbY0P5ubYmtUU00
+        GRC7kN9M42+5nAwhcyaIaViGJpu34knnmnECYXH5hGPowDOfk6/oxbjcGtr8PTS4gwm2nvYVEs6Nh064
+        BoE2nmp6nvj8Fcyx801PC74grHEdYwp9hYRz+/0E0WHbHenpxKp8Po9Yhx8I650q9GQGzs1CeNW/sNnW
+        R4LoRjhH+oOWZuqZgXODvlFO21ojiH6z7mM0pzXTtNw3iA5cS6g1ipiE5wjrr0lrpumcaegN+bIQO836
+        A2neNDw0DdNDvixEK3SuNPiA0UneF/W+D4fvjZ1YJuKe30M6kpwvzDeFW3ZSmQh7yFcmOV/oMoUjdlKZ
+        iD6zz4Yk5wvrTaHPTioTcdTs05XkfGGFKQzaSWUibpt95iU5X5hrCvftpDIRb/0en5HckKEwCu+ggT42
+        Z9qJZSBm+PXlQZo3DWdMQ+ECahRx0Kx/Ns2bBj35hIZXmBxqjSLaoH+7BrqQlqQ106QPo0fQQPpDrVHE
+        gFn3QqaWGTi3GOHq1M8eWx8JYptfSwNdcm2Zuh0kiezV+RM1XwSh577VkfxehLVkX6GnkPj3jrjmJ4ie
+        +drzfb5XF8xFaPDU5PU8eNzng8sYa+cnvflEkuQBEncRJnfm6nqRO/ARoUffFxbiJMKBCw4j+mRcSASa
+        gB5swv8nGOdmIzyUWrpq819YlNtu182LJqshtvrF88JBE50dPTEnN1410WQtxEaEj1W7qb4v7EFrbF5M
+        NDkcxBTodtPGSgzF+mqJJutBLMINnI/Vq6u4v/etBMYMoEMLAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <metadata name="type.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="accountNumber.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="accountName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="date.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dateSubmitted.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="description.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="amount.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="captureUser.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Archdiocese.Helpers;
+using System.Globalization;
 
 namespace Archdiocese.Forms
 {
@@ -68,7 +69,7 @@ namespace Archdiocese.Forms
                     try
                     {
                         DateTime dateValue;
-                        bool isValidDate = DateTime.TryParse(grd.Rows[i].Cells["date"].Value.ToString(), out dateValue);
+                        bool isValidDate = DateTime.TryParseExact(grd.Rows[i].Cells["date"].Value.ToString(), "dd/MM/yyyy", null, DateTimeStyles.None,out dateValue);
                         if (!isValidDate)
                         {
                             retVal = false;
@@ -134,6 +135,7 @@ namespace Archdiocese.Forms
         }
         private void Save()
         {
+            bool canExit = true;
             clsIncomes_List _data = new clsIncomes_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
             clsExpenses_List _dataExpenses = new clsExpenses_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString));
             for (int i = 0; i < grd.Rows.Count; i++)
@@ -144,7 +146,7 @@ namespace Archdiocese.Forms
                     {
                         clsIncomes_Item obj = new clsIncomes_Item();
                         obj.description = grd.Rows[i].Cells["description"].Value.ToString();
-                        obj.incomeDate = DateTime.Parse(grd.Rows[i].Cells["date"].Value.ToString());
+                        obj.incomeDate = DateTime.ParseExact(grd.Rows[i].Cells["date"].Value.ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
                         obj.incomeTypeID = Get_IncomeTypesLevel3ID( grd.Rows[i].Cells["accountNumber"].Value.ToString());
                         obj.amount = decimal.Parse(grd.Rows[i].Cells["amount"].Value.ToString());
                         obj.parishUserID = Globals.giParishUserID;
@@ -154,7 +156,7 @@ namespace Archdiocese.Forms
                     {
                         clsExpenses_Item obj = new clsExpenses_Item();
                         obj.description = grd.Rows[i].Cells["description"].Value.ToString();
-                        obj.expenseDate = DateTime.Parse(grd.Rows[i].Cells["date"].Value.ToString());
+                        obj.expenseDate = DateTime.ParseExact(grd.Rows[i].Cells["date"].Value.ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
                         obj.expenseTypeID = Get_ExpenseTypesLevel3ID(grd.Rows[i].Cells["accountNumber"].Value.ToString());
                         obj.amount = decimal.Parse(grd.Rows[i].Cells["amount"].Value.ToString());
                         obj.parishUserID = Globals.giParishUserID;
@@ -170,6 +172,7 @@ namespace Archdiocese.Forms
                 if (exResult.Message != "SUCCESS")
                 {
                     MessageBox.Show(exResult.Message);
+                    canExit = false;
                 }
                 else
                 {
@@ -184,11 +187,19 @@ namespace Archdiocese.Forms
                 if (exResult.Message != "SUCCESS")
                 {
                     MessageBox.Show(exResult.Message);
+                    canExit = false;
                 }
                 else
                 {
                     //MessageBox.Show("yay Expense");
                 }
+            }
+
+            if (canExit)
+            {
+                MessageBox.Show(Globals.gsSuccessMessage, Globals.gsSuccessCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Close();
+                Dispose();
             }
         }
 
