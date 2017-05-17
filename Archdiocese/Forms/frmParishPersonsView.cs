@@ -58,16 +58,16 @@ namespace Archdiocese.Forms
             switch (cmbSearchBy.Text)
             {
                 case "First Name":
-                    Person_Data_Filtered = Person_Data.Where(i => i.firstName.Contains(txtSearchCriteria.Text)).Select(i => i).ToList();
+                    Person_Data_Filtered = Person_Data.Where(i => i.firstName.ToUpper().Contains(txtSearchCriteria.Text.ToUpper())).Select(i => i).ToList();
                     break;
                 case "Middle Name":
-                    Person_Data_Filtered = Person_Data.Where(i => i.middleName.Contains(txtSearchCriteria.Text)).Select(i => i).ToList();
+                    Person_Data_Filtered = Person_Data.Where(i => i.middleName.ToUpper().Contains(txtSearchCriteria.Text.ToUpper())).Select(i => i).ToList();
                     break;
                 case "Surname":
-                    Person_Data_Filtered = Person_Data.Where(i => i.surname.Contains(txtSearchCriteria.Text)).Select(i => i).ToList();
+                    Person_Data_Filtered = Person_Data.Where(i => i.surname.ToUpper().Contains(txtSearchCriteria.Text.ToUpper())).Select(i => i).ToList();
                     break;
                 case "Email Address":
-                    Person_Data_Filtered = Person_Data.Where(i => i.emailAddress.Contains(txtSearchCriteria.Text)).Select(i => i).ToList();
+                    Person_Data_Filtered = Person_Data.Where(i => i.emailAddress.ToUpper().Contains(txtSearchCriteria.Text.ToUpper())).Select(i => i).ToList();
                     break;
                 case "Telephone Number":
                     Person_Data_Filtered = Person_Data.Where(i => i.telephoneNumber.Contains(txtSearchCriteria.Text)).Select(i => i).ToList();

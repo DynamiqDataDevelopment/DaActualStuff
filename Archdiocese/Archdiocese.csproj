@@ -348,6 +348,7 @@
     <Compile Include="Forms\frmParishPersonsView.Designer.cs">
       <DependentUpon>frmParishPersonsView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\clsValidation_Item.cs" />
     <Compile Include="Helpers\ComboBoxes.cs" />
     <Compile Include="Helpers\Globals.cs" />
     <Compile Include="Menus\frmMenu_Accounting.cs">

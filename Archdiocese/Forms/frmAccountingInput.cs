@@ -45,24 +45,38 @@ namespace Archdiocese.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (ValidateScreen())
+            clsValidation_Item obj = new clsValidation_Item();
+            obj = ValidateScreen();
+            if (obj.returnStatus)
             {
                 Save();
             }
             else
             {
-                MessageBox.Show("Please ensure that all fields are filled out or are valid", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(obj.returnMessage, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private bool ValidateScreen()
+        private clsValidation_Item ValidateScreen()
         {
             int RowCount = 0;
             if (grd.Rows.Count == 1) RowCount = grd.Rows.Count; else RowCount = grd.Rows.Count - 1;
             //MessageBox.Show("Please fill out all the fields", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             bool retVal = true;
+            string retMessage = string.Empty;
             for (int i = 0; i < RowCount; i++)
             {
+                //Type
+                if (grd.Rows[i].Cells["type"].Value.ToString().ToUpper().Equals("I") | grd.Rows[i].Cells["type"].Value.ToString().ToUpper().Equals("E"))
+                {
+                    //can't get the ! operand right, no time to mess with it
+                }
+                else
+                {
+                    retVal = false;
+                    retMessage = "Type needs to be I or E";
+                    break;
+                }
                 //Date
                 if (grd.Rows[i].Cells["date"].Value != null)
                 {
@@ -73,39 +87,44 @@ namespace Archdiocese.Forms
                         if (!isValidDate)
                         {
                             retVal = false;
+                            retMessage = grd.Rows[i].Cells["date"].Value.ToString() + " is in the incorrect format";
                             break;
                         }
                     }
                     catch (Exception)
                     {
                         retVal = false;
+                        retMessage = grd.Rows[i].Cells["date"].Value.ToString() + " is in the incorrect format";
                         break;
                     }
                 }
                 else
                 {
                     retVal = false;
+                    retMessage = "Date field is empty";
                     break;
                 }
 
                 //Account Number
                 if (grd.Rows[i].Cells["accountNumber"].Value != null)
                 {
-                    if (grd.Rows[i].Cells["type"].Value.ToString() == "E")
+                    if (grd.Rows[i].Cells["type"].Value.ToString().ToUpper() == "E")
                     {
                         _ExpenseTypesLevel3_Data_Filtered = _ExpenseTypesLevel3_Data.Where(x => x.accountNumber == grd.Rows[i].Cells["accountNumber"].Value.ToString()).ToList();
                         if (_ExpenseTypesLevel3_Data_Filtered.Count == 0)
                         {
                             retVal = false;
+                            retMessage = "Account Number " + grd.Rows[i].Cells["accountNumber"].Value.ToString() + " does not exist";
                             break;
                         }
                     }
-                    if (grd.Rows[i].Cells["type"].Value.ToString() == "I")
+                    if (grd.Rows[i].Cells["type"].Value.ToString().ToUpper() == "I")
                     {
                         _IncomeTypesLevel3_Data_Filtered = _IncomeTypesLevel3_Data.Where(x => x.accountNumber == grd.Rows[i].Cells["accountNumber"].Value.ToString()).ToList();
                         if (_IncomeTypesLevel3_Data_Filtered.Count == 0)
                         {
                             retVal = false;
+                            retMessage = "Account Number " + grd.Rows[i].Cells["accountNumber"].Value.ToString() + " does not exist";
                             break;
                         }
                     }
@@ -113,11 +132,12 @@ namespace Archdiocese.Forms
                 else
                 {
                     retVal = false;
+                    retMessage = "Account Number field is blank";
                     break;
                 }
             }
-
-            return retVal;
+            clsValidation_Item obj = new clsValidation_Item(retVal, retMessage);
+            return obj;
         }
 
         private int Get_IncomeTypesLevel3ID(string accountNumber)
@@ -142,7 +162,7 @@ namespace Archdiocese.Forms
             {
                 if (grd.Rows[i].Cells["date"].Value != null)
                 {
-                    if (grd.Rows[i].Cells["type"].Value.ToString() == "I")
+                    if (grd.Rows[i].Cells["type"].Value.ToString().ToUpper() == "I")
                     {
                         clsIncomes_Item obj = new clsIncomes_Item();
                         obj.description = grd.Rows[i].Cells["description"].Value.ToString();
