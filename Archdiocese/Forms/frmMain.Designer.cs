@@ -32,9 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             OutlookStyleControls.OutlookBarButton outlookBarButton2 = new OutlookStyleControls.OutlookBarButton();
             OutlookStyleControls.OutlookBarButton outlookBarButton3 = new OutlookStyleControls.OutlookBarButton();
-            OutlookStyleControls.OutlookBarButton outlookBarButton4 = new OutlookStyleControls.OutlookBarButton();
-            OutlookStyleControls.OutlookBarButton outlookBarButton5 = new OutlookStyleControls.OutlookBarButton();
-            OutlookStyleControls.OutlookBarButton outlookBarButton6 = new OutlookStyleControls.OutlookBarButton();
             this.mnuMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,17 +71,21 @@
             this.parishTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.addressTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.emailAddressTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.maritalStatusesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.collectionTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.emailAddressTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.telephoneNumberTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.personsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.personTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.maritalStatusesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.leaveTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.communicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bulkEmailToParishesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bulkEmailToParishionersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sendFeedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportAProblemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.provideASuggestionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sendEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.stsMain = new System.Windows.Forms.StatusStrip();
@@ -93,7 +94,7 @@
             this.outlookBar1 = new OutlookStyleControls.OutlookBar();
             this.mnuMain.SuspendLayout();
             this.stsMain.SuspendLayout();
-            //this.SuspendLayout();
+            this.SuspendLayout();
             // 
             // mnuMain
             // 
@@ -101,6 +102,7 @@
             this.mnuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.viewToolStripMenuItem,
+            this.communicationToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.mnuMain.Location = new System.Drawing.Point(0, 0);
             this.mnuMain.Name = "mnuMain";
@@ -143,6 +145,7 @@
             this.userToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.userToolStripMenuItem1,
             this.userGroupToolStripMenuItem1});
+            this.userToolStripMenuItem.Enabled = false;
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
             this.userToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
             this.userToolStripMenuItem.Text = "Users";
@@ -150,14 +153,14 @@
             // userToolStripMenuItem1
             // 
             this.userToolStripMenuItem1.Name = "userToolStripMenuItem1";
-            this.userToolStripMenuItem1.Size = new System.Drawing.Size(158, 26);
+            this.userToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
             this.userToolStripMenuItem1.Text = "User";
             this.userToolStripMenuItem1.Click += new System.EventHandler(this.userToolStripMenuItem1_Click);
             // 
             // userGroupToolStripMenuItem1
             // 
             this.userGroupToolStripMenuItem1.Name = "userGroupToolStripMenuItem1";
-            this.userGroupToolStripMenuItem1.Size = new System.Drawing.Size(158, 26);
+            this.userGroupToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
             this.userGroupToolStripMenuItem1.Text = "User Group";
             // 
             // toolStripSeparator4
@@ -170,6 +173,7 @@
             this.parishToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.parishToolStripMenuItem1,
             this.parishTypeToolStripMenuItem1});
+            this.parishToolStripMenuItem.Enabled = false;
             this.parishToolStripMenuItem.Name = "parishToolStripMenuItem";
             this.parishToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
             this.parishToolStripMenuItem.Text = "Parishes";
@@ -177,17 +181,18 @@
             // parishToolStripMenuItem1
             // 
             this.parishToolStripMenuItem1.Name = "parishToolStripMenuItem1";
-            this.parishToolStripMenuItem1.Size = new System.Drawing.Size(159, 26);
+            this.parishToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
             this.parishToolStripMenuItem1.Text = "Parish";
             // 
             // parishTypeToolStripMenuItem1
             // 
             this.parishTypeToolStripMenuItem1.Name = "parishTypeToolStripMenuItem1";
-            this.parishTypeToolStripMenuItem1.Size = new System.Drawing.Size(159, 26);
+            this.parishTypeToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
             this.parishTypeToolStripMenuItem1.Text = "Parish Type";
             // 
             // parishTypeToolStripMenuItem
             // 
+            this.parishTypeToolStripMenuItem.Enabled = false;
             this.parishTypeToolStripMenuItem.Name = "parishTypeToolStripMenuItem";
             this.parishTypeToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
             this.parishTypeToolStripMenuItem.Text = "Parish Type";
@@ -202,6 +207,7 @@
             this.collectionTypeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.collectionToolStripMenuItem,
             this.collectionTypeToolStripMenuItem1});
+            this.collectionTypeToolStripMenuItem.Enabled = false;
             this.collectionTypeToolStripMenuItem.Name = "collectionTypeToolStripMenuItem";
             this.collectionTypeToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
             this.collectionTypeToolStripMenuItem.Text = "Collections";
@@ -223,6 +229,7 @@
             // 
             this.addressTypeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addressTypeToolStripMenuItem1});
+            this.addressTypeToolStripMenuItem.Enabled = false;
             this.addressTypeToolStripMenuItem.Name = "addressTypeToolStripMenuItem";
             this.addressTypeToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
             this.addressTypeToolStripMenuItem.Text = "Addresses";
@@ -231,13 +238,14 @@
             // addressTypeToolStripMenuItem1
             // 
             this.addressTypeToolStripMenuItem1.Name = "addressTypeToolStripMenuItem1";
-            this.addressTypeToolStripMenuItem1.Size = new System.Drawing.Size(173, 26);
+            this.addressTypeToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
             this.addressTypeToolStripMenuItem1.Text = "Address Type";
             // 
             // emailAddressTypeToolStripMenuItem
             // 
             this.emailAddressTypeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.emailAddressTypeToolStripMenuItem1});
+            this.emailAddressTypeToolStripMenuItem.Enabled = false;
             this.emailAddressTypeToolStripMenuItem.Name = "emailAddressTypeToolStripMenuItem";
             this.emailAddressTypeToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
             this.emailAddressTypeToolStripMenuItem.Text = "Email Addresses";
@@ -253,6 +261,7 @@
             // 
             this.telephoneNumbersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.telephoneNumberTypeToolStripMenuItem});
+            this.telephoneNumbersToolStripMenuItem.Enabled = false;
             this.telephoneNumbersToolStripMenuItem.Name = "telephoneNumbersToolStripMenuItem";
             this.telephoneNumbersToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
             this.telephoneNumbersToolStripMenuItem.Text = "Telephone Numbers";
@@ -281,13 +290,14 @@
             // expenseToolStripMenuItem1
             // 
             this.expenseToolStripMenuItem1.Name = "expenseToolStripMenuItem1";
-            this.expenseToolStripMenuItem1.Size = new System.Drawing.Size(174, 26);
+            this.expenseToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
             this.expenseToolStripMenuItem1.Text = "Expense";
             // 
             // expenseTypeToolStripMenuItem
             // 
+            this.expenseTypeToolStripMenuItem.Enabled = false;
             this.expenseTypeToolStripMenuItem.Name = "expenseTypeToolStripMenuItem";
-            this.expenseTypeToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
+            this.expenseTypeToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.expenseTypeToolStripMenuItem.Text = "Expense Type";
             // 
             // incomeToolStripMenuItem
@@ -303,13 +313,14 @@
             // incomeToolStripMenuItem1
             // 
             this.incomeToolStripMenuItem1.Name = "incomeToolStripMenuItem1";
-            this.incomeToolStripMenuItem1.Size = new System.Drawing.Size(169, 26);
+            this.incomeToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
             this.incomeToolStripMenuItem1.Text = "Income";
             // 
             // incomeTypeToolStripMenuItem
             // 
+            this.incomeTypeToolStripMenuItem.Enabled = false;
             this.incomeTypeToolStripMenuItem.Name = "incomeTypeToolStripMenuItem";
-            this.incomeTypeToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.incomeTypeToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.incomeTypeToolStripMenuItem.Text = "Income Type";
             // 
             // submitCollectionToolStripMenuItem
@@ -356,12 +367,14 @@
             // 
             // usersToolStripMenuItem
             // 
+            this.usersToolStripMenuItem.Enabled = false;
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
             this.usersToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
             this.usersToolStripMenuItem.Text = "Users";
             // 
             // userGroupsToolStripMenuItem
             // 
+            this.userGroupsToolStripMenuItem.Enabled = false;
             this.userGroupsToolStripMenuItem.Name = "userGroupsToolStripMenuItem";
             this.userGroupsToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
             this.userGroupsToolStripMenuItem.Text = "User Groups";
@@ -373,12 +386,14 @@
             // 
             // parishesToolStripMenuItem
             // 
+            this.parishesToolStripMenuItem.Enabled = false;
             this.parishesToolStripMenuItem.Name = "parishesToolStripMenuItem";
             this.parishesToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
             this.parishesToolStripMenuItem.Text = "Parishes";
             // 
             // parishTypesToolStripMenuItem
             // 
+            this.parishTypesToolStripMenuItem.Enabled = false;
             this.parishTypesToolStripMenuItem.Name = "parishTypesToolStripMenuItem";
             this.parishTypesToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
             this.parishTypesToolStripMenuItem.Text = "Parish Types";
@@ -391,34 +406,31 @@
             // 
             // addressTypesToolStripMenuItem
             // 
+            this.addressTypesToolStripMenuItem.Enabled = false;
             this.addressTypesToolStripMenuItem.Name = "addressTypesToolStripMenuItem";
             this.addressTypesToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
             this.addressTypesToolStripMenuItem.Text = "Address Types";
             this.addressTypesToolStripMenuItem.Click += new System.EventHandler(this.addressTypesToolStripMenuItem_Click);
             // 
-            // emailAddressTypesToolStripMenuItem
-            // 
-            this.emailAddressTypesToolStripMenuItem.Name = "emailAddressTypesToolStripMenuItem";
-            this.emailAddressTypesToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
-            this.emailAddressTypesToolStripMenuItem.Text = "Email Address Types";
-            this.emailAddressTypesToolStripMenuItem.Click += new System.EventHandler(this.emailAddressTypesToolStripMenuItem_Click);
-            // 
-            // maritalStatusesToolStripMenuItem
-            // 
-            this.maritalStatusesToolStripMenuItem.Name = "maritalStatusesToolStripMenuItem";
-            this.maritalStatusesToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
-            this.maritalStatusesToolStripMenuItem.Text = "Marital Statuses";
-            this.maritalStatusesToolStripMenuItem.Click += new System.EventHandler(this.maritalStatusesToolStripMenuItem_Click);
-            // 
             // collectionTypesToolStripMenuItem
             // 
+            this.collectionTypesToolStripMenuItem.Enabled = false;
             this.collectionTypesToolStripMenuItem.Name = "collectionTypesToolStripMenuItem";
             this.collectionTypesToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
             this.collectionTypesToolStripMenuItem.Text = "Collection Types";
             this.collectionTypesToolStripMenuItem.Click += new System.EventHandler(this.collectionTypesToolStripMenuItem_Click);
             // 
+            // emailAddressTypesToolStripMenuItem
+            // 
+            this.emailAddressTypesToolStripMenuItem.Enabled = false;
+            this.emailAddressTypesToolStripMenuItem.Name = "emailAddressTypesToolStripMenuItem";
+            this.emailAddressTypesToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
+            this.emailAddressTypesToolStripMenuItem.Text = "Email Address Types";
+            this.emailAddressTypesToolStripMenuItem.Click += new System.EventHandler(this.emailAddressTypesToolStripMenuItem_Click);
+            // 
             // telephoneNumberTypesToolStripMenuItem
             // 
+            this.telephoneNumberTypesToolStripMenuItem.Enabled = false;
             this.telephoneNumberTypesToolStripMenuItem.Name = "telephoneNumberTypesToolStripMenuItem";
             this.telephoneNumberTypesToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
             this.telephoneNumberTypesToolStripMenuItem.Text = "Telephone Number Types";
@@ -433,17 +445,50 @@
             // 
             // personTypesToolStripMenuItem
             // 
+            this.personTypesToolStripMenuItem.Enabled = false;
             this.personTypesToolStripMenuItem.Name = "personTypesToolStripMenuItem";
             this.personTypesToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
             this.personTypesToolStripMenuItem.Text = "Person Types";
             this.personTypesToolStripMenuItem.Click += new System.EventHandler(this.personTypesToolStripMenuItem_Click);
             // 
+            // maritalStatusesToolStripMenuItem
+            // 
+            this.maritalStatusesToolStripMenuItem.Enabled = false;
+            this.maritalStatusesToolStripMenuItem.Name = "maritalStatusesToolStripMenuItem";
+            this.maritalStatusesToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
+            this.maritalStatusesToolStripMenuItem.Text = "Marital Statuses";
+            this.maritalStatusesToolStripMenuItem.Click += new System.EventHandler(this.maritalStatusesToolStripMenuItem_Click);
+            // 
             // leaveTypesToolStripMenuItem
             // 
+            this.leaveTypesToolStripMenuItem.Enabled = false;
             this.leaveTypesToolStripMenuItem.Name = "leaveTypesToolStripMenuItem";
             this.leaveTypesToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
             this.leaveTypesToolStripMenuItem.Text = "Leave Types";
             this.leaveTypesToolStripMenuItem.Click += new System.EventHandler(this.leaveTypesToolStripMenuItem_Click);
+            // 
+            // communicationToolStripMenuItem
+            // 
+            this.communicationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bulkEmailToParishesToolStripMenuItem,
+            this.bulkEmailToParishionersToolStripMenuItem});
+            this.communicationToolStripMenuItem.Name = "communicationToolStripMenuItem";
+            this.communicationToolStripMenuItem.Size = new System.Drawing.Size(126, 24);
+            this.communicationToolStripMenuItem.Text = "Communication";
+            // 
+            // bulkEmailToParishesToolStripMenuItem
+            // 
+            this.bulkEmailToParishesToolStripMenuItem.Enabled = false;
+            this.bulkEmailToParishesToolStripMenuItem.Name = "bulkEmailToParishesToolStripMenuItem";
+            this.bulkEmailToParishesToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
+            this.bulkEmailToParishesToolStripMenuItem.Text = "Bulk Email to Parishes";
+            this.bulkEmailToParishesToolStripMenuItem.Click += new System.EventHandler(this.bulkEmailToParishesToolStripMenuItem_Click);
+            // 
+            // bulkEmailToParishionersToolStripMenuItem
+            // 
+            this.bulkEmailToParishionersToolStripMenuItem.Name = "bulkEmailToParishionersToolStripMenuItem";
+            this.bulkEmailToParishionersToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
+            this.bulkEmailToParishionersToolStripMenuItem.Text = "Bulk Email to Parishioners";
             // 
             // aboutToolStripMenuItem
             // 
@@ -459,7 +504,8 @@
             // 
             this.sendFeedbackToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.reportAProblemToolStripMenuItem,
-            this.provideASuggestionToolStripMenuItem});
+            this.provideASuggestionToolStripMenuItem,
+            this.sendEmailToolStripMenuItem});
             this.sendFeedbackToolStripMenuItem.Name = "sendFeedbackToolStripMenuItem";
             this.sendFeedbackToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.sendFeedbackToolStripMenuItem.Text = "Send Feedback";
@@ -475,6 +521,13 @@
             this.provideASuggestionToolStripMenuItem.Name = "provideASuggestionToolStripMenuItem";
             this.provideASuggestionToolStripMenuItem.Size = new System.Drawing.Size(233, 26);
             this.provideASuggestionToolStripMenuItem.Text = "Provide a Suggestion...";
+            // 
+            // sendEmailToolStripMenuItem
+            // 
+            this.sendEmailToolStripMenuItem.Name = "sendEmailToolStripMenuItem";
+            this.sendEmailToolStripMenuItem.Size = new System.Drawing.Size(233, 26);
+            this.sendEmailToolStripMenuItem.Text = "Email Support";
+            this.sendEmailToolStripMenuItem.Click += new System.EventHandler(this.sendEmailToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -526,24 +579,9 @@
             outlookBarButton3.Image = ((System.Drawing.Image)(resources.GetObject("outlookBarButton3.Image")));
             outlookBarButton3.Tag = null;
             outlookBarButton3.Text = "Accounting";
-            outlookBarButton4.Enabled = true;
-            outlookBarButton4.Image = ((System.Drawing.Image)(resources.GetObject("outlookBarButton4.Image")));
-            outlookBarButton4.Tag = null;
-            outlookBarButton4.Text = "Parishes";
-            outlookBarButton5.Enabled = true;
-            outlookBarButton5.Image = ((System.Drawing.Image)(resources.GetObject("outlookBarButton5.Image")));
-            outlookBarButton5.Tag = null;
-            outlookBarButton5.Text = "Groups";
-            outlookBarButton6.Enabled = true;
-            outlookBarButton6.Image = ((System.Drawing.Image)(resources.GetObject("outlookBarButton6.Image")));
-            outlookBarButton6.Tag = null;
-            outlookBarButton6.Text = "Reports";
             this.outlookBar1.Buttons.Add(outlookBarButton1);
             this.outlookBar1.Buttons.Add(outlookBarButton2);
             this.outlookBar1.Buttons.Add(outlookBarButton3);
-            this.outlookBar1.Buttons.Add(outlookBarButton4);
-            this.outlookBar1.Buttons.Add(outlookBarButton5);
-            this.outlookBar1.Buttons.Add(outlookBarButton6);
             this.outlookBar1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.outlookBar1.Dock = System.Windows.Forms.DockStyle.Left;
             this.outlookBar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -644,5 +682,9 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem personsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sendEmailToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem communicationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bulkEmailToParishesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bulkEmailToParishionersToolStripMenuItem;
     }
 }

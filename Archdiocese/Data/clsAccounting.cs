@@ -17,7 +17,7 @@ public class clsAccounting_List : List<clsAccounting_Item>
         _connectionString = connectionString;
     }
 
-    public clsAccounting_List(string connectionString, ref Exception pEx, int parishID, DateTime dateFrom, DateTime dateTo)
+    public clsAccounting_List(string connectionString, ref Exception pEx, int parishID, DateTime dateFrom, DateTime dateTo, string accountNumber, string description)
     {
         _connectionString = connectionString;
         SqlConnection conn = new SqlConnection((_connectionString));
@@ -26,10 +26,13 @@ public class clsAccounting_List : List<clsAccounting_Item>
             conn.Open();
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "usp_GetAccounting";
+            //cmd.CommandText = "usp_GetAccounting";
+            cmd.CommandText = "usp_GetAccounting_Test";
             if (!(parishID == 0)) cmd.Parameters.AddWithValue("@parishID", parishID);
             if (!(dateFrom == DateTime.MinValue)) cmd.Parameters.AddWithValue("@dateFrom", dateFrom);
             if (!(dateTo == DateTime.MinValue)) cmd.Parameters.AddWithValue("@dateTo", dateTo);
+            if (!(accountNumber == string.Empty)) cmd.Parameters.AddWithValue("@accountNumber", accountNumber);
+            if (!(description == string.Empty)) cmd.Parameters.AddWithValue("@description", description);
             SqlDataReader data_reader = cmd.ExecuteReader();
             Populate_Members(data_reader);
         }

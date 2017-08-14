@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Archdiocese.Menus;
+using Archdiocese.Dashboards;
 
 namespace Archdiocese.Forms
 {
@@ -22,13 +23,14 @@ namespace Archdiocese.Forms
 
         private void MyInitializeComponent()
         {
-            bool flagTest = false;
+            bool flagTest = true;
             if (flagTest)
             {
                 Globals.giUserID = 1;
                 Globals.giParishUserID = 1;
                 Globals.giParishID = 1;
                 outlookBar1.SelectedButton = outlookBar1.Buttons[0];
+                displayMaindashboard();
             }
             else
             {
@@ -36,7 +38,8 @@ namespace Archdiocese.Forms
                 DialogResult _Result = frm.ShowDialog();
                 this.tsslParish.Text = Globals.gsParishName + " is the selected Parish";
                 this.tsslUser.Text = Globals.gsUserName + " is logged in";
-                outlookBar1.SelectedButton = outlookBar1.Buttons[0]; 
+                outlookBar1.SelectedButton = outlookBar1.Buttons[0];
+                displayMaindashboard();
             }
             
         }
@@ -233,7 +236,7 @@ namespace Archdiocese.Forms
             switch (idx)
             {
                 case 0: // Home
-                    int r = 0;
+                    displayMaindashboard();
                     break;
                 case 1: // People
                     ShowMenu_Persons();
@@ -303,6 +306,32 @@ namespace Archdiocese.Forms
         {
             CloseOpenForms();
             frmParishPersonsView frm = new frmParishPersonsView();
+            frm.MdiParent = this;
+            frm.Size = this.Size;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+        private void sendEmailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Globals.SendEmailThroughDefaultClient();
+        }
+
+        
+        private void displayMaindashboard()
+        {
+            CloseOpenForms();
+            frmMainDashboard frm = new frmMainDashboard();
+            frm.MdiParent = this;
+            frm.Size = this.Size;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+        }
+
+        private void bulkEmailToParishesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CloseOpenForms();
+            frmParishBulkEmail frm = new frmParishBulkEmail();
             frm.MdiParent = this;
             frm.Size = this.Size;
             frm.WindowState = FormWindowState.Maximized;

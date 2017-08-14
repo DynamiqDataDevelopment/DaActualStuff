@@ -14,6 +14,7 @@ namespace Archdiocese.Helpers
     {
         public const string gsExceptionString = "SUCCESS!";
         public static string gsSuccessMessage = "Successfully saved to the Database";
+        public static string gsSuccessEmailSending = "Email successfully sent.";
         public static string gsErrorMessage = "An error has occurred in the application. " + Environment.NewLine + "The actual error message is:" + Environment.NewLine;
         public static string gsSuccessCaption = "Success";
         public static string gsErrorCaption = "Error";
@@ -214,5 +215,20 @@ namespace Archdiocese.Helpers
             return dialogResult;
         }
 
+        public static void SendEmailThroughDefaultClient()
+        {
+
+            try
+            {
+                System.Diagnostics.Process proc = new System.Diagnostics.Process();
+                proc.StartInfo.FileName = "mailto:support@dds.za.com?subject=DioLync Support&body=Dear Support Team";
+                proc.Start();
+                proc.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Globals.gsErrorMessage + System.Environment.NewLine + ex.Message, Globals.gsErrorCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

@@ -28,17 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAccountingView));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grd = new System.Windows.Forms.DataGridView();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
-            this.dtpTo = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnClear = new System.Windows.Forms.Button();
             this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accountNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accountName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,9 +41,19 @@
             this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.captureUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
+            this.dtpTo = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
             this.lblIncomeTotal = new System.Windows.Forms.Label();
             this.lblExpenseTotal = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
+            this.chkAccountNumber = new System.Windows.Forms.CheckBox();
+            this.chkDescription = new System.Windows.Forms.CheckBox();
+            this.txtAccountNumber = new System.Windows.Forms.TextBox();
+            this.txtDescription = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,15 +83,86 @@
             this.grd.Size = new System.Drawing.Size(994, 184);
             this.grd.TabIndex = 2;
             // 
+            // type
+            // 
+            this.type.DataPropertyName = "Type";
+            this.type.HeaderText = "Type";
+            this.type.MaxInputLength = 1;
+            this.type.Name = "type";
+            this.type.ReadOnly = true;
+            this.type.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.type.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.type.ToolTipText = "Income (I) or Expense (E)";
+            // 
+            // accountNumber
+            // 
+            this.accountNumber.DataPropertyName = "accountNumber";
+            this.accountNumber.HeaderText = "Account Number";
+            this.accountNumber.Name = "accountNumber";
+            this.accountNumber.ReadOnly = true;
+            // 
+            // accountName
+            // 
+            this.accountName.DataPropertyName = "accountName";
+            this.accountName.HeaderText = "Account Name";
+            this.accountName.Name = "accountName";
+            this.accountName.ReadOnly = true;
+            // 
+            // date
+            // 
+            this.date.DataPropertyName = "theDate";
+            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
+            dataGridViewCellStyle1.NullValue = null;
+            this.date.DefaultCellStyle = dataGridViewCellStyle1;
+            this.date.HeaderText = "Date";
+            this.date.Name = "date";
+            this.date.ReadOnly = true;
+            // 
+            // dateSubmitted
+            // 
+            this.dateSubmitted.DataPropertyName = "dateSubmitted";
+            dataGridViewCellStyle2.Format = "dd/MM/yyyy";
+            dataGridViewCellStyle2.NullValue = null;
+            this.dateSubmitted.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dateSubmitted.HeaderText = "Date Submitted";
+            this.dateSubmitted.Name = "dateSubmitted";
+            this.dateSubmitted.ReadOnly = true;
+            // 
+            // description
+            // 
+            this.description.DataPropertyName = "description";
+            this.description.HeaderText = "Description";
+            this.description.MaxInputLength = 32;
+            this.description.Name = "description";
+            this.description.ReadOnly = true;
+            // 
+            // amount
+            // 
+            this.amount.DataPropertyName = "amount";
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.amount.DefaultCellStyle = dataGridViewCellStyle3;
+            this.amount.HeaderText = "Amount";
+            this.amount.Name = "amount";
+            this.amount.ReadOnly = true;
+            // 
+            // captureUser
+            // 
+            this.captureUser.DataPropertyName = "captureUser";
+            this.captureUser.HeaderText = "Capture User";
+            this.captureUser.Name = "captureUser";
+            this.captureUser.ReadOnly = true;
+            // 
             // btnSearch
             // 
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
             this.btnSearch.Location = new System.Drawing.Point(931, 12);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 75);
+            this.btnSearch.Size = new System.Drawing.Size(50, 50);
             this.btnSearch.TabIndex = 28;
             this.btnSearch.Text = "Search";
             this.btnSearch.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -131,85 +206,16 @@
             this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
             this.btnClear.Location = new System.Drawing.Point(822, 12);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 75);
+            this.btnClear.Size = new System.Drawing.Size(50, 50);
             this.btnClear.TabIndex = 33;
             this.btnClear.Text = "Clear";
             this.btnClear.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // type
-            // 
-            this.type.DataPropertyName = "Type";
-            this.type.HeaderText = "Type";
-            this.type.MaxInputLength = 1;
-            this.type.Name = "type";
-            this.type.ReadOnly = true;
-            this.type.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.type.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.type.ToolTipText = "Income (I) or Expense (E)";
-            // 
-            // accountNumber
-            // 
-            this.accountNumber.DataPropertyName = "accountNumber";
-            this.accountNumber.HeaderText = "Account Number";
-            this.accountNumber.Name = "accountNumber";
-            this.accountNumber.ReadOnly = true;
-            // 
-            // accountName
-            // 
-            this.accountName.DataPropertyName = "accountName";
-            this.accountName.HeaderText = "Account Name";
-            this.accountName.Name = "accountName";
-            this.accountName.ReadOnly = true;
-            // 
-            // date
-            // 
-            this.date.DataPropertyName = "theDate";
-            dataGridViewCellStyle10.Format = "dd/MM/yyyy";
-            dataGridViewCellStyle10.NullValue = null;
-            this.date.DefaultCellStyle = dataGridViewCellStyle10;
-            this.date.HeaderText = "Date";
-            this.date.Name = "date";
-            this.date.ReadOnly = true;
-            // 
-            // dateSubmitted
-            // 
-            this.dateSubmitted.DataPropertyName = "dateSubmitted";
-            dataGridViewCellStyle11.Format = "dd/MM/yyyy";
-            dataGridViewCellStyle11.NullValue = null;
-            this.dateSubmitted.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dateSubmitted.HeaderText = "Date Submitted";
-            this.dateSubmitted.Name = "dateSubmitted";
-            this.dateSubmitted.ReadOnly = true;
-            // 
-            // description
-            // 
-            this.description.DataPropertyName = "description";
-            this.description.HeaderText = "Description";
-            this.description.MaxInputLength = 32;
-            this.description.Name = "description";
-            this.description.ReadOnly = true;
-            // 
-            // amount
-            // 
-            this.amount.DataPropertyName = "amount";
-            dataGridViewCellStyle12.Format = "C2";
-            dataGridViewCellStyle12.NullValue = null;
-            this.amount.DefaultCellStyle = dataGridViewCellStyle12;
-            this.amount.HeaderText = "Amount";
-            this.amount.Name = "amount";
-            this.amount.ReadOnly = true;
-            // 
-            // captureUser
-            // 
-            this.captureUser.DataPropertyName = "captureUser";
-            this.captureUser.HeaderText = "Capture User";
-            this.captureUser.Name = "captureUser";
-            this.captureUser.ReadOnly = true;
             // 
             // lblIncomeTotal
             // 
@@ -241,11 +247,55 @@
             this.lblTotal.TabIndex = 36;
             this.lblTotal.Text = "Total:";
             // 
+            // chkAccountNumber
+            // 
+            this.chkAccountNumber.AutoSize = true;
+            this.chkAccountNumber.Location = new System.Drawing.Point(12, 53);
+            this.chkAccountNumber.Name = "chkAccountNumber";
+            this.chkAccountNumber.Size = new System.Drawing.Size(135, 21);
+            this.chkAccountNumber.TabIndex = 37;
+            this.chkAccountNumber.Text = "Account Number";
+            this.chkAccountNumber.UseVisualStyleBackColor = true;
+            this.chkAccountNumber.CheckedChanged += new System.EventHandler(this.chkAccountNumber_CheckedChanged);
+            // 
+            // chkDescription
+            // 
+            this.chkDescription.AutoSize = true;
+            this.chkDescription.Location = new System.Drawing.Point(12, 103);
+            this.chkDescription.Name = "chkDescription";
+            this.chkDescription.Size = new System.Drawing.Size(101, 21);
+            this.chkDescription.TabIndex = 38;
+            this.chkDescription.Text = "Description";
+            this.chkDescription.UseVisualStyleBackColor = true;
+            this.chkDescription.CheckedChanged += new System.EventHandler(this.chkDescription_CheckedChanged);
+            // 
+            // txtAccountNumber
+            // 
+            this.txtAccountNumber.Enabled = false;
+            this.txtAccountNumber.Location = new System.Drawing.Point(157, 53);
+            this.txtAccountNumber.MaxLength = 8;
+            this.txtAccountNumber.Name = "txtAccountNumber";
+            this.txtAccountNumber.Size = new System.Drawing.Size(200, 22);
+            this.txtAccountNumber.TabIndex = 39;
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.Enabled = false;
+            this.txtDescription.Location = new System.Drawing.Point(157, 103);
+            this.txtDescription.MaxLength = 32;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(600, 22);
+            this.txtDescription.TabIndex = 40;
+            // 
             // frmAccountingView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1018, 474);
+            this.Controls.Add(this.txtDescription);
+            this.Controls.Add(this.txtAccountNumber);
+            this.Controls.Add(this.chkDescription);
+            this.Controls.Add(this.chkAccountNumber);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblExpenseTotal);
             this.Controls.Add(this.lblIncomeTotal);
@@ -288,5 +338,9 @@
         private System.Windows.Forms.Label lblIncomeTotal;
         private System.Windows.Forms.Label lblExpenseTotal;
         private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.CheckBox chkAccountNumber;
+        private System.Windows.Forms.CheckBox chkDescription;
+        private System.Windows.Forms.TextBox txtAccountNumber;
+        private System.Windows.Forms.TextBox txtDescription;
     }
 }

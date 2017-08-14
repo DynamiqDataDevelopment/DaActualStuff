@@ -38,19 +38,21 @@
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(206, 79);
+            this.txtUsername.Location = new System.Drawing.Point(206, 179);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(224, 22);
             this.txtUsername.TabIndex = 0;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(206, 138);
+            this.txtPassword.Location = new System.Drawing.Point(206, 238);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(224, 22);
@@ -59,7 +61,7 @@
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(31, 79);
+            this.lblUsername.Location = new System.Drawing.Point(31, 179);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(73, 17);
             this.lblUsername.TabIndex = 2;
@@ -68,7 +70,7 @@
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(31, 138);
+            this.lblPassword.Location = new System.Drawing.Point(31, 238);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(69, 17);
             this.lblPassword.TabIndex = 3;
@@ -77,7 +79,7 @@
             // lblParish
             // 
             this.lblParish.AutoSize = true;
-            this.lblParish.Location = new System.Drawing.Point(31, 195);
+            this.lblParish.Location = new System.Drawing.Point(31, 295);
             this.lblParish.Name = "lblParish";
             this.lblParish.Size = new System.Drawing.Size(48, 17);
             this.lblParish.TabIndex = 4;
@@ -88,7 +90,7 @@
             // 
             this.cmbParish.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbParish.FormattingEnabled = true;
-            this.cmbParish.Location = new System.Drawing.Point(206, 195);
+            this.cmbParish.Location = new System.Drawing.Point(206, 295);
             this.cmbParish.Name = "cmbParish";
             this.cmbParish.Size = new System.Drawing.Size(224, 24);
             this.cmbParish.TabIndex = 26;
@@ -106,7 +108,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(34, 248);
+            this.btnLogin.Location = new System.Drawing.Point(34, 348);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 28);
             this.btnLogin.TabIndex = 28;
@@ -117,7 +119,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(355, 248);
+            this.btnCancel.Location = new System.Drawing.Point(355, 348);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 28);
             this.btnCancel.TabIndex = 29;
@@ -125,13 +127,23 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(171, 69);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(140, 84);
+            this.pictureBox1.TabIndex = 30;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmLogin
             // 
             this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(471, 288);
+            this.ClientSize = new System.Drawing.Size(471, 422);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.pbLogo);
@@ -149,6 +161,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "User Login";
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -165,5 +178,6 @@
         private System.Windows.Forms.PictureBox pbLogo;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

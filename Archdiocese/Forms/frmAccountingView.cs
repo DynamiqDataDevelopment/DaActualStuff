@@ -56,7 +56,7 @@ namespace Archdiocese.Forms
             if (ValidateDates())
             {
                 Exception exResult = new Exception(Globals.gsExceptionString);
-                clsAccounting_List _Data = new clsAccounting_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult, Globals.giParishID, dtpFrom.Value, dtpTo.Value);
+                clsAccounting_List _Data = new clsAccounting_List(Globals.DecryptString(Properties.Settings.Default.SqlConnectionString), ref exResult, Globals.giParishID, dtpFrom.Value, dtpTo.Value, txtAccountNumber.Text, txtDescription.Text);
                 if (!(exResult.Message == Globals.gsExceptionString))
                 {
                     MessageBox.Show(Globals.gsErrorMessage + exResult.Message, Globals.gsErrorCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -104,6 +104,30 @@ namespace Archdiocese.Forms
             lblExpenseTotal.Text = "Total Expense: R 0.00";
             lblIncomeTotal.Text = "Total Income: R 0.00";
             lblTotal.Text = "Total: R 0.00";
+        }
+
+        private void chkAccountNumber_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkAccountNumber.Checked)
+            {
+                txtAccountNumber.Enabled = true;
+            }
+            else
+            {
+                txtAccountNumber.Enabled = false;
+            }
+        }
+
+        private void chkDescription_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkDescription.Checked)
+            {
+                txtDescription.Enabled = true;
+            }
+            else
+            {
+                txtDescription.Enabled = false;
+            }
         }
     }
 }

@@ -12,6 +12,22 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\MyPublish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,6 +50,18 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>DioLync.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>AD9E5DD0D2E7117DB9C2C3BAC3603339F137B6E2</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Archdiocese_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
@@ -62,6 +90,12 @@
     <Compile Include="Controls\OutlookBar.designer.cs">
       <DependentUpon>OutlookBar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dashboards\frmMainDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dashboards\frmMainDashboard.Designer.cs">
+      <DependentUpon>frmMainDashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data\clsAccounting.cs" />
     <Compile Include="Data\clsAddresses.cs" />
     <Compile Include="Data\clsAddressTypes.cs" />
@@ -85,9 +119,11 @@
     <Compile Include="Data\clsIncomeTypesLevel3.cs" />
     <Compile Include="Data\clsMaritalStatuses.cs" />
     <Compile Include="Data\clsParishClergy.cs" />
+    <Compile Include="Data\clsParishEmailAddressess.cs" />
     <Compile Include="Data\clsParishes.cs" />
     <Compile Include="Data\clsParishPersonPledges.cs" />
     <Compile Include="Data\clsParishPersons.cs" />
+    <Compile Include="Data\clsParishStatistics.cs" />
     <Compile Include="Data\clsParishTypes.cs" />
     <Compile Include="Data\clsParishUsers.cs" />
     <Compile Include="Data\clsPaymentApprovals.cs" />
@@ -95,6 +131,7 @@
     <Compile Include="Data\clsPaymentRequestsNew.cs" />
     <Compile Include="Data\clsPersonParish.cs" />
     <Compile Include="Data\clsPersons.cs" />
+    <Compile Include="Data\clsPersonsEmailAddress.cs" />
     <Compile Include="Data\clsPersonTypes.cs" />
     <Compile Include="Data\clsPledgeTypes.cs" />
     <Compile Include="Data\clsTelephoneNumbers.cs" />
@@ -234,6 +271,12 @@
     <Compile Include="Forms\frmMaritalStatusesView.designer.cs">
       <DependentUpon>frmMaritalStatusesView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmParishBulkEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmParishBulkEmail.Designer.cs">
+      <DependentUpon>frmParishBulkEmail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmParishTypes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -371,6 +414,9 @@
     <EmbeddedResource Include="Controls\OutlookBar.resx">
       <DependentUpon>OutlookBar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dashboards\frmMainDashboard.resx">
+      <DependentUpon>frmMainDashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -430,6 +476,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMaritalStatusesView.resx">
       <DependentUpon>frmMaritalStatusesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmParishBulkEmail.resx">
+      <DependentUpon>frmParishBulkEmail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmParishTypes.resx">
       <DependentUpon>frmParishTypes.cs</DependentUpon>
@@ -501,6 +550,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Archdiocese_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -514,12 +564,29 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="DioLync.ico" />
     <Content Include="Icons\AOD32x32.png" />
     <Content Include="Images\logo-arch-header.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
